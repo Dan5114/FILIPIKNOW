@@ -1,0 +1,55 @@
+ISSUE 1: TEXT OVERFLOW FIXED (Introduction & Summary)
+=====================================================
+File: Scripts/Scripts/DialogBoxMaskSetup.cs (line 32-52)
+Fix: 
+  - Removes existing Image that blocks mask
+  - Adds Mask component
+  - Adds transparent Image for masking to work
+  - Text will be clipped inside dialog box
+
+UNITY SETUP REQUIRED:
+1. Select DialogBox GameObject
+2. Add Component -> DialogBoxMaskSetup
+3. Check "Auto Setup Mask" in Inspector
+4. Right-click component -> "Move DialogText to Content"
+5. Play - text will be clipped inside box with scrolling!
+
+ISSUE 2: BUTTON TRANSPARENCY REMOVED
+====================================
+File: nounsGameManager/NounsGameManager.cs
+Changes:
+  - Line 1313: Added canClickChoices flag
+  - Line 1321: DisableAllChoiceButtons() now uses flag (no interactable=false)
+  - Line 1331: EnableAllChoiceButtons() now uses flag
+  - Line 2257: OnChoiceButtonClick() checks flag before processing
+
+Result: 
+  ✅ Buttons stay FULLY OPAQUE when clicked
+  ✅ Buttons cannot be clicked twice (flag prevents it)
+  ✅ NO transparency change!
+
+HOW IT WORKS:
+-------------
+OLD (transparency):
+  button.interactable = false  ❌ Makes button semi-transparent
+
+NEW (no transparency):
+  canClickChoices = false      ✅ Blocks clicks, stays opaque
+  if (!canClickChoices) return ✅ Prevents click processing
+
+TESTING:
+--------
+1. Play scene
+2. Introduction: Text clipped inside box, can scroll
+3. Answer question: Button turns green/red, STAYS OPAQUE
+4. Click Continue: Next question loads
+5. Summary: Text clipped inside box, can scroll
+
+FILES CHANGED:
+--------------
+✅ Scripts/Scripts/DialogBoxMaskSetup.cs (mask setup)
+✅ nounsGameManager/NounsGameManager.cs (button opacity fix)
+
+LINTER ERRORS: 0
+STATUS: COMPLETE
+

@@ -1,0 +1,57 @@
+=== ALL 3 ISSUES FIXED ===
+
+ISSUE 1 & 3: Text Overflow FIXED
+---------------------------------
+File: Scripts/TypewriterEffect.cs (line 402)
+Change: overflowMode = TMPro.TextOverflowModes.Masking
+Result: Text now clips inside dialog box (no overflow outside)
+
+ISSUE 2: Button Flashing FIXED
+-------------------------------
+File: nounsGameManager/NounsGameManager.cs (line 1753)
+Change: Added HideChoices() at start of NextQuestion()
+Result: 
+  - Buttons hide immediately when transitioning
+  - Buttons only show AFTER new question finishes typing
+  - No more flashing of old buttons
+
+SCROLLING FEATURE ADDED
+-----------------------
+File: Scripts/Scripts/DialogBoxMaskSetup.cs
+Purpose: 
+  - Ensures text is clipped inside dialog box
+  - Adds scrolling for long introduction/summary text
+  - User can swipe/scroll to read all content
+
+UNITY SETUP REQUIRED (5 Steps):
+--------------------------------
+1. Select your DialogBox GameObject
+2. Add Component -> DialogBoxMaskSetup
+3. Check "Auto Setup Mask" in Inspector
+4. Right-click DialogBoxMaskSetup component -> "Move DialogText to Content"
+5. Done!
+
+WHAT THIS DOES:
+---------------
+✅ Adds Mask component (clips text inside box)
+✅ Adds ScrollRect (enables swiping/scrolling)
+✅ Creates Content object with ContentSizeFitter
+✅ Moves DialogText inside Content (for scrolling)
+✅ Configures vertical scrolling (mobile-friendly)
+
+TESTING:
+--------
+1. Play scene
+2. Introduction: Text stays inside box, can scroll if long
+3. Questions: Buttons hidden during transition
+4. Summary: Text stays inside box, can scroll if long
+
+FILES MODIFIED:
+--------------
+- Scripts/TypewriterEffect.cs (overflow fix)
+- nounsGameManager/NounsGameManager.cs (button hiding fix)
+- Scripts/Scripts/DialogBoxMaskSetup.cs (NEW - mask & scroll setup)
+
+LINTER ERRORS: 0
+STATUS: COMPLETE
+
