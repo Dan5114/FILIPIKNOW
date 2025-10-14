@@ -67,6 +67,32 @@ public class SceneController : MonoBehaviour
     {
         return selectedDifficulty;
     }
+    
+    // Overload for string difficulty (for compatibility with new system)
+    public void SetSelectedDifficulty(string difficulty)
+    {
+        switch (difficulty.ToLower())
+        {
+            case "easy":
+                selectedDifficulty = DifficultyLevel.Easy;
+                break;
+            case "medium":
+                selectedDifficulty = DifficultyLevel.Medium;
+                break;
+            case "hard":
+                selectedDifficulty = DifficultyLevel.Hard;
+                break;
+            default:
+                selectedDifficulty = DifficultyLevel.Easy;
+                break;
+        }
+    }
+    
+    // Get difficulty as string (for compatibility with new system)
+    public string GetSelectedDifficultyAsString()
+    {
+        return selectedDifficulty.ToString();
+    }
 
     // Navigation methods for common scene transitions
     public void GoToMainMenu()
@@ -122,6 +148,91 @@ public class SceneController : MonoBehaviour
         }
     }
 
+    // New navigation methods for Nouns flow
+    public void GoToNounsIntroduction()
+    {
+        Debug.Log("🎯 Navigating to NounsIntroduction scene");
+        LoadScene("NounsIntroduction");
+    }
+    
+    public void GoToNounsGame()
+    {
+        // Route to correct scene based on selected difficulty
+        DifficultyLevel difficulty = GetSelectedDifficulty();
+        
+        switch (difficulty)
+        {
+            case DifficultyLevel.Easy:
+                Debug.Log("🎯 Navigating to Nouns scene (Easy)");
+                LoadScene("Nouns");
+                break;
+            case DifficultyLevel.Medium:
+                Debug.Log("🎯 Navigating to NounsMedium scene (Medium)");
+                LoadScene("NounsMedium");
+                break;
+            case DifficultyLevel.Hard:
+                Debug.Log("🎯 Navigating to NounsHard scene (Hard)");
+                LoadScene("NounsHard");
+                break;
+            default:
+                Debug.Log("🎯 Defaulting to Nouns scene (Easy)");
+                LoadScene("Nouns");
+                break;
+        }
+    }
+    
+    public void GoToNounsIntroductionMedium()
+    {
+        Debug.Log("🎯 Navigating to NounsIntroductionMedium scene");
+        LoadScene("NounsIntroductionMedium");
+    }
+    
+    public void GoToNounsMediumGame()
+    {
+        Debug.Log("🎯 Navigating to NounsMedium scene (Medium)");
+        LoadScene("NounsMedium");
+    }
+    
+    public void GoToNounsSummary()
+    {
+        Debug.Log("🎯 Navigating to NounsSummary scene");
+        LoadScene("NounsSummary");
+    }
+    
+    public void GoToNounsDifficultySelection()
+    {
+        Debug.Log("🎯 Navigating to NounsDifficultySelection scene");
+        LoadScene("NounsDifficultySelection");
+    }
+    
+    // Navigation for difficulty selection
+    public void GoToDifficultySelection()
+    {
+        string topic = GetSelectedTopic();
+        if (!string.IsNullOrEmpty(topic))
+        {
+            switch (topic.ToLower())
+            {
+                case "nouns":
+                    LoadScene("NounsDifficultySelection");
+                    break;
+                case "verbs":
+                    LoadScene("VerbsDifficultySelection");
+                    break;
+                case "numbers":
+                    LoadScene("NumbersDifficultySelection");
+                    break;
+                default:
+                    LoadScene("Module 1");
+                    break;
+            }
+        }
+        else
+        {
+            LoadScene("Module 1");
+        }
+    }
+
     public void GoBack()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -141,6 +252,14 @@ public class SceneController : MonoBehaviour
             case "NumbersDifficultySelection":
                 // Go back to Module 1 selection
                 LoadScene("Module 1");
+                break;
+            case "NounsIntroduction":
+                // Go back to difficulty selection
+                GoToDifficultySelection();
+                break;
+            case "NounsSummary":
+                // Go back to difficulty selection (or could go back to game)
+                GoToDifficultySelection();
                 break;
             case "Nouns":
             case "Verbs":

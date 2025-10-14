@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class NounsGameManager : MonoBehaviour
+public class NounsMediumGameManager : MonoBehaviour
 {
     [Header("UI References")]
     public TextMeshProUGUI dialogText;
@@ -39,7 +39,7 @@ public class NounsGameManager : MonoBehaviour
     
     [Header("Learning System")]
     public QuestionDatabase questionDatabase;
-    public DifficultyLevel currentDifficulty = DifficultyLevel.Easy;
+    public DifficultyLevel currentDifficulty = DifficultyLevel.Medium;
     
     [Header("Typewriter Effect")]
     public TypewriterEffect typewriterEffect;
@@ -511,21 +511,20 @@ public class NounsGameManager : MonoBehaviour
 
     void Start()
     {
-        // Get difficulty from SceneController first
-        LoadDifficultyFromSceneController();
-        Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
+        Debug.Log("🎯 NounsMediumGameManager Start - Medium Difficulty");
+        
+        // Set difficulty to Medium directly
+        currentDifficulty = DifficultyLevel.Medium;
         
         // Hide Summary Panel initially - it should only show after game ends
         HideSummaryPanel();
-        
-        // Initialize dialog boxes - hide question dialog, show intro dialog
         
         SetupUniversalFont();
         SetupTypewriter();
         SetupButtons();
         InitializeQuestions();
         InitializeAdvancedSystems();
-        StartDialog();
+        StartGame();
     }
     
     
@@ -1055,8 +1054,8 @@ public class NounsGameManager : MonoBehaviour
         continueButton.gameObject.SetActive(false);
         backButton.gameObject.SetActive(true);
         
-        // Use legacy system for ALL difficulties to maintain same flow
-        Debug.Log($"🎯 Using legacy system for {currentDifficulty} difficulty");
+        // Use legacy system for Medium difficulty to maintain same flow as Easy
+        Debug.Log($"🎯 Using legacy system for Medium difficulty");
         DisplayQuestion();
     }
 
@@ -1066,8 +1065,8 @@ public class NounsGameManager : MonoBehaviour
         questionStartTime = Time.time;
         Debug.Log($"⏱️ Question {currentQuestion} started at {questionStartTime:F2}");
         
-        // Handle Medium difficulty - use EXACT same flow as Easy, just different content
-        if (currentDifficulty == DifficultyLevel.Medium && currentQuestions.Count > 0 && currentQuestion < currentQuestions.Count)
+        // Handle Medium difficulty - use unified questions with same flow as Easy
+        if (currentQuestions.Count > 0 && currentQuestion < currentQuestions.Count)
         {
             Debug.Log($"Using Medium question {currentQuestion} - SAME FLOW AS EASY");
             currentQuestionData = currentQuestions[currentQuestion];
@@ -1116,91 +1115,10 @@ public class NounsGameManager : MonoBehaviour
             return;
         }
         
-        // Fallback to static questions if no review questions available
-        string[] questions = GetQuestions();
-        if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
-        {
-            Debug.Log($"Using fallback static question {currentQuestion}");
-            
-            string questionText = questions[currentQuestion];
-            string[][] choices = GetChoices();
-            
-            Debug.Log($"Question text: {questionText}");
-            Debug.Log($"Choices count: {choices[currentQuestion].Length}");
-            
-            // Use adaptive dialog system if available
-            if (adaptiveDialogManager != null)
-            {
-                Debug.Log("Using adaptive dialog system");
-                adaptiveDialogManager.ShowDialog(questionText, () => {
-                    // Display choices after dialog is shown
-                    DisplayChoices(choices[currentQuestion]);
-                });
-            }
-            else if (typewriterEffect != null)
-            {
-                Debug.Log("Using typewriter effect");
-                // Configure dialog text for auto-sizing first
-                ConfigureDialogTextForAutoSizing();
-                // Clear any existing callbacks to prevent multiple subscriptions
-                typewriterEffect.OnTypingCompleted = null;
-                // Start typewriter with completion callback
-                typewriterEffect.StartTypewriter(questionText);
-                typewriterEffect.OnTypingCompleted += () => {
-                    // Display choices after typewriter completes
-                    DisplayChoices(choices[currentQuestion]);
-                };
-            }
-            else if (dialogText != null)
-            {
-                Debug.Log("Using direct dialog text");
-                ConfigureDialogTextForAutoSizing();
-                dialogText.text = questionText;
-                DisplayChoices(choices[currentQuestion]);
-            }
-            else
-            {
-                Debug.LogError("No dialog system available!");
-            }
-            return;
-        }
-        
-        if (currentQuestion >= reviewQuestions.Count)
+        if (currentQuestion >= currentQuestions.Count)
         {
             EndGame();
             return;
-        }
-
-        // Get the current question from the review list
-        QuestionData currentQ = reviewQuestions[currentQuestion];
-        Debug.Log($"Displaying question {currentQuestion}: {currentQ.question}");
-        
-        // Use adaptive dialog system if available
-        if (adaptiveDialogManager != null)
-        {
-            adaptiveDialogManager.ShowDialog(currentQ.question, () => {
-                // Display choices after dialog is shown
-                DisplayChoices(currentQ.choices);
-            });
-        }
-        else if (typewriterEffect != null)
-        {
-            // Configure dialog text for auto-sizing first
-            ConfigureDialogTextForAutoSizing();
-            // Clear any existing callbacks to prevent multiple subscriptions
-            typewriterEffect.OnTypingCompleted = null;
-            // Start typewriter with completion callback
-            typewriterEffect.StartTypewriter(currentQ.question);
-            typewriterEffect.OnTypingCompleted += () => {
-                // Display choices after typewriter completes
-                DisplayChoices(currentQ.choices);
-            };
-        }
-        else
-        {
-            ConfigureDialogTextForAutoSizing();
-            dialogText.text = currentQ.question;
-            DisplayChoices(currentQ.choices);
         }
     }
     
@@ -1411,50 +1329,16 @@ public class NounsGameManager : MonoBehaviour
     void ProcessAnswer(string selectedAnswer, string correctAnswer, bool isCorrect, int buttonIndex)
     {
         
-        // Handle fallback case (static questions)
-        string[] questions = GetQuestions();
-        string[][] correctAnswers = GetCorrectAnswers();
-        if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
+        // Handle Medium difficulty - use unified question data
+        if (currentQuestionData != null)
         {
-            Debug.Log("Using fallback answer checking");
+            Debug.Log("Medium difficulty: Using unified question data");
+            correctAnswer = currentQuestionData.blankWord;
             
-            // Handle Medium difficulty
-            if (currentDifficulty == DifficultyLevel.Medium && currentQuestionData != null)
-            {
-                Debug.Log("Medium difficulty: Using unified question data");
-                correctAnswer = currentQuestionData.blankWord;
-                
-                // Check if selected answer matches the blank word
-                isCorrect = selectedAnswer.ToLower().Contains(currentQuestionData.blankWord.ToLower());
-                
-                Debug.Log($"Medium answer check: '{selectedAnswer}' contains '{correctAnswer}' = {isCorrect}");
-            }
-            else
-            {
-                // Handle Easy difficulty (original logic)
-                string[] correctAnswersForQuestion = correctAnswers[currentQuestion];
-                correctAnswer = correctAnswersForQuestion[0]; // Use first correct answer for display
-                
-                // Check if selected answer is in the correct answers array
-                isCorrect = System.Array.Exists(correctAnswersForQuestion, answer => 
-                    string.Equals(selectedAnswer.Trim(), answer.Trim(), System.StringComparison.OrdinalIgnoreCase));
-                
-                Debug.Log($"Easy answer check: '{selectedAnswer}' vs '{correctAnswer}' = {isCorrect}");
-            }
-        }
-        else if (currentQuestion >= reviewQuestions.Count)
-        {
-            Debug.LogError("Current question index is out of range!");
-            return;
-        }
-        else
-        {
-            // Use SM2 question data
-            QuestionData currentQ = reviewQuestions[currentQuestion];
-            correctAnswer = currentQ.choices[currentQ.correctAnswer];
+            // Check if selected answer matches the blank word
+            isCorrect = selectedAnswer.ToLower().Contains(currentQuestionData.blankWord.ToLower());
             
-            // More robust answer comparison
-            isCorrect = string.Equals(selectedAnswer.Trim(), correctAnswer.Trim(), System.StringComparison.OrdinalIgnoreCase);
+            Debug.Log($"Medium answer check: '{selectedAnswer}' contains '{correctAnswer}' = {isCorrect}");
         }
         
         // Debug logging
@@ -1463,15 +1347,15 @@ public class NounsGameManager : MonoBehaviour
         Debug.Log($"Is Correct: {isCorrect}");
         
         // Track response time
-        float responseTime = Time.time - sessionStartTime;
+        float responseTime = Time.time - questionStartTime;
         
         // Determine question ID for tracking
         int questionId = 0;
-        if (reviewQuestions.Count > 0 && currentQuestion < reviewQuestions.Count)
+        if (currentQuestionData != null)
         {
-            questionId = reviewQuestions[currentQuestion].questionId;
+            questionId = currentQuestionData.questionId;
         }
-        else if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
+        else
         {
             questionId = currentQuestion; // Use currentQuestion as ID for fallback
         }
@@ -1520,17 +1404,17 @@ public class NounsGameManager : MonoBehaviour
         // Process answer with enhanced SM2 algorithm
         if (SM2Algorithm.Instance != null)
         {
-            if (reviewQuestions.Count > 0 && currentQuestion < reviewQuestions.Count)
+            if (currentQuestionData != null)
             {
-                QuestionData questionData = reviewQuestions[currentQuestion];
-                SM2Algorithm.Instance.ProcessAnswer(questionData, isCorrect, responseTime);
-            }
-            else if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
-            {
-                // Create a temporary QuestionData for fallback questions
-                string[][] choices = GetChoices();
-                QuestionData tempQuestion = new QuestionData(currentQuestion, "Nouns", questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
-                SM2Algorithm.Instance.ProcessAnswer(tempQuestion, isCorrect, responseTime);
+                // Convert UnifiedQuestionData to QuestionData for SM2
+                QuestionData sm2Question = new QuestionData(
+                    currentQuestionData.questionId,
+                    "Nouns",
+                    currentQuestionData.questionText,
+                    currentQuestionData.acceptableAnswers,
+                    0 // correctAnswer index - we'll handle this differently
+                );
+                SM2Algorithm.Instance.ProcessAnswer(sm2Question, isCorrect, responseTime);
             }
         }
         else
@@ -2356,19 +2240,8 @@ public class NounsGameManager : MonoBehaviour
         
         // Prevent clicks if game has ended or we're in summary mode
         
-        // Check if we're using the unified system or legacy system
-        if (currentQuestionData != null)
-        {
-            // Unified system (Medium/Hard)
-            bool isCorrect = choiceIndex == currentQuestionData.correctChoiceIndex;
-            string userAnswer = currentQuestionData.choices[choiceIndex];
-            ProcessUnifiedAnswer(isCorrect, userAnswer);
-        }
-        else
-        {
-            // Legacy system (Easy)
-            OnAnswerSelected(choiceIndex);
-        }
+        // Use the same answer processing for all difficulties
+        OnAnswerSelected(choiceIndex);
     }
     
     void OnConversationButtonClick(int buttonIndex)

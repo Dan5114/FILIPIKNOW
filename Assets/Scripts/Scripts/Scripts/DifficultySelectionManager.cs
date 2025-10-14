@@ -415,12 +415,12 @@ public class DifficultySelectionManager : MonoBehaviour
         // Easy button - always accessible
         UpdateButtonState(easyButtonGO, easyCompletedIcon, true, isEasyCompleted);
         
-        // Medium button - accessible if Easy is completed (or always accessible if no progress data)
-        bool canAccessMedium = topicProgress != null ? isEasyCompleted : true;
+        // Medium button - always accessible for development (unlock logic disabled)
+        bool canAccessMedium = true; // Always true for development
         UpdateButtonState(mediumButtonGO, mediumCompletedIcon, canAccessMedium, isMediumCompleted);
         
-        // Hard button - accessible if Medium is completed (or always accessible if no progress data)
-        bool canAccessHard = topicProgress != null ? isMediumCompleted : true;
+        // Hard button - always accessible for development (unlock logic disabled)
+        bool canAccessHard = true; // Always true for development
         UpdateButtonState(hardButtonGO, hardCompletedIcon, canAccessHard, isHardCompleted);
     }
     
@@ -618,12 +618,28 @@ public class DifficultySelectionManager : MonoBehaviour
             SceneController.Instance.SetSelectedTopic(topicName);
         }
         
-        // Load the same scene for all difficulties (unified system)
+        // Route to Introduction scene first, then to game
         if (!string.IsNullOrEmpty(gameSceneName))
         {
-            Debug.Log($"🎯 Loading {gameSceneName} with {difficulty} difficulty");
+            Debug.Log($"🎯 Loading {topicName}Introduction with {difficulty} difficulty");
             Debug.Log($"🎯 Topic: {topicName}, Selected Difficulty: {difficulty}");
-            SceneManager.LoadScene(gameSceneName);
+            Debug.Log($"🔍 DEBUG: topicName == 'Pangngalan': {topicName == "Pangngalan"}");
+            Debug.Log($"🔍 DEBUG: difficulty == Medium: {difficulty == DifficultyLevel.Medium}");
+            Debug.Log($"🔍 DEBUG: isNounsTopic: {topicName == "Pangngalan" || topicName == "Nouns" || topicName == "nouns"}");
+            
+            // Special routing for Nouns Medium difficulty
+            // Check for various possible topic names for Nouns
+            bool isNounsTopic = topicName == "Pangngalan" || topicName == "Nouns" || topicName == "nouns";
+            if (isNounsTopic && difficulty == DifficultyLevel.Medium)
+            {
+                Debug.Log("🎯 Special routing: Nouns Medium → NounsIntroductionMedium");
+                SceneManager.LoadScene("NounsIntroductionMedium");
+            }
+            else
+            {
+                Debug.Log($"🎯 Standard routing: {topicName}Introduction");
+                SceneManager.LoadScene($"{topicName}Introduction");
+            }
         }
         else
         {

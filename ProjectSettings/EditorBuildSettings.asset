@@ -68,5 +68,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsMedium.unity
     guid: cd2ff866db0c21a409009a8bfbf6da19
+  - enabled: 1
+    path: Assets/Scenes/Module 1/NounsIntroduction.unity
+    guid: 205daf50520aa254fb4055512c743d89
+  - enabled: 0
+    path: Assets/Scenes/Module 1/NounsSummary.unity
+    guid: 8ea7f562dea3d2649a4bef08336cff68
+  - enabled: 1
+    path: Assets/Scenes/Module 1/NounsIntroductionMedium.unity
+    guid: ab8c8a37758ab83459db136b59ca68fe
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 264358def2f4ad74fab5191d653f2e60, type: 2}
