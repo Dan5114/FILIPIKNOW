@@ -924,10 +924,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1931,8 +1931,23 @@ MonoBehaviour:
   - {fileID: 2105455634}
   - {fileID: 1462222785}
   backButton: {fileID: 568230142}
+  easyPanel: {fileID: 0}
+  mediumPanel: {fileID: 0}
+  hardPanel: {fileID: 0}
+  fillInBlankInput: {fileID: 0}
+  sentenceText: {fileID: 0}
+  mediumInstructionText: {fileID: 0}
+  typingInput: {fileID: 0}
+  questionText: {fileID: 0}
+  hardInstructionText: {fileID: 0}
+  conversationalPanel: {fileID: 0}
+  conversationText: {fileID: 0}
+  conversationButtons: []
+  conversationButtonTexts: []
   adaptiveDialogManager: {fileID: 0}
   adaptiveChoiceManager: {fileID: 0}
+  questionDatabase: {fileID: 0}
+  currentDifficulty: 0
   typewriterEffect: {fileID: 1206508221}
   timesBoldFont: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
   characterAnimator: {fileID: 1012767148}

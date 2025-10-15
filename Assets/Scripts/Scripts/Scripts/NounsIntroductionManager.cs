@@ -265,6 +265,13 @@ namespace Filipknow.UI
             for (int i = 0; i <= fullText.Length; i++)
             {
                 scrollText.text = fullText.Substring(0, i);
+                
+                // ⌨️ Play typing sound for non-space characters
+                if (i < fullText.Length && GameAudioManager.Instance != null && !char.IsWhiteSpace(fullText[i]))
+                {
+                    GameAudioManager.Instance.PlayTypingSound();
+                }
+                
                 yield return new WaitForSeconds(textGenerationSpeed);
             }
         }

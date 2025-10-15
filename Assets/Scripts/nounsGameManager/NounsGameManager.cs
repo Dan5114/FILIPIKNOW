@@ -1484,7 +1484,26 @@ public class NounsGameManager : MonoBehaviour
             questionAttempts[questionId] = 0;
         questionAttempts[questionId]++;
         
-        // Play sound effects and haptic feedback
+        // Play sound effects via GameAudioManager
+        if (GameAudioManager.Instance != null)
+        {
+            if (isCorrect)
+            {
+                GameAudioManager.Instance.PlayCorrectAnswer();
+                Debug.Log("✅ Playing correct answer sound via GameAudioManager");
+            }
+            else
+            {
+                GameAudioManager.Instance.PlayWrongAnswer();
+                Debug.Log("❌ Playing wrong answer sound via GameAudioManager");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
+        }
+        
+        // Fallback: Play sound effects via OptionsMenu
         if (optionsMenu != null)
         {
             if (isCorrect)
@@ -1794,6 +1813,17 @@ public class NounsGameManager : MonoBehaviour
     
     void ShowSummaryPanel()
     {
+        // 🎉 Play victory music!
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.PlayVictoryMusic();
+            Debug.Log("🎉 Playing victory music via GameAudioManager");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
+        }
+        
         // Calculate session statistics
         float sessionAccuracy = sessionTotalAnswers > 0 ? (float)sessionCorrectAnswers / sessionTotalAnswers * 100f : 0f;
         float averageResponseTime = questionResponseTimes.Values.Count > 0 ? questionResponseTimes.Values.Average() : 0f;
@@ -2523,6 +2553,21 @@ public class NounsGameManager : MonoBehaviour
     void ProcessUnifiedAnswer(bool isCorrect, string userAnswer)
     {
         sessionTotalAnswers++;
+        
+        // Play sound effects via GameAudioManager
+        if (GameAudioManager.Instance != null)
+        {
+            if (isCorrect)
+            {
+                GameAudioManager.Instance.PlayCorrectAnswer();
+                Debug.Log("✅ Playing correct answer sound via GameAudioManager");
+            }
+            else
+            {
+                GameAudioManager.Instance.PlayWrongAnswer();
+                Debug.Log("❌ Playing wrong answer sound via GameAudioManager");
+            }
+        }
         
         if (isCorrect)
         {

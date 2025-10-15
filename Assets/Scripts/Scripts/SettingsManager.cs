@@ -95,7 +95,15 @@ public class SettingsManager : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
-        UpdateAudioSettings();
+        
+        // 🎵 Sync with GameAudioManager
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.SetMusicVolume(volume);
+        }
+        
+
+'        UpdateAudioSettings();
         SaveSettings();
         
         Debug.Log($"Music volume set to {musicVolume:F2}");
@@ -104,6 +112,13 @@ public class SettingsManager : MonoBehaviour
     public void SetSoundEffectsVolume(float volume)
     {
         soundEffectsVolume = Mathf.Clamp01(volume);
+        
+        // 🔊 Sync with GameAudioManager
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.SetSFXVolume(volume);
+        }
+        
         UpdateAudioSettings();
         SaveSettings();
         

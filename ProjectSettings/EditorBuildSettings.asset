@@ -78,4 +78,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Module 1/NounsIntroductionMedium.unity
     guid: ab8c8a37758ab83459db136b59ca68fe
   m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: ffe3de09dcbda1b4694a99c9f0db17b5, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 30a97c05bc29f7c4c891bdbce81c3ad0, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 9625ee71696282241852a155a5dc6b6b, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 264358def2f4ad74fab5191d653f2e60, type: 2}

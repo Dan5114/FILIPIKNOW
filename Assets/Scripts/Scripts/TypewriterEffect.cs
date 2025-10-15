@@ -207,7 +207,13 @@ public class TypewriterEffect : MonoBehaviour
             // Trigger character typed event
             OnCharacterTyped?.Invoke();
             
-            // Play typing sound at intervals
+            // ⌨️ Play typing sound using GameAudioManager (for each non-space character)
+            if (GameAudioManager.Instance != null && !char.IsWhiteSpace(fullText[i]))
+            {
+                GameAudioManager.Instance.PlayTypingSound();
+            }
+            
+            // Play typing sound at intervals (fallback to old system)
             if (audioSource != null && typingSound != null && 
                 Time.time - lastSoundTime >= soundInterval)
             {

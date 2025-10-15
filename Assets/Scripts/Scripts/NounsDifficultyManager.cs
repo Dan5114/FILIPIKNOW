@@ -900,10 +900,32 @@ public class NounsDifficultyManager : MonoBehaviour
             sessionCorrectAnswers++;
             currentStreak++;
             longestStreak = Mathf.Max(longestStreak, currentStreak);
+
+            // Play correct sound 🎵
+            if (GameAudioManager.Instance != null)
+            {
+                GameAudioManager.Instance.PlayCorrectAnswer();
+                Debug.Log("✅ Playing correct answer sound via GameAudioManager");
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
+            }
         }
         else
         {
             currentStreak = 0;
+
+            // Play wrong sound 🔊
+            if (GameAudioManager.Instance != null)
+            {
+                GameAudioManager.Instance.PlayWrongAnswer();
+                Debug.Log("❌ Playing wrong answer sound via GameAudioManager");
+            }
+            else
+            {
+                Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
+            }
         }
         
         // Award XP and update score
@@ -913,7 +935,7 @@ public class NounsDifficultyManager : MonoBehaviour
         // Show feedback
         ShowFeedback(isCorrect, answer, xpGained);
         
-        // Play sound effects
+        // Play sound effects (fallback to old system if GameAudioManager not available)
         if (optionsMenu != null)
         {
             if (isCorrect)
@@ -1062,6 +1084,13 @@ public class NounsDifficultyManager : MonoBehaviour
         else
         {
             ShowSessionSummary();
+                // Play victory music! 🎉 gin add ni Ryan ni
+                if (GameAudioManager.Instance != null)
+                {
+                    GameAudioManager.Instance.PlayVictoryMusic();
+                }
+
+                // ... rest of existing code
         }
     }
     
@@ -1109,6 +1138,17 @@ public class NounsDifficultyManager : MonoBehaviour
     
     void ShowSessionSummary()
     {
+        // 🎉 Play victory music!
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.PlayVictoryMusic();
+            Debug.Log("🎉 Playing victory music via GameAudioManager");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
+        }
+        
         float accuracy = (float)sessionCorrectAnswers / sessionTotalAnswers;
         string summary = $"📊 Session Complete!\n\n";
         summary += $"Accuracy: {accuracy:P1}\n";
