@@ -24,7 +24,8 @@ public class AdaptiveDialogManager : MonoBehaviour
     public float mobileFontSizeMultiplier = 1.2f;
     
     [Header("Auto-Sizing Settings")]
-    public bool enableAutoSizing = true;
+    public bool enableAutoSizing = false;  // Disabled to use scrolling instead
+    public float fixedFontSize = 24f;  // Fixed font size for dialogue
     public Vector2 minDialogSize = new Vector2(400f, 200f);
     public Vector2 maxDialogSize = new Vector2(800f, 600f);
     public float textPadding = 25f;
@@ -33,8 +34,9 @@ public class AdaptiveDialogManager : MonoBehaviour
     public float resizeAnimationDuration = 0.3f;
     
     [Header("Session Summary Settings")]
+    public bool useScrollableForAllText = true;  // Always use scrolling
     public bool useScrollableForLongText = true;
-    public float longTextThreshold = 500f; // Characters
+    public float longTextThreshold = 0f; // Set to 0 to always use scrolling
     public ScrollRect scrollRect;
     public GameObject scrollContent;
     
@@ -118,17 +120,27 @@ public class AdaptiveDialogManager : MonoBehaviour
         // Configure for high quality text rendering
         if (useHighQualityText)
         {
-            // Enable auto-sizing
-            dialogText.enableAutoSizing = true;
-            dialogText.fontSizeMin = autoSizeMin;
-            dialogText.fontSizeMax = autoSizeMax;
-            
-            // Set base font size with mobile multiplier
-            float targetFontSize = baseFontSize;
-            #if UNITY_ANDROID || UNITY_IOS
-            targetFontSize *= mobileFontSizeMultiplier;
-            #endif
-            dialogText.fontSize = targetFontSize;
+            // Use fixed font size or auto-sizing based on settings
+            if (enableAutoSizing)
+            {
+                // Enable auto-sizing
+                dialogText.enableAutoSizing = true;
+                dialogText.fontSizeMin = autoSizeMin;
+                dialogText.fontSizeMax = autoSizeMax;
+                
+                // Set base font size with mobile multiplier
+                float targetFontSize = baseFontSize;
+                #if UNITY_ANDROID || UNITY_IOS
+                targetFontSize *= mobileFontSizeMultiplier;
+                #endif
+                dialogText.fontSize = targetFontSize;
+            }
+            else
+            {
+                // Use fixed font size for scrolling
+                dialogText.enableAutoSizing = false;
+                dialogText.fontSize = fixedFontSize;
+            }
             
             // Improve text quality settings
             dialogText.fontStyle = FontStyles.Normal;
@@ -148,7 +160,7 @@ public class AdaptiveDialogManager : MonoBehaviour
             // Set paragraph spacing
             dialogText.paragraphSpacing = 8f;
             
-            Debug.Log($"Configured text quality: fontSize={targetFontSize}, autoSizeMin={autoSizeMin}, autoSizeMax={autoSizeMax}");
+            Debug.Log($"Configured text quality: fontSize={dialogText.fontSize}, enableAutoSizing={enableAutoSizing}");
         }
     }
     
@@ -227,9 +239,10 @@ public class AdaptiveDialogManager : MonoBehaviour
     {
         bool isLongText = message.Length > longTextThreshold;
         
-        if (useScrollableForLongText && isLongText)
+        // Enable scrolling if useScrollableForAllText is true OR if text is long
+        if (useScrollableForAllText || (useScrollableForLongText && isLongText))
         {
-            // Enable scrolling for long text
+            // Enable scrolling
             if (scrollRect != null)
             {
                 scrollRect.gameObject.SetActive(true);
@@ -240,9 +253,18 @@ public class AdaptiveDialogManager : MonoBehaviour
             // Adjust text settings for scrolling
             if (dialogText != null)
             {
-                dialogText.enableAutoSizing = true;
-                dialogText.fontSizeMin = autoSizeMin;
-                dialogText.fontSizeMax = autoSizeMax;
+                // Use fixed font size when not using auto-sizing
+                if (!enableAutoSizing)
+                {
+                    dialogText.enableAutoSizing = false;
+                    dialogText.fontSize = fixedFontSize;
+                }
+                else
+                {
+                    dialogText.enableAutoSizing = true;
+                    dialogText.fontSizeMin = autoSizeMin;
+                    dialogText.fontSizeMax = autoSizeMax;
+                }
                 
                 // Ensure text doesn't exceed dialog width
                 if (textRectTransform != null)

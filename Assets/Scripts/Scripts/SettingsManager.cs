@@ -103,7 +103,7 @@ public class SettingsManager : MonoBehaviour
         }
         
 
-'        UpdateAudioSettings();
+        UpdateAudioSettings();
         SaveSettings();
         
         Debug.Log($"Music volume set to {musicVolume:F2}");

@@ -23,9 +23,24 @@ public class TypewriterEffect : MonoBehaviour
     public TMP_FontAsset timesBoldFont;
     
     [Header("Auto-Sizing")]
-    public bool enableAutoSizing = true;
+    public bool enableAutoSizing = false;  // Disabled to use scrolling instead
+    public float fixedFontSize = 30f;  // Fixed font size for dialogue
     public float autoSizeMin = 30f;  // Increased for better readability
     public float autoSizeMax = 80f;  // Set to 80pt as requested
+    
+    [Header("Auto-Scroll Settings")]
+    public bool enableAutoScroll = true;  // Auto-scroll to show latest text
+    public UnityEngine.UI.ScrollRect scrollRect;  // Reference to ScrollRect for auto-scrolling
+    public int scrollUpdateFrequency = 3;  // Update scroll every N characters (reduces lag)
+    public float scrollThreshold = 0.1f;  // If scrolled up more than this (0-1), disable auto-scroll
+    
+    private bool userIsManuallyScrolling = false;  // Track if user is manually scrolling
+    private float lastScrollPosition = 0f;  // Track last scroll position
+    private bool isProgrammaticScroll = false;  // Track if scroll is from code (not user)
+    private bool hasStartedScrolling = false;  // Track if we've switched to top alignment (don't switch back!)
+    private bool autoScrollFinished = false;  // Flag to stop auto-scroll after typing
+    private float savedScrollPosition = 0f;  // Save scroll position before layout changes
+    private bool forceScrollPosition = false;  // Flag to force scroll position restoration
     
     [Header("Session Summary Settings")]
     public bool enableSessionSummaryMode = false;
@@ -80,11 +95,18 @@ public class TypewriterEffect : MonoBehaviour
                 textComponent.fontSizeMin = autoSizeMin;
                 textComponent.fontSizeMax = autoSizeMax;
             }
+            else
+            {
+                // Use fixed font size for scrolling
+                textComponent.enableAutoSizing = false;
+                textComponent.fontSize = fixedFontSize;
+            }
             
             // Fix text alignment and overflow settings
+            // Use NO vertical alignment constraints - let text flow naturally
             textComponent.alignment = TMPro.TextAlignmentOptions.Center;
             textComponent.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Center;
-            textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Middle;
+            textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Top; // NO constraints!
             
             // Set overflow settings for proper text wrapping
             textComponent.overflowMode = TMPro.TextOverflowModes.Overflow;
@@ -100,6 +122,88 @@ public class TypewriterEffect : MonoBehaviour
             
             // Ensure horizontal text orientation
             ForceHorizontalText();
+        }
+        
+        // Set up scroll listener if scrollRect is assigned
+        if (scrollRect != null)
+        {
+            scrollRect.onValueChanged.AddListener(OnScrollChanged);
+        }
+    }
+    
+    void Update()
+    {
+        // Continuously restore scroll position if user manually scrolled
+        if (forceScrollPosition && scrollRect != null && userIsManuallyScrolling)
+        {
+            scrollRect.verticalNormalizedPosition = savedScrollPosition;
+        }
+    }
+    
+    void OnDestroy()
+    {
+        // Clean up scroll listener
+        if (scrollRect != null)
+        {
+            scrollRect.onValueChanged.RemoveListener(OnScrollChanged);
+        }
+    }
+    
+    /// <summary>
+    /// Called when the scroll position changes (user scrolling)
+    /// </summary>
+    private void OnScrollChanged(UnityEngine.Vector2 scrollPosition)
+    {
+        if (scrollRect == null) return;
+        
+        float currentScrollPos = scrollRect.verticalNormalizedPosition;
+        
+        // If this is a programmatic scroll, ignore it
+        if (isProgrammaticScroll)
+        {
+            Debug.Log($"🤖 Programmatic scroll ignored (position: {currentScrollPos:F3})");
+            isProgrammaticScroll = false;
+            lastScrollPosition = currentScrollPos;
+            return;
+        }
+        
+        // STOP auto-scroll detection if typing is finished
+        if (!isTyping)
+        {
+            Debug.Log($"⏹️ Typing finished - stopping scroll detection");
+            return;
+        }
+        
+        // Detect if user manually changed scroll
+        // Check if the change is significant (more than 0.5%)
+        float scrollDelta = Mathf.Abs(currentScrollPos - lastScrollPosition);
+        if (scrollDelta > 0.005f)
+        {
+            Debug.Log($"📜 Scroll changed - delta: {scrollDelta:F3}, current: {currentScrollPos:F3}, last: {lastScrollPosition:F3}, threshold: {scrollThreshold}");
+            
+            // If user scrolled away from bottom (up), they're reading old text
+            if (currentScrollPos > scrollThreshold)
+            {
+                if (!userIsManuallyScrolling)
+                {
+                    userIsManuallyScrolling = true;
+                    forceScrollPosition = true; // Enable continuous position restoration
+                    savedScrollPosition = currentScrollPos; // Save the position user scrolled to
+                    Debug.Log($"🛑 MANUAL SCROLL DETECTED - PAUSED auto-scroll (position: {currentScrollPos:F3})");
+                }
+            }
+            // If user scrolled back near bottom, resume auto-scroll
+            else if (currentScrollPos <= scrollThreshold)
+            {
+                if (userIsManuallyScrolling)
+                {
+                    userIsManuallyScrolling = false;
+                    forceScrollPosition = false; // Disable continuous position restoration
+                    Debug.Log($"▶️ USER RETURNED TO BOTTOM - RESUMED auto-scroll (position: {currentScrollPos:F3})");
+                }
+            }
+            
+            lastScrollPosition = currentScrollPos;
         }
     }
     
@@ -125,6 +229,11 @@ public class TypewriterEffect : MonoBehaviour
         {
             StopTypewriter();
         }
+        
+        // Reset manual scrolling flags for new text
+        userIsManuallyScrolling = false;
+        hasStartedScrolling = false; // Allow new text to start centered if it's short
+        autoScrollFinished = false; // Reset auto-scroll flag for new text
         
         // Configure based on mode
         if (isSessionSummary || enableSessionSummaryMode)
@@ -158,7 +267,19 @@ public class TypewriterEffect : MonoBehaviour
         // Complete the text immediately
         if (textComponent != null)
         {
+            // Save scroll position before layout changes
+            SaveScrollPosition();
+            
             textComponent.text = fullText;
+            
+            // Restore scroll position after layout changes
+            RestoreScrollPosition();
+        }
+        
+        // Scroll to bottom when text is completed
+        if (enableAutoScroll && scrollRect != null)
+        {
+            StartCoroutine(DelayedScrollToBottom());
         }
         
         // Stop character animation immediately when interrupted
@@ -168,7 +289,17 @@ public class TypewriterEffect : MonoBehaviour
         }
         
         isTyping = false;
+        autoScrollFinished = true; // Stop auto-scroll after typing finishes
         OnTypingCompleted?.Invoke();
+    }
+    
+    /// <summary>
+    /// Coroutine to scroll to bottom after a frame delay
+    /// </summary>
+    private IEnumerator DelayedScrollToBottom()
+    {
+        yield return null; // Wait one frame for layout to update
+        ScrollToBottomComplete();
     }
     
     // Method to handle when user presses continue (interrupts typing)
@@ -201,11 +332,23 @@ public class TypewriterEffect : MonoBehaviour
         
         for (int i = 0; i < fullText.Length; i++)
         {
+            // Save scroll position before layout changes (prevents Unity's auto-reset)
+            SaveScrollPosition();
+            
             // Add character to text
             textComponent.text += fullText[i];
             
+            // Restore scroll position after layout changes
+            RestoreScrollPosition();
+            
             // Trigger character typed event
             OnCharacterTyped?.Invoke();
+            
+            // Auto-scroll to show latest text (only if user isn't manually scrolling and typing hasn't finished)
+            if (enableAutoScroll && scrollRect != null && !userIsManuallyScrolling && !autoScrollFinished && i % scrollUpdateFrequency == 0)
+            {
+                ScrollToBottom();
+            }
             
             // ⌨️ Play typing sound using GameAudioManager (for each non-space character)
             if (GameAudioManager.Instance != null && !char.IsWhiteSpace(fullText[i]))
@@ -231,6 +374,13 @@ public class TypewriterEffect : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
         
+        // Final scroll to ensure all text is visible (only if user didn't manually scroll up and typing hasn't finished)
+        if (enableAutoScroll && scrollRect != null && !userIsManuallyScrolling && !autoScrollFinished)
+        {
+            yield return null; // Wait one frame for layout to update
+            ScrollToBottomComplete();
+        }
+        
         // Stop character speaking animation immediately when typing is done
         if (characterAnimator != null)
         {
@@ -238,6 +388,11 @@ public class TypewriterEffect : MonoBehaviour
         }
         
         isTyping = false;
+        autoScrollFinished = true; // Stop auto-scroll after typing finishes
+        
+        // Reset manual scrolling flag after typing completes
+        userIsManuallyScrolling = false;
+        
         OnTypingCompleted?.Invoke();
     }
     
@@ -245,6 +400,187 @@ public class TypewriterEffect : MonoBehaviour
     {
         return character == '.' || character == '!' || character == '?' || 
                character == ',' || character == ';' || character == ':';
+    }
+    
+    /// <summary>
+    /// Save current scroll position before layout changes
+    /// </summary>
+    private void SaveScrollPosition()
+    {
+        if (scrollRect != null)
+        {
+            savedScrollPosition = scrollRect.verticalNormalizedPosition;
+            Debug.Log($"💾 Saved scroll position: {savedScrollPosition:F3}");
+        }
+    }
+    
+    /// <summary>
+    /// Restore scroll position after layout changes (prevents Unity's auto-reset to top)
+    /// Uses delayed restoration to ensure it happens after Unity's layout rebuild
+    /// </summary>
+    private void RestoreScrollPosition()
+    {
+        if (scrollRect != null && userIsManuallyScrolling)
+        {
+            // Use delayed restoration to ensure it happens after Unity's layout rebuild
+            StartCoroutine(DelayedRestoreScrollPosition());
+        }
+    }
+    
+    /// <summary>
+    /// Delayed restoration of scroll position to override Unity's auto-reset
+    /// </summary>
+    private IEnumerator DelayedRestoreScrollPosition()
+    {
+        // Wait for Unity's layout rebuild to complete
+        yield return null; // Wait one frame
+        yield return null; // Wait another frame to be sure
+        
+        if (scrollRect != null && userIsManuallyScrolling)
+        {
+            scrollRect.verticalNormalizedPosition = savedScrollPosition;
+            Debug.Log($"🔄 Delayed restore scroll position: {savedScrollPosition:F3}");
+        }
+    }
+    
+    /// <summary>
+    /// Scrolls the ScrollRect to the bottom to show the latest text
+    /// Dynamically adjusts alignment and scroll position
+    /// ONLY scrolls if user is NOT manually scrolling
+    /// </summary>
+    private void ScrollToBottom()
+    {
+        if (scrollRect != null && scrollRect.content != null && textComponent != null)
+        {
+            // If user is manually scrolling, DON'T change anything
+            if (userIsManuallyScrolling)
+            {
+                Debug.Log($"⏸️ Skipping auto-scroll - user is manually scrolling (position: {scrollRect.verticalNormalizedPosition:F3})");
+                return; // Exit immediately, preserve user's scroll position
+            }
+            
+            // Force text mesh to update
+            textComponent.ForceMeshUpdate();
+            
+            // Rebuild content layout
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+            
+            // Force canvas update
+            Canvas.ForceUpdateCanvases();
+            
+            // Calculate proper scroll position to show bottom content
+            float contentHeight = scrollRect.content.rect.height;
+            float viewportHeight = scrollRect.viewport != null ? scrollRect.viewport.rect.height : 
+                                  ((RectTransform)scrollRect.transform).rect.height;
+            
+            // Simple scroll to bottom - NO alignment changes!
+            if (!userIsManuallyScrolling)
+            {
+                // Mark as programmatic scroll to prevent triggering manual scroll detection
+                isProgrammaticScroll = true;
+                lastScrollPosition = 0f;
+                
+                // Scroll to absolute bottom to show latest text
+                scrollRect.verticalNormalizedPosition = 0f;
+            }
+            // If user is manually scrolling, DON'T change anything
+        }
+    }
+    
+    /// <summary>
+    /// Complete scroll to bottom with layout updates - used at the end of typing
+    /// Ensures latest text is visible and properly aligned
+    /// </summary>
+    private void ScrollToBottomComplete()
+    {
+        if (scrollRect != null && scrollRect.content != null && textComponent != null)
+        {
+            // If user is manually scrolling, DON'T override their position
+            if (userIsManuallyScrolling)
+            {
+                Debug.Log($"⏸️ Skipping complete scroll - user is manually scrolling");
+                return; // Exit immediately, preserve user's scroll position
+            }
+            
+            // Force text mesh update first
+            textComponent.ForceMeshUpdate();
+            
+            // Rebuild layout multiple times to ensure accuracy
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+            Canvas.ForceUpdateCanvases();
+            
+            UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+            Canvas.ForceUpdateCanvases();
+            
+            // Calculate the exact scroll position needed
+            float contentHeight = scrollRect.content.rect.height;
+            float viewportHeight = scrollRect.viewport != null ? scrollRect.viewport.rect.height : 
+                                  ((RectTransform)scrollRect.transform).rect.height;
+            
+            // If content exceeds viewport OR we've already started scrolling, use bottom alignment
+            // BUT ONLY if user hasn't manually scrolled
+            if ((contentHeight > viewportHeight * 1.05f || hasStartedScrolling) && !userIsManuallyScrolling) // Small buffer
+            {
+                // Switch to bottom alignment for scrolling behavior (and STAY there)
+                textComponent.alignment = TMPro.TextAlignmentOptions.BottomLeft;
+                textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Bottom;
+                hasStartedScrolling = true; // Lock to bottom alignment permanently
+                
+                // FORCE ScrollContent anchors to TOP programmatically
+                if (scrollRect.content != null)
+                {
+                    RectTransform contentRect = scrollRect.content;
+                    contentRect.anchorMin = new Vector2(0f, 1f); // Top-left
+                    contentRect.anchorMax = new Vector2(1f, 1f); // Top-right
+                    contentRect.pivot = new Vector2(0.5f, 1f); // Top-center pivot
+                    Debug.Log($"🔧 [Complete] FORCED ScrollContent anchors to TOP");
+                }
+                
+                // FORCE DialogText anchors to TOP programmatically
+                RectTransform textRect = textComponent.GetComponent<RectTransform>();
+                if (textRect != null)
+                {
+                    textRect.anchorMin = new Vector2(0f, 1f); // Top-left
+                    textRect.anchorMax = new Vector2(1f, 1f); // Top-right
+                    textRect.pivot = new Vector2(0.5f, 1f); // Top-center pivot
+                    Debug.Log($"🔧 [Complete] FORCED DialogText anchors to TOP");
+                }
+                
+                textComponent.ForceMeshUpdate();
+                
+                // Rebuild after alignment change
+                UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(scrollRect.content);
+                Canvas.ForceUpdateCanvases();
+                
+                // Mark as programmatic scroll and update position BEFORE scrolling
+                isProgrammaticScroll = true;
+                lastScrollPosition = 0f;
+                
+                // Scroll to absolute bottom - shows latest text
+                scrollRect.verticalNormalizedPosition = 0f;
+                
+                // Force immediate update
+                Canvas.ForceUpdateCanvases();
+                
+                // Verify scroll position is correct
+                float actualPosition = scrollRect.verticalNormalizedPosition;
+                Debug.Log($"📜 Complete scroll: Latest text at bottom (content: {contentHeight:F1}, viewport: {viewportHeight:F1}, scroll pos: {actualPosition:F3})");
+            }
+            else if (!userIsManuallyScrolling)
+            {
+                // Content fits AND we haven't started scrolling, keep centered
+                // BUT ONLY if user hasn't manually scrolled
+                textComponent.alignment = TMPro.TextAlignmentOptions.Center;
+                textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Middle;
+                
+                isProgrammaticScroll = true;
+                lastScrollPosition = 1f;
+                scrollRect.verticalNormalizedPosition = 1f;
+                
+                Debug.Log($"📜 Text fits in viewport - keeping centered (content: {contentHeight:F1}, viewport: {viewportHeight:F1})");
+            }
+            // If user is manually scrolling, DON'T change alignment or scroll position
+        }
     }
     
     // Public methods for external control
@@ -292,9 +628,9 @@ public class TypewriterEffect : MonoBehaviour
             }
             
             // Force text alignment to horizontal
-            textComponent.alignment = TMPro.TextAlignmentOptions.Center;
+            textComponent.alignment = TMPro.TextAlignmentOptions.TopLeft;
             textComponent.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Center;
-            textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Middle;
+            textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Top;
             
             // Clear any rotation that might cause vertical text
             rectTransform.rotation = Quaternion.identity;
@@ -366,24 +702,30 @@ public class TypewriterEffect : MonoBehaviour
     {
         if (textComponent == null) return;
         
-        // Apply auto-sizing with normal settings
+        // Use fixed font size or auto-sizing based on settings
         if (enableAutoSizing)
         {
             textComponent.enableAutoSizing = true;
             textComponent.fontSizeMin = autoSizeMin;
             textComponent.fontSizeMax = autoSizeMax;
         }
+        else
+        {
+            // Use fixed font size for scrolling
+            textComponent.enableAutoSizing = false;
+            textComponent.fontSize = fixedFontSize;
+        }
         
-        // Set alignment for dialog text
+        // Use NO vertical alignment constraints - let text flow naturally
         textComponent.alignment = TMPro.TextAlignmentOptions.Center;
         textComponent.horizontalAlignment = TMPro.HorizontalAlignmentOptions.Center;
-        textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Middle;
+        textComponent.verticalAlignment = TMPro.VerticalAlignmentOptions.Top; // NO constraints!
         
         // Enable word wrapping
         textComponent.enableWordWrapping = true;
         textComponent.overflowMode = TMPro.TextOverflowModes.Overflow;
         
-        Debug.Log("TypewriterEffect: Configured for normal dialog mode");
+        Debug.Log("TypewriterEffect: Configured for normal dialog mode (dynamic alignment)");
     }
     
     

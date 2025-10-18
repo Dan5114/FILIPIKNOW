@@ -3780,12 +3780,26 @@ MonoBehaviour:
   correctAnswerSound: {fileID: 8300000, guid: 6d8aaa4e8a0069d489c7becb3f221879, type: 3}
   wrongAnswerSound: {fileID: 8300000, guid: 2d4a6c3c25e9f4244bdc4861d2ba0849, type: 3}
   keyboardTypingSounds:
-  - {fileID: 8300000, guid: 836a787c6f64737489aa905dc0fcca29, type: 3}
-  - {fileID: 8300000, guid: f152452ab129ec54fa9083a45b2870dc, type: 3}
-  - {fileID: 8300000, guid: 1a9a8a6c5b389af40819c5c6721259a0, type: 3}
-  - {fileID: 8300000, guid: 658366f159d2a5f4786349afecf10abf, type: 3}
-  - {fileID: 8300000, guid: 527f0d034e031a5479f0a892a3c74bd0, type: 3}
-  - {fileID: 8300000, guid: 97a996fb2c7d609409ae294b0c55a4fd, type: 3}
+  - {fileID: 8300000, guid: 37a11ea326f64aa439c81f0b919bc0a4, type: 3}
+  - {fileID: 8300000, guid: 27963ad73f592c44c998eb366023558d, type: 3}
+  - {fileID: 8300000, guid: 5d944afb2b6ccd04294cba4784a4598b, type: 3}
+  - {fileID: 8300000, guid: 00dfb859f15b6d94db5ed6d91c8c72c1, type: 3}
+  - {fileID: 8300000, guid: c3b74b560e8da6a44a1e53a1c0802664, type: 3}
+  - {fileID: 8300000, guid: 0df442cbb4f50df46ab20dfd5a15ff77, type: 3}
+  - {fileID: 8300000, guid: d09beb8b44b318447859e53b01aa6678, type: 3}
+  - {fileID: 8300000, guid: f0f9303c9f5c76544a064b3cfacae341, type: 3}
+  - {fileID: 8300000, guid: 1c63682230607c44fb17db830b8e56cd, type: 3}
+  - {fileID: 8300000, guid: 9978fec52988b9046b172d07e3820af2, type: 3}
+  - {fileID: 8300000, guid: bbe3711b082474242b8e6d0ab2ee01d1, type: 3}
+  - {fileID: 8300000, guid: 536dd3e64b551df4a86e661086ae964e, type: 3}
+  - {fileID: 8300000, guid: 49604d68afeb7bc4fb89aa4938c1a002, type: 3}
+  - {fileID: 8300000, guid: babe0f96cd1cf0a4dba61d6fec07dace, type: 3}
+  - {fileID: 8300000, guid: 292fbe7a3ed6f344ca8678dea287847a, type: 3}
+  - {fileID: 8300000, guid: c1661823c18f6454c90247b089e007d0, type: 3}
+  - {fileID: 8300000, guid: 3cfb9154678a2bb45b2e3b5be5faf9dd, type: 3}
+  - {fileID: 8300000, guid: f1ce8b10416d53342aae9634ade9b562, type: 3}
+  - {fileID: 8300000, guid: edb4aa7c7f94b514c9e67851c9ac34f1, type: 3}
+  - {fileID: 8300000, guid: 9325455b79ebe044db3105cce44089b7, type: 3}
   victoryMusic: {fileID: 8300000, guid: 95e9c067306ea9c45b460f1035fbbf97, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 675983a3425552f459407d2db7b5189d, type: 3}
   sfxAudioSource: {fileID: 0}
@@ -5104,12 +5118,14 @@ MonoBehaviour:
   baseFontSize: 18
   mobileFontSizeMultiplier: 1.2
   enableAutoSizing: 1
+  fixedFontSize: 24
   minDialogSize: {x: 400, y: 200}
   maxDialogSize: {x: 800, y: 600}
   textPadding: 20
   autoSizeMin: 12
   autoSizeMax: 24
   resizeAnimationDuration: 0.3
+  useScrollableForAllText: 1
   useScrollableForLongText: 1
   longTextThreshold: 500
   scrollRect: {fileID: 1903163356}
