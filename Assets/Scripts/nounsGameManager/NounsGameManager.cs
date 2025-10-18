@@ -1092,7 +1092,7 @@ public class NounsGameManager : MonoBehaviour
             {
                 Debug.Log("Using typewriter effect");
                 // Configure dialog text for auto-sizing first
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 // Clear any existing callbacks to prevent multiple subscriptions
                 typewriterEffect.OnTypingCompleted = null;
                 // Start typewriter with completion callback
@@ -1105,7 +1105,7 @@ public class NounsGameManager : MonoBehaviour
             else if (dialogText != null)
             {
                 Debug.Log("Using direct dialog text");
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = questionText;
                 DisplayChoices(choices);
             }
@@ -1141,7 +1141,7 @@ public class NounsGameManager : MonoBehaviour
             {
                 Debug.Log("Using typewriter effect");
                 // Configure dialog text for auto-sizing first
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 // Clear any existing callbacks to prevent multiple subscriptions
                 typewriterEffect.OnTypingCompleted = null;
                 // Start typewriter with completion callback
@@ -1154,7 +1154,7 @@ public class NounsGameManager : MonoBehaviour
             else if (dialogText != null)
             {
                 Debug.Log("Using direct dialog text");
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = questionText;
                 DisplayChoices(choices[currentQuestion]);
             }
@@ -1186,7 +1186,7 @@ public class NounsGameManager : MonoBehaviour
         else if (typewriterEffect != null)
         {
             // Configure dialog text for auto-sizing first
-            ConfigureDialogTextForAutoSizing();
+            // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
             // Clear any existing callbacks to prevent multiple subscriptions
             typewriterEffect.OnTypingCompleted = null;
             // Start typewriter with completion callback
@@ -1198,7 +1198,7 @@ public class NounsGameManager : MonoBehaviour
         }
         else
         {
-            ConfigureDialogTextForAutoSizing();
+            // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
             dialogText.text = currentQ.question;
             DisplayChoices(currentQ.choices);
         }
@@ -1599,7 +1599,7 @@ public class NounsGameManager : MonoBehaviour
         }
         else
         {
-            ConfigureDialogTextForAutoSizing();
+            // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
             dialogText.text = feedbackText;
             // DON'T hide choices - keep buttons visible with color until Continue is clicked
             // HideChoices(); // REMOVED - buttons stay visible
@@ -2212,7 +2212,7 @@ public class NounsGameManager : MonoBehaviour
             if (typewriterEffect != null)
             {
                 // Configure dialog text for auto-sizing
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 
                 // Clear any existing callbacks to prevent multiple subscriptions
                 typewriterEffect.OnTypingCompleted = null;
@@ -2227,7 +2227,7 @@ public class NounsGameManager : MonoBehaviour
             else
             {
                 // Fallback: Set text directly and show choices immediately
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = currentQuestionData.questionText;
                 DisplayChoices(currentQuestionData.choices);
             }
@@ -2260,7 +2260,7 @@ public class NounsGameManager : MonoBehaviour
             if (typewriterEffect != null)
             {
                 // Configure dialog text for auto-sizing
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 
                 // Clear any existing callbacks to prevent multiple subscriptions
                 typewriterEffect.OnTypingCompleted = null;
@@ -2278,7 +2278,7 @@ public class NounsGameManager : MonoBehaviour
             else
             {
                 // Fallback: Set text directly and show choices immediately
-                ConfigureDialogTextForAutoSizing();
+                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = currentQuestionData.sentenceTemplate;
                 
                 if (currentQuestionData.acceptableAnswers != null && currentQuestionData.acceptableAnswers.Length > 0)
