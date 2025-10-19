@@ -94,86 +94,6 @@ public class NounsMediumGameManager : MonoBehaviour
     
     // UnifiedQuestionData class is now in its own file: Scripts/Scripts/UnifiedQuestionData.cs
     
-<<<<<<< HEAD
-    // Game content - Filipino
-    private string[] questionsFilipino = {
-        "Which of the following is a noun (pangngalan) in Filipino?",
-        "Which is a proper noun (pangngalang pantangi) in Filipino?",
-        "Which is a common noun (pangngalang pambalana) in Filipino?",
-        "Which is a concrete noun (pangngalang tahas) in Filipino?",
-        "Which is an abstract noun (pangngalang basal) in Filipino?",
-        "Which is a collective noun (pangngalang lansakan) in Filipino?",
-        "Which is a derived noun (pangngalang hango) in Filipino?",
-        "How many nouns are in this sentence: 'Si Ana ay bumili ng tinapay sa panaderya.' (Ana bought bread at the bakery.)",
-        "Fill in the blank: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)",
-        "Which is a proper noun (pangngalang pantangi) in Filipino?"
-    };
-    
-    private string[][] choicesFilipino = {
-        new string[] { "tumakbo (ran)", "masaya (happy)", "aso (dog)", "maganda (beautiful)" },
-        new string[] { "lungsod (city)", "Maynila (Manila)", "paaralan (school)", "guro (teacher)" },
-        new string[] { "Maria (name)", "doktor (doctor)", "Pilipinas (Philippines)", "Juan (name)" },
-        new string[] { "pag-ibig (love)", "lamesa (table)", "kaligayahan (happiness)", "takot (fear)" },
-        new string[] { "aklat (book)", "pagkakaibigan (friendship)", "sapatos (shoes)", "telepono (phone)" },
-        new string[] { "bundok (mountain)", "kawan (flock)", "bahay (house)", "kotse (car)" },
-        new string[] { "guro (teacher)", "kaguruan (teaching staff)", "paaralan (school)", "mag-aaral (student)" },
-        new string[] { "one", "two", "three", "four" },
-        new string[] { "isda (fish)", "aso (dog)", "ibon (bird)", "pusa (cat)" },
-        new string[] { "lungsod (city)", "Maynila (Manila)", "paaralan (school)", "guro (teacher)" }
-    };
-    
-    private string[][] correctAnswersFilipino = {
-        new string[] { "aso (dog)" },
-        new string[] { "Maynila (Manila)" },
-        new string[] { "doktor (doctor)" },
-        new string[] { "lamesa (table)" },
-        new string[] { "pagkakaibigan (friendship)" },
-        new string[] { "kawan (flock)" },
-        new string[] { "kaguruan (teaching staff)" },
-        new string[] { "three" },
-        new string[] { "ibon (bird)" },
-        new string[] { "Maynila (Manila)" }
-    };
-    
-    // Game content - English (same as Filipino for unified system)
-    private string[] questionsEnglish = {
-        "Which of the following is a noun (pangngalan) in Filipino?",
-        "Which is a proper noun (pangngalang pantangi) in Filipino?",
-        "Which is a common noun (pangngalang pambalana) in Filipino?",
-        "Which is a concrete noun (pangngalang tahas) in Filipino?",
-        "Which is an abstract noun (pangngalang basal) in Filipino?",
-        "Which is a collective noun (pangngalang lansakan) in Filipino?",
-        "Which is a derived noun (pangngalang hango) in Filipino?",
-        "How many nouns are in this sentence: 'Si Ana ay bumili ng tinapay sa panaderya.' (Ana bought bread at the bakery.)",
-        "Fill in the blank: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)",
-        "Which is a proper noun (pangngalang pantangi) in Filipino?"
-    };
-    
-    private string[][] choicesEnglish = {
-        new string[] { "tumakbo (ran)", "masaya (happy)", "aso (dog)", "maganda (beautiful)" },
-        new string[] { "lungsod (city)", "Maynila (Manila)", "paaralan (school)", "guro (teacher)" },
-        new string[] { "Maria (name)", "doktor (doctor)", "Pilipinas (Philippines)", "Juan (name)" },
-        new string[] { "pag-ibig (love)", "lamesa (table)", "kaligayahan (happiness)", "takot (fear)" },
-        new string[] { "aklat (book)", "pagkakaibigan (friendship)", "sapatos (shoes)", "telepono (phone)" },
-        new string[] { "bundok (mountain)", "kawan (flock)", "bahay (house)", "kotse (car)" },
-        new string[] { "guro (teacher)", "kaguruan (teaching staff)", "paaralan (school)", "mag-aaral (student)" },
-        new string[] { "one", "two", "three", "four" },
-        new string[] { "isda (fish)", "aso (dog)", "ibon (bird)", "pusa (cat)" },
-        new string[] { "lungsod (city)", "Maynila (Manila)", "paaralan (school)", "guro (teacher)" }
-    };
-    
-    private string[][] correctAnswersEnglish = {
-        new string[] { "aso (dog)" },
-        new string[] { "Maynila (Manila)" },
-        new string[] { "doktor (doctor)" },
-        new string[] { "lamesa (table)" },
-        new string[] { "pagkakaibigan (friendship)" },
-        new string[] { "kawan (flock)" },
-        new string[] { "kaguruan (teaching staff)" },
-        new string[] { "three" },
-        new string[] { "ibon (bird)" },
-        new string[] { "Maynila (Manila)" }
-=======
     // MEDIUM MODE QUESTIONS - Grade 2 Level (Fill-in-the-Blank) - DepEd Philippines Curriculum Aligned
     private string[] questionsFilipino = {
         "Complete the sentence: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)",
@@ -186,11 +106,7 @@ public class NounsMediumGameManager : MonoBehaviour
         "Complete the sentence: 'Si ___ ay nakatira sa Maynila.' (___ lives in Manila.)",
         "Complete the sentence: 'Ang ___ ay nagbibigay ng gamot sa mga pasyente.' (The ___ gives medicine to patients.)",
         "Complete the sentence: 'Ang ___ ay nasa ilalim ng puno.' (The ___ is under the tree.)",
-        "Complete the sentence: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)",
-        "Complete the sentence: 'Ang ___ ay tumutugtog ng musika.' (The ___ plays music.)",
-        "Complete the sentence: 'Ang ___ ay naglalaro sa bakuran.' (The ___ plays in the yard.)",
-        "Complete the sentence: 'Ang ___ ay nagbabasa ng libro.' (The ___ reads a book.)",
-        "Complete the sentence: 'Ang ___ ay naglalakad sa kalye.' (The ___ walks on the street.)"
+        "Complete the sentence: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)"
     };
     
     private string[][] choicesFilipino = {
@@ -282,7 +198,6 @@ public class NounsMediumGameManager : MonoBehaviour
         new string[] { "bata" },
         new string[] { "estudyante" },
         new string[] { "tao" }
->>>>>>> master
     };
 
     // Unified Question Database - DepEd Filipino Curriculum Aligned (English Interface)
@@ -769,31 +684,20 @@ public class NounsMediumGameManager : MonoBehaviour
             typewriterEffect.textComponent = dialogText;
             typewriterEffect.characterAnimator = characterAnimator;
             
-<<<<<<< HEAD
-=======
             // Set typing speed to be faster but still readable
             typewriterEffect.SetTypingSpeed(0.05f);  // Faster than default but still smooth
             Debug.Log("NounsMediumGameManager: Set typing speed to 0.05f for faster typewriter effect");
             
->>>>>>> master
             // Set the font first
             if (timesBoldFont != null)
             {
                 typewriterEffect.SetFont(timesBoldFont);
-<<<<<<< HEAD
-                Debug.Log($"NounsGameManager: Set font {timesBoldFont.name} to typewriter");
-=======
                 Debug.Log($"NounsMediumGameManager: Set font {timesBoldFont.name} to typewriter");
->>>>>>> master
             }
             else if (useUniversalFont && FilipknowFontManager.Instance != null)
             {
                 typewriterEffect.RefreshUniversalFont();
-<<<<<<< HEAD
-                Debug.Log("NounsGameManager: Applied universal font to typewriter");
-=======
                 Debug.Log("NounsMediumGameManager: Applied universal font to typewriter");
->>>>>>> master
             }
             
             // Force horizontal text orientation (this will re-apply the font)

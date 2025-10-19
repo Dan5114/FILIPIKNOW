@@ -218,18 +218,11 @@ public class AdaptiveDialogManager : MonoBehaviour
         // Apply text quality settings before showing content
         ConfigureTextQuality();
         
-<<<<<<< HEAD
-        // Start typewriter effect
-        if (typewriterEffect != null)
-        {
-            typewriterEffect.StartTypewriter(message);
-=======
         // Start typewriter effect - use NounsGameManager's TypewriterEffect if available
         TypewriterEffect effectiveTypewriter = GetEffectiveTypewriterEffect();
         if (effectiveTypewriter != null)
         {
             effectiveTypewriter.StartTypewriter(message);
->>>>>>> master
         }
         else
         {
@@ -243,8 +236,6 @@ public class AdaptiveDialogManager : MonoBehaviour
         }
     }
     
-<<<<<<< HEAD
-=======
     /// <summary>
     /// Gets the most effective TypewriterEffect to use - prefers NounsGameManager's TypewriterEffect
     /// </summary>
@@ -269,7 +260,6 @@ public class AdaptiveDialogManager : MonoBehaviour
         return null;
     }
     
->>>>>>> master
     void ConfigureForTextLength(string message)
     {
         bool isLongText = message.Length > longTextThreshold;

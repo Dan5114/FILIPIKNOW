@@ -627,11 +627,7 @@ public class DifficultySelectionManager : MonoBehaviour
             Debug.Log($"🔍 DEBUG: difficulty == Medium: {difficulty == DifficultyLevel.Medium}");
             Debug.Log($"🔍 DEBUG: isNounsTopic: {topicName == "Pangngalan" || topicName == "Nouns" || topicName == "nouns"}");
             
-<<<<<<< HEAD
-            // Special routing for Nouns Medium difficulty
-=======
             // Special routing for Nouns difficulties
->>>>>>> master
             // Check for various possible topic names for Nouns
             bool isNounsTopic = topicName == "Pangngalan" || topicName == "Nouns" || topicName == "nouns";
             if (isNounsTopic && difficulty == DifficultyLevel.Medium)
@@ -639,14 +635,11 @@ public class DifficultySelectionManager : MonoBehaviour
                 Debug.Log("🎯 Special routing: Nouns Medium → NounsIntroductionMedium");
                 SceneManager.LoadScene("NounsIntroductionMedium");
             }
-<<<<<<< HEAD
-=======
             else if (isNounsTopic && difficulty == DifficultyLevel.Hard)
             {
                 Debug.Log("🎯 Special routing: Nouns Hard → NounsIntroductionHard");
                 SceneManager.LoadScene("NounsIntroductionHard");
             }
->>>>>>> master
             else
             {
                 Debug.Log($"🎯 Standard routing: {topicName}Introduction");
