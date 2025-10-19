@@ -16,6 +16,10 @@ namespace Filipknow.UI
         [Header("Animation Settings")]
         public float textGenerationDelay = 3.0f;  // Start typing at exactly 3 seconds
         public float textGenerationSpeed = 0.005f;  // Much faster typing speed
+<<<<<<< HEAD
+=======
+        public string speakingAnimationName = "isSpeaking";  // Parameter name for character speaking animation
+>>>>>>> master
         
         [Header("Existing Animation")]
         public Animator scrollAnimator;
@@ -261,6 +265,22 @@ namespace Filipknow.UI
             // Small delay before starting text generation
             yield return new WaitForSeconds(textGenerationDelay);
             
+<<<<<<< HEAD
+=======
+            // Start character speaking animation
+            Debug.Log($"🎭 Starting character animation - scrollAnimator: {(scrollAnimator != null ? "ASSIGNED" : "NULL")}");
+            if (scrollAnimator != null)
+            {
+                Debug.Log($"🎭 Setting {speakingAnimationName} to true on animator: {scrollAnimator.name}");
+                scrollAnimator.SetBool(speakingAnimationName, true);
+                Debug.Log($"🎭 Character speaking animation started - Parameter exists: {HasParameter(scrollAnimator, speakingAnimationName)}");
+            }
+            else
+            {
+                Debug.LogWarning("❌ Scroll animator is NULL! Please assign it in the Inspector.");
+            }
+            
+>>>>>>> master
             // Generate text character by character
             for (int i = 0; i <= fullText.Length; i++)
             {
@@ -274,6 +294,29 @@ namespace Filipknow.UI
                 
                 yield return new WaitForSeconds(textGenerationSpeed);
             }
+<<<<<<< HEAD
+=======
+            
+            // Stop character speaking animation when text is complete
+            if (scrollAnimator != null)
+            {
+                scrollAnimator.SetBool(speakingAnimationName, false);
+                Debug.Log("🎭 Character speaking animation stopped");
+            }
+        }
+        
+        /// <summary>
+        /// Checks if an animator has a specific parameter
+        /// </summary>
+        private bool HasParameter(Animator animator, string paramName)
+        {
+            foreach (AnimatorControllerParameter param in animator.parameters)
+            {
+                if (param.name == paramName)
+                    return true;
+            }
+            return false;
+>>>>>>> master
         }
         
         string GetIntroductionTextForDifficulty()

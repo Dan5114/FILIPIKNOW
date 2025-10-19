@@ -659,6 +659,13 @@ public class NounsGameManager : MonoBehaviour
             typewriterEffect.textComponent = dialogText;
             typewriterEffect.characterAnimator = characterAnimator;
             
+<<<<<<< HEAD
+=======
+            // Set typing speed to be faster but still readable
+            typewriterEffect.SetTypingSpeed(0.05f);  // Faster than default but still smooth
+            Debug.Log("NounsGameManager: Set typing speed to 0.05f for faster typewriter effect");
+            
+>>>>>>> master
             // Set the font first
             if (timesBoldFont != null)
             {

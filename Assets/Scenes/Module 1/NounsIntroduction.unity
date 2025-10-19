@@ -218,8 +218,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -231, y: 745}
   m_SizeDelta: {x: 240.8241, y: 243.1165}
+=======
+  m_AnchoredPosition: {x: 7, y: 659.0473}
+  m_SizeDelta: {x: 230.3678, y: 272.1638}
+>>>>>>> master
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &535154089
 GameObject:
@@ -259,7 +264,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0.000005722, y: 142}
+=======
+  m_AnchoredPosition: {x: 0.000005722, y: 59}
+>>>>>>> master
   m_SizeDelta: {x: 945.12, y: 1371.4355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &535154091
@@ -387,7 +396,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -180.00003, y: -842.7}
+=======
+  m_AnchoredPosition: {x: -143, y: -842.7}
+>>>>>>> master
   m_SizeDelta: {x: 268.4813, y: 122.8095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &841476208
@@ -519,6 +532,10 @@ MonoBehaviour:
   continueButton: {fileID: 1267728370}
   textGenerationDelay: 0
   textGenerationSpeed: 0.05
+<<<<<<< HEAD
+=======
+  speakingAnimationName: isSpeaking
+>>>>>>> master
   scrollAnimator: {fileID: 241843040}
   scrollAnimationName: ScrollPage
   scrollCloseAnimationName: ScrollPage
@@ -761,7 +778,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 263, y: -867}
+=======
+  m_AnchoredPosition: {x: 155, y: -867}
+>>>>>>> master
   m_SizeDelta: {x: 275.49, y: 50.2134}
   m_Pivot: {x: 0.5, y: 0.49999988}
 --- !u!1 &1419608619

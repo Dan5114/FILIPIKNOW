@@ -15,9 +15,15 @@ public class TypewriterEffect : MonoBehaviour
     public TMP_FontAsset timesBoldFont;
     
     [Header("Typing Settings")]
+<<<<<<< HEAD
     public float typingSpeed = 0.05f;
     public float punctuationDelay = 0.2f;
     public float sentenceDelay = 0.5f;
+=======
+    public float typingSpeed = 0.08f;  // Slightly slower for better readability
+    public float punctuationDelay = 0.3f;  // Longer pause at punctuation
+    public float sentenceDelay = 0.6f;  // Longer pause at sentence breaks
+>>>>>>> master
     
     [Header("Font Size")]
     public float fixedFontSize = 80f;  // Fixed font size for dialogue
@@ -162,6 +168,16 @@ public class TypewriterEffect : MonoBehaviour
             StopTypewriter();
         }
         
+<<<<<<< HEAD
+=======
+        // Add null check for text parameter
+        if (string.IsNullOrEmpty(text))
+        {
+            Debug.LogError("❌ TypewriterEffect: Cannot start typewriter with null or empty text!");
+            return;
+        }
+        
+>>>>>>> master
         // Configure based on mode
         if (isSessionSummary || enableSessionSummaryMode)
         {
@@ -236,7 +252,10 @@ public class TypewriterEffect : MonoBehaviour
     private IEnumerator TypeText()
     {
         // Start character speaking animation
+<<<<<<< HEAD
         Animator characterAnimator = GetComponent<Animator>();
+=======
+>>>>>>> master
         if (characterAnimator != null)
         {
             characterAnimator.SetBool("isSpeaking", true);

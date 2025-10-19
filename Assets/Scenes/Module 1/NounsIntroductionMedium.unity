@@ -250,7 +250,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 142}
+=======
+  m_AnchoredPosition: {x: 0, y: 66.00006}
+>>>>>>> master
   m_SizeDelta: {x: 945.12, y: 1371.4355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &105737994
@@ -445,7 +449,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 95, y: 11}
+=======
+  m_AnchoredPosition: {x: 95, y: -65}
+>>>>>>> master
   m_SizeDelta: {x: 3222.274, y: 2593.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &136342966
@@ -903,7 +911,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 25, y: 721}
+=======
+  m_AnchoredPosition: {x: 25, y: 596.00006}
+>>>>>>> master
   m_SizeDelta: {x: 248.46, y: 296.6472}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1444640818
@@ -1036,7 +1048,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -180, y: -803}
+=======
+  m_AnchoredPosition: {x: -152, y: -845}
+>>>>>>> master
   m_SizeDelta: {x: 268.4813, y: 122.8095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1864082335
@@ -1075,7 +1091,11 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 148, y: -824.53735}
+=======
+  m_AnchoredPosition: {x: 148, y: -862}
+>>>>>>> master
   m_SizeDelta: {x: 275.49, y: 50.2134}
   m_Pivot: {x: 0.5, y: 0.49999988}
 --- !u!114 &1864082337
@@ -1193,9 +1213,16 @@ MonoBehaviour:
   scrollText: {fileID: 805816075}
   backButton: {fileID: 1444640819}
   continueButton: {fileID: 1864082339}
+<<<<<<< HEAD
   textGenerationDelay: 3
   textGenerationSpeed: 0.05
   scrollAnimator: {fileID: 0}
+=======
+  textGenerationDelay: 0
+  textGenerationSpeed: 0.05
+  speakingAnimationName: isSpeaking
+  scrollAnimator: {fileID: 927076865}
+>>>>>>> master
   scrollAnimationName: ScrollPage
   scrollCloseAnimationName: ScrollPage
   introductionTexts:

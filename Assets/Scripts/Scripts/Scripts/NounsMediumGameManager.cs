@@ -94,6 +94,7 @@ public class NounsMediumGameManager : MonoBehaviour
     
     // UnifiedQuestionData class is now in its own file: Scripts/Scripts/UnifiedQuestionData.cs
     
+<<<<<<< HEAD
     // Game content - Filipino
     private string[] questionsFilipino = {
         "Which of the following is a noun (pangngalan) in Filipino?",
@@ -172,6 +173,116 @@ public class NounsMediumGameManager : MonoBehaviour
         new string[] { "three" },
         new string[] { "ibon (bird)" },
         new string[] { "Maynila (Manila)" }
+=======
+    // MEDIUM MODE QUESTIONS - Grade 2 Level (Fill-in-the-Blank) - DepEd Philippines Curriculum Aligned
+    private string[] questionsFilipino = {
+        "Complete the sentence: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)",
+        "Complete the sentence: 'Si ___ ay nagluluto ng adobo.' (___ is cooking adobo.)",
+        "Complete the sentence: 'Ang ___ ay nagtuturo sa paaralan.' (The ___ teaches at school.)",
+        "Complete the sentence: 'Ang ___ ay nasa ibabaw ng mesa.' (The ___ is on top of the table.)",
+        "Complete the sentence: 'Ang ___ ay napakahalaga sa buhay ng tao.' (___ is very important in human life.)",
+        "Complete the sentence: 'Ang ___ ay naglalakad sa damuhan.' (The ___ is walking in the grass.)",
+        "Complete the sentence: 'Ang ___ ay nagtuturo sa mga mag-aaral.' (The ___ teaches students.)",
+        "Complete the sentence: 'Si ___ ay nakatira sa Maynila.' (___ lives in Manila.)",
+        "Complete the sentence: 'Ang ___ ay nagbibigay ng gamot sa mga pasyente.' (The ___ gives medicine to patients.)",
+        "Complete the sentence: 'Ang ___ ay nasa ilalim ng puno.' (The ___ is under the tree.)",
+        "Complete the sentence: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)",
+        "Complete the sentence: 'Ang ___ ay tumutugtog ng musika.' (The ___ plays music.)",
+        "Complete the sentence: 'Ang ___ ay naglalaro sa bakuran.' (The ___ plays in the yard.)",
+        "Complete the sentence: 'Ang ___ ay nagbabasa ng libro.' (The ___ reads a book.)",
+        "Complete the sentence: 'Ang ___ ay naglalakad sa kalye.' (The ___ walks on the street.)"
+    };
+    
+    private string[][] choicesFilipino = {
+        new string[] { "aso", "pusa", "ibon", "isda" },
+        new string[] { "Maria", "Ana", "Juan", "Pedro" },
+        new string[] { "guro", "doktor", "nars", "pulis" },
+        new string[] { "aklat", "lapis", "papel", "sapatos" },
+        new string[] { "pagmamahal", "pera", "pagkain", "tubig" },
+        new string[] { "kawan", "grupo", "pulutong", "pangkat" },
+        new string[] { "kaguruan", "pamunuan", "pamahalaan", "pangkat" },
+        new string[] { "Juan", "Maria", "Ana", "Pedro" },
+        new string[] { "doktor", "nars", "guro", "pulis" },
+        new string[] { "bato", "dahon", "bulaklak", "prutas" },
+        new string[] { "ibon", "eroplano", "saranggola", "hangin" },
+        new string[] { "piano", "gitara", "violin", "trompeta" },
+        new string[] { "bata", "aso", "pusa", "ibon" },
+        new string[] { "estudyante", "guro", "doktor", "nars" },
+        new string[] { "tao", "aso", "pusa", "ibon" }
+    };
+    
+    private string[][] correctAnswersFilipino = {
+        new string[] { "aso" },
+        new string[] { "Maria" },
+        new string[] { "guro" },
+        new string[] { "aklat" },
+        new string[] { "pagmamahal" },
+        new string[] { "kawan" },
+        new string[] { "kaguruan" },
+        new string[] { "Juan" },
+        new string[] { "doktor" },
+        new string[] { "bato" },
+        new string[] { "ibon" },
+        new string[] { "piano" },
+        new string[] { "bata" },
+        new string[] { "estudyante" },
+        new string[] { "tao" }
+    };
+    
+    // MEDIUM MODE QUESTIONS - Grade 2 Level (Fill-in-the-Blank) - DepEd Philippines Curriculum Aligned
+    private string[] questionsEnglish = {
+        "Complete the sentence: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)",
+        "Complete the sentence: 'Si ___ ay nagluluto ng adobo.' (___ is cooking adobo.)",
+        "Complete the sentence: 'Ang ___ ay nagtuturo sa paaralan.' (The ___ teaches at school.)",
+        "Complete the sentence: 'Ang ___ ay nasa ibabaw ng mesa.' (The ___ is on top of the table.)",
+        "Complete the sentence: 'Ang ___ ay napakahalaga sa buhay ng tao.' (___ is very important in human life.)",
+        "Complete the sentence: 'Ang ___ ay naglalakad sa damuhan.' (The ___ is walking in the grass.)",
+        "Complete the sentence: 'Ang ___ ay nagtuturo sa mga mag-aaral.' (The ___ teaches students.)",
+        "Complete the sentence: 'Si ___ ay nakatira sa Maynila.' (___ lives in Manila.)",
+        "Complete the sentence: 'Ang ___ ay nagbibigay ng gamot sa mga pasyente.' (The ___ gives medicine to patients.)",
+        "Complete the sentence: 'Ang ___ ay nasa ilalim ng puno.' (The ___ is under the tree.)",
+        "Complete the sentence: 'Ang ___ ay lumilipad sa langit.' (The ___ flies in the sky.)",
+        "Complete the sentence: 'Ang ___ ay tumutugtog ng musika.' (The ___ plays music.)",
+        "Complete the sentence: 'Ang ___ ay naglalaro sa bakuran.' (The ___ plays in the yard.)",
+        "Complete the sentence: 'Ang ___ ay nagbabasa ng libro.' (The ___ reads a book.)",
+        "Complete the sentence: 'Ang ___ ay naglalakad sa kalye.' (The ___ walks on the street.)"
+    };
+    
+    private string[][] choicesEnglish = {
+        new string[] { "aso", "pusa", "ibon", "isda" },
+        new string[] { "Maria", "Ana", "Juan", "Pedro" },
+        new string[] { "guro", "doktor", "nars", "pulis" },
+        new string[] { "aklat", "lapis", "papel", "sapatos" },
+        new string[] { "pagmamahal", "pera", "pagkain", "tubig" },
+        new string[] { "kawan", "grupo", "pulutong", "pangkat" },
+        new string[] { "kaguruan", "pamunuan", "pamahalaan", "pangkat" },
+        new string[] { "Juan", "Maria", "Ana", "Pedro" },
+        new string[] { "doktor", "nars", "guro", "pulis" },
+        new string[] { "bato", "dahon", "bulaklak", "prutas" },
+        new string[] { "ibon", "eroplano", "saranggola", "hangin" },
+        new string[] { "piano", "gitara", "violin", "trompeta" },
+        new string[] { "bata", "aso", "pusa", "ibon" },
+        new string[] { "estudyante", "guro", "doktor", "nars" },
+        new string[] { "tao", "aso", "pusa", "ibon" }
+    };
+    
+    private string[][] correctAnswersEnglish = {
+        new string[] { "aso" },
+        new string[] { "Maria" },
+        new string[] { "guro" },
+        new string[] { "aklat" },
+        new string[] { "pagmamahal" },
+        new string[] { "kawan" },
+        new string[] { "kaguruan" },
+        new string[] { "Juan" },
+        new string[] { "doktor" },
+        new string[] { "bato" },
+        new string[] { "ibon" },
+        new string[] { "piano" },
+        new string[] { "bata" },
+        new string[] { "estudyante" },
+        new string[] { "tao" }
+>>>>>>> master
     };
 
     // Unified Question Database - DepEd Filipino Curriculum Aligned (English Interface)
@@ -658,16 +769,31 @@ public class NounsMediumGameManager : MonoBehaviour
             typewriterEffect.textComponent = dialogText;
             typewriterEffect.characterAnimator = characterAnimator;
             
+<<<<<<< HEAD
+=======
+            // Set typing speed to be faster but still readable
+            typewriterEffect.SetTypingSpeed(0.05f);  // Faster than default but still smooth
+            Debug.Log("NounsMediumGameManager: Set typing speed to 0.05f for faster typewriter effect");
+            
+>>>>>>> master
             // Set the font first
             if (timesBoldFont != null)
             {
                 typewriterEffect.SetFont(timesBoldFont);
+<<<<<<< HEAD
                 Debug.Log($"NounsGameManager: Set font {timesBoldFont.name} to typewriter");
+=======
+                Debug.Log($"NounsMediumGameManager: Set font {timesBoldFont.name} to typewriter");
+>>>>>>> master
             }
             else if (useUniversalFont && FilipknowFontManager.Instance != null)
             {
                 typewriterEffect.RefreshUniversalFont();
+<<<<<<< HEAD
                 Debug.Log("NounsGameManager: Applied universal font to typewriter");
+=======
+                Debug.Log("NounsMediumGameManager: Applied universal font to typewriter");
+>>>>>>> master
             }
             
             // Force horizontal text orientation (this will re-apply the font)

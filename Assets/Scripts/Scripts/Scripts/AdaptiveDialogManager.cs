@@ -218,10 +218,18 @@ public class AdaptiveDialogManager : MonoBehaviour
         // Apply text quality settings before showing content
         ConfigureTextQuality();
         
+<<<<<<< HEAD
         // Start typewriter effect
         if (typewriterEffect != null)
         {
             typewriterEffect.StartTypewriter(message);
+=======
+        // Start typewriter effect - use NounsGameManager's TypewriterEffect if available
+        TypewriterEffect effectiveTypewriter = GetEffectiveTypewriterEffect();
+        if (effectiveTypewriter != null)
+        {
+            effectiveTypewriter.StartTypewriter(message);
+>>>>>>> master
         }
         else
         {
@@ -235,6 +243,33 @@ public class AdaptiveDialogManager : MonoBehaviour
         }
     }
     
+<<<<<<< HEAD
+=======
+    /// <summary>
+    /// Gets the most effective TypewriterEffect to use - prefers NounsGameManager's TypewriterEffect
+    /// </summary>
+    TypewriterEffect GetEffectiveTypewriterEffect()
+    {
+        // First try to find NounsGameManager's TypewriterEffect
+        NounsGameManager nounsManager = FindObjectOfType<NounsGameManager>();
+        if (nounsManager != null && nounsManager.typewriterEffect != null)
+        {
+            Debug.Log("Using NounsGameManager's TypewriterEffect");
+            return nounsManager.typewriterEffect;
+        }
+        
+        // Fallback to our own TypewriterEffect
+        if (typewriterEffect != null)
+        {
+            Debug.Log("Using AdaptiveDialogManager's own TypewriterEffect");
+            return typewriterEffect;
+        }
+        
+        Debug.LogWarning("No TypewriterEffect found - will use instant text");
+        return null;
+    }
+    
+>>>>>>> master
     void ConfigureForTextLength(string message)
     {
         bool isLongText = message.Length > longTextThreshold;
