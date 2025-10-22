@@ -14,8 +14,8 @@ namespace Filipknow.UI
         public Button continueButton;
         
         [Header("Animation Settings")]
-        public float textGenerationDelay = 3.0f;  // Start typing at exactly 3 seconds
-        public float textGenerationSpeed = 0.005f;  // Much faster typing speed
+        public float textGenerationDelay = 2.0f;  // Start typing at exactly 2 seconds
+        public float textGenerationSpeed = 0.001f;  // Very fast typing speed (was 0.002f)
         public string speakingAnimationName = "isSpeaking";  // Parameter name for character speaking animation
         
         [Header("Existing Animation")]
@@ -28,7 +28,7 @@ namespace Filipknow.UI
         {
             "Welcome to Nouns - Medium Mode!",
             "Fill-in-the-Blank sentences!",
-            "Type the correct Filipino noun.",
+            "Select the correct Filipino noun.",
             "Example: 'Ang ___ ay tumatakbo sa parke.'",
             "You've got this!",
             "Let's continue!"

@@ -14,8 +14,8 @@ namespace Filipknow.UI
         public Button continueButton;
         
         [Header("Animation Settings")]
-        public float textGenerationDelay = 3.0f;  // Start typing at exactly 3 seconds
-        public float textGenerationSpeed = 0.005f;  // Much faster typing speed
+        public float textGenerationDelay = 2.0f;  // Start typing at exactly 2 seconds
+        public float textGenerationSpeed = 0.001f;  // Very fast typing speed (was 0.002f)
         public string speakingAnimationName = "isSpeaking";  // Parameter name for character speaking animation
         
         [Header("Existing Animation")]
@@ -321,21 +321,21 @@ namespace Filipknow.UI
                 case "easy":
                     return "Welcome to Nouns - Easy Mode!\n\n" +
                            "Let's start with basic Filipino nouns like 'bahay' (house), 'kotse' (car), and 'aso' (dog).\n\n" +
-                           "You'll see pictures and choose the correct Filipino word. Take your time and don't worry about making mistakes!\n\n" +
+                           "You'll see questions, choose the correct Filipino word. Take your time and don't worry about making mistakes!\n\n" +
                            "Ready to begin your noun adventure?";
                            
                 case "medium":
                     return "Welcome to Nouns - Medium Mode!\n\n" +
-                           "Now we'll practice with Fill-in-the-Blank sentences! You'll see Filipino sentences with missing words.\n\n" +
+                           "Now we'll practice your advanced level! You'll see Filipino sentences with missing words.\n\n" +
                            "Examples: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)\n\n" +
-                           "Type the correct Filipino noun to complete each sentence. You've got this!\n\n" +
+                           "Select the correct Filipino noun to complete each sentence. You've got this!\n\n" +
                            "Let's continue your learning journey!";
                            
                 case "hard":
                     return "Welcome to Nouns - Hard Mode!\n\n" +
                            "Challenge time! Now you'll identify nouns in complex Filipino sentences.\n\n" +
                            "Examples: 'Ang pagmamahal sa bayan ay dakila.' (His love for the country is great.)\n\n" +
-                           "Type the noun you find in each sentence. This level will test your knowledge!\n\n" +
+                           "Select the noun you find in each sentence. This level will test your knowledge!\n\n" +
                            "Are you ready for the ultimate noun challenge?";
                            
                 default:

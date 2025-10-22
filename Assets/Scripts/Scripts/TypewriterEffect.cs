@@ -15,9 +15,9 @@ public class TypewriterEffect : MonoBehaviour
     public TMP_FontAsset timesBoldFont;
     
     [Header("Typing Settings")]
-    public float typingSpeed = 0.08f;  // Slightly slower for better readability
-    public float punctuationDelay = 0.3f;  // Longer pause at punctuation
-    public float sentenceDelay = 0.6f;  // Longer pause at sentence breaks
+    public float typingSpeed = 0.03f;  // Slightly slower for better readability
+    public float punctuationDelay = 0.1f;  // Longer pause at punctuation
+    public float sentenceDelay = 0.3f;  // Longer pause at sentence breaks
     
     [Header("Font Size")]
     public float fixedFontSize = 80f;  // Fixed font size for dialogue
@@ -31,12 +31,20 @@ public class TypewriterEffect : MonoBehaviour
     public float sessionSummaryFontSizeMin = 16f;
     public float sessionSummaryFontSizeMax = 24f;
     
+    [Header("Skip Settings")]
+    public bool enableDoubleTapToSkip = true;  // Enable double-tap/double-click to skip
+    public float doubleTapThreshold = 0.5f;  // Time window for double tap (seconds)
+    
     private string fullText;
     private bool isTyping = false;
     private Coroutine typingCoroutine;
     private bool hasSwitchedToBottomAlignment = false;  // Track if we've switched alignment
     private bool userScrolledManually = false;  // Track if user manually scrolled
     private float lastAutoScrollPosition = 0f;  // Track last auto-scroll position
+    
+    // Double-tap detection
+    private float lastTapTime = 0f;
+    private int tapCount = 0;
     
     // Events for external scripts
     public System.Action OnTypingStarted;
@@ -124,6 +132,53 @@ public class TypewriterEffect : MonoBehaviour
         if (scrollRect != null)
         {
             scrollRect.onValueChanged.RemoveListener(OnScrollChanged);
+        }
+    }
+    
+    void Update()
+    {
+        // Double-tap/double-click detection to skip typewriter
+        if (enableDoubleTapToSkip && isTyping)
+        {
+            bool tapDetected = false;
+            
+            // Check for mouse click (PC/Editor)
+            if (Input.GetMouseButtonDown(0))
+            {
+                tapDetected = true;
+            }
+            
+            // Check for touch (Mobile)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                tapDetected = true;
+            }
+            
+            if (tapDetected)
+            {
+                float currentTime = Time.time;
+                
+                // Check if this is within the double-tap time window
+                if (currentTime - lastTapTime < doubleTapThreshold)
+                {
+                    tapCount++;
+                    
+                    // Double tap detected!
+                    if (tapCount >= 2)
+                    {
+                        Debug.Log("⏩ Double-tap detected - skipping typewriter!");
+                        SkipTypewriter();
+                        tapCount = 0;
+                    }
+                }
+                else
+                {
+                    // Reset tap count if too much time has passed
+                    tapCount = 1;
+                }
+                
+                lastTapTime = currentTime;
+            }
         }
     }
     
@@ -217,6 +272,45 @@ public class TypewriterEffect : MonoBehaviour
         }
         
         // Scroll disabled to prevent position reset
+        
+        isTyping = false;
+        OnTypingCompleted?.Invoke();
+    }
+    
+    /// <summary>
+    /// Skip the typewriter effect and show full text immediately (triggered by double-tap)
+    /// </summary>
+    public void SkipTypewriter()
+    {
+        if (!isTyping) return;
+        
+        Debug.Log("⏩ Skipping typewriter effect...");
+        
+        // Stop the typing coroutine
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+        
+        // Show complete text immediately
+        if (textComponent != null)
+        {
+            textComponent.text = fullText;
+        }
+        
+        // Stop character speaking animation
+        if (characterAnimator != null)
+        {
+            characterAnimator.SetBool("isSpeaking", false);
+        }
+        
+        // Final scroll to bottom
+        if (enableAutoScroll && scrollRect != null)
+        {
+            scrollRect.verticalNormalizedPosition = 0f;
+            lastAutoScrollPosition = 0f;
+        }
         
         isTyping = false;
         OnTypingCompleted?.Invoke();

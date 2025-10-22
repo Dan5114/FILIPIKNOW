@@ -711,6 +711,8 @@ MonoBehaviour:
   enableSessionSummaryMode: 0
   sessionSummaryFontSizeMin: 10
   sessionSummaryFontSizeMax: 18
+  enableDoubleTapToSkip: 1
+  doubleTapThreshold: 0.5
 --- !u!222 &805816074
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1194,7 +1196,7 @@ MonoBehaviour:
   backButton: {fileID: 1444640819}
   continueButton: {fileID: 1864082339}
   textGenerationDelay: 0
-  textGenerationSpeed: 0.05
+  textGenerationSpeed: 0.03
   speakingAnimationName: isSpeaking
   scrollAnimator: {fileID: 927076865}
   scrollAnimationName: ScrollPage

@@ -422,7 +422,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "What noun (pangngalan) is in this sentence: 'Ang mga mag-aaral ay nag-aaral sa silid-aralan.' (The students are studying in the classroom.)",
-            instruction = "Type the noun you see in the sentence:",
+            instruction = "Select the noun you see in the sentence:",
             correctAnswer = "mga mag-aaral",
             acceptableAnswers = new string[] {"mga mag-aaral", "mag-aaral", "silid-aralan", "mga mag-aaral at silid-aralan"},
             xpReward = 30
@@ -432,7 +432,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "Identify the noun in this sentence: 'Ang kanyang pagmamahal sa bayan ay dakila.' (His love for the country is great.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "pagmamahal",
             acceptableAnswers = new string[] {"pagmamahal", "bayan", "pagmamahal at bayan", "kanyang"},
             xpReward = 30
@@ -442,7 +442,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "What noun is in this sentence: 'Ang kagandahan ng kalikasan ay dapat pangalagaan.' (The beauty of nature should be protected.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "kagandahan",
             acceptableAnswers = new string[] {"kagandahan", "kalikasan", "kagandahan at kalikasan"},
             xpReward = 30
@@ -452,7 +452,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "Identify the noun in this sentence: 'Ang kabutihan ng isang tao ay nasa kanyang kalooban.' (The goodness of a person is in their heart.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "kabutihan",
             acceptableAnswers = new string[] {"kabutihan", "tao", "kalooban", "kabutihan, tao, at kalooban"},
             xpReward = 30
@@ -462,7 +462,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "What noun is in this sentence: 'Ang pagtulong sa kapwa ay tanda ng mabuting pag-uugali.' (Helping others is a sign of good character.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "pagtulong",
             acceptableAnswers = new string[] {"pagtulong", "kapwa", "pag-uugali", "pagtulong, kapwa, at pag-uugali"},
             xpReward = 30
@@ -472,7 +472,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "Identify the noun in this sentence: 'Ang kaalaman ay susi sa tagumpay.' (Knowledge is the key to success.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "kaalaman",
             acceptableAnswers = new string[] {"kaalaman", "susi", "tagumpay", "kaalaman at tagumpay"},
             xpReward = 30
@@ -482,7 +482,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "What noun is in this sentence: 'Ang pag-asa ay nagbibigay lakas sa mga taong may problema.' (Hope gives strength to people with problems.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "pag-asa",
             acceptableAnswers = new string[] {"pag-asa", "lakas", "tao", "problema"},
             xpReward = 30
@@ -492,7 +492,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "Identify the noun in this sentence: 'Ang pagkakaisa ng mga mamamayan ay nagdadala ng kapayapaan.' (The unity of citizens brings peace.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "pagkakaisa",
             acceptableAnswers = new string[] {"pagkakaisa", "mamamayan", "kapayapaan", "pagkakaisa at kapayapaan"},
             xpReward = 30
@@ -502,7 +502,7 @@ public class NounsMediumGameManager : MonoBehaviour
             difficultyLevel = DifficultyLevel.Hard,
             questionType = QuestionType.TypeAnswer,
             questionText = "What noun is in this sentence: 'Ang paggalang sa nakatatanda ay tanda ng mabuting pagpapalaki.' (Respect for elders is a sign of good upbringing.)",
-            instruction = "Type the noun in the sentence:",
+            instruction = "Select the noun in the sentence:",
             correctAnswer = "paggalang",
             acceptableAnswers = new string[] {"paggalang", "nakatatanda", "pagpapalaki", "paggalang at pagpapalaki"},
             xpReward = 30
@@ -1398,17 +1398,27 @@ public class NounsMediumGameManager : MonoBehaviour
             questionAttempts[questionId] = 0;
         questionAttempts[questionId]++;
         
-        // Play sound effects and haptic feedback
-        if (optionsMenu != null)
+        // Play sound effects using GameAudioManager
+        if (GameAudioManager.Instance != null)
         {
             if (isCorrect)
             {
-                optionsMenu.PlayCorrectAnswerSound();
+                GameAudioManager.Instance.PlayCorrectAnswer();
+                Debug.Log("✅ NounsMediumGameManager: Playing correct answer sound");
             }
             else
             {
-                optionsMenu.PlayIncorrectAnswerSound();
+                GameAudioManager.Instance.PlayWrongAnswer();
+                Debug.Log("❌ NounsMediumGameManager: Playing wrong answer sound");
             }
+        }
+        else if (optionsMenu != null)
+        {
+            // Fallback to old system
+            if (isCorrect)
+                optionsMenu.PlayCorrectAnswerSound();
+            else
+                optionsMenu.PlayIncorrectAnswerSound();
         }
         
         // Trigger haptic feedback
@@ -1644,6 +1654,13 @@ public class NounsMediumGameManager : MonoBehaviour
     void EndGame()
     {
         Debug.Log("🎯 EndGame called - hiding dialog box and showing summary panel");
+        
+        // 🎉 Play victory music!
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.PlayVictoryMusic();
+            Debug.Log("🎵 Playing victory music for session complete!");
+        }
         
         // Hide the dialog box so summary panel can display properly
         HideDialogBox();

@@ -15,7 +15,7 @@ namespace Filipknow.UI
         
         [Header("Animation Settings")]
         public float textGenerationDelay = 3.0f;  // Start typing at exactly 3 seconds
-        public float textGenerationSpeed = 0.005f;  // Much faster typing speed
+        public float textGenerationSpeed = 0.001f;  // Very fast typing speed (was 0.005f)
         public string speakingAnimationName = "isSpeaking";  // Parameter name for character speaking animation
         
         [Header("Existing Animation")]
