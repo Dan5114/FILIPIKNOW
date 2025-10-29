@@ -85,7 +85,7 @@ public class DifficultySelectionManager : MonoBehaviour
         
         SetupUniversalFont();
         SetupUI();
-        SetupButtonImages();
+        // SetupButtonImages();
         LoadTopicProgress();
         UpdateButtonStates();
     }
@@ -224,96 +224,96 @@ public class DifficultySelectionManager : MonoBehaviour
             backButton.onClick.AddListener(GoBack);
     }
     
-    void SetupButtonImages()
-    {
-        // Load images from Resources if not assigned
-        LoadImagesFromResources();
+    // void SetupButtonImages()
+    // {
+    //     // Load images from Resources if not assigned
+    //     LoadImagesFromResources();
         
-        // Setup Easy button images
-        SetupButtonImageStates(easyButton, easyNormalSprite, easyHighlightedSprite);
+    //     // Setup Easy button images
+    //     SetupButtonImageStates(easyButton, easyNormalSprite, easyHighlightedSprite);
         
-        // Setup Medium button images
-        SetupButtonImageStates(mediumButton, mediumNormalSprite, mediumHighlightedSprite);
+    //     // Setup Medium button images
+    //     SetupButtonImageStates(mediumButton, mediumNormalSprite, mediumHighlightedSprite);
         
-        // Setup Hard button images
-        SetupButtonImageStates(hardButton, hardNormalSprite, hardHighlightedSprite);
+    //     // Setup Hard button images
+    //     SetupButtonImageStates(hardButton, hardNormalSprite, hardHighlightedSprite);
         
-        Debug.Log("🎨 Button images configured for all difficulty levels");
-    }
+    //     Debug.Log("🎨 Button images configured for all difficulty levels");
+    // }
     
-    void LoadImagesFromResources()
-    {
-        // Load Easy button images
-        if (easyNormalSprite == null)
-        {
-            easyNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Easy_Normal");
-            if (easyNormalSprite != null) Debug.Log("✅ Loaded Easy Normal sprite from Resources");
-        }
+    // void LoadImagesFromResources()
+    // {
+    //     // Load Easy button images
+    //     if (easyNormalSprite == null)
+    //     {
+    //         easyNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Easy_Normal");
+    //         if (easyNormalSprite != null) Debug.Log("✅ Loaded Easy Normal sprite from Resources");
+    //     }
         
-        if (easyHighlightedSprite == null)
-        {
-            easyHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Easy_Highlighted");
-            if (easyHighlightedSprite != null) Debug.Log("✅ Loaded Easy Highlighted sprite from Resources");
-        }
+    //     if (easyHighlightedSprite == null)
+    //     {
+    //         easyHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Easy_Highlighted");
+    //         if (easyHighlightedSprite != null) Debug.Log("✅ Loaded Easy Highlighted sprite from Resources");
+    //     }
         
-        // Load Medium button images
-        if (mediumNormalSprite == null)
-        {
-            mediumNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Medium_Normal");
-            if (mediumNormalSprite != null) Debug.Log("✅ Loaded Medium Normal sprite from Resources");
-        }
+    //     // Load Medium button images
+    //     if (mediumNormalSprite == null)
+    //     {
+    //         mediumNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Medium_Normal");
+    //         if (mediumNormalSprite != null) Debug.Log("✅ Loaded Medium Normal sprite from Resources");
+    //     }
         
-        if (mediumHighlightedSprite == null)
-        {
-            mediumHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Medium_Highlighted");
-            if (mediumHighlightedSprite != null) Debug.Log("✅ Loaded Medium Highlighted sprite from Resources");
-        }
+    //     if (mediumHighlightedSprite == null)
+    //     {
+    //         mediumHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Medium_Highlighted");
+    //         if (mediumHighlightedSprite != null) Debug.Log("✅ Loaded Medium Highlighted sprite from Resources");
+    //     }
         
-        // Load Hard button images
-        if (hardNormalSprite == null)
-        {
-            hardNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Hard_Normal");
-            if (hardNormalSprite != null) Debug.Log("✅ Loaded Hard Normal sprite from Resources");
-        }
+    //     // Load Hard button images
+    //     if (hardNormalSprite == null)
+    //     {
+    //         hardNormalSprite = Resources.Load<Sprite>("DifficultyButtons/Hard_Normal");
+    //         if (hardNormalSprite != null) Debug.Log("✅ Loaded Hard Normal sprite from Resources");
+    //     }
         
-        if (hardHighlightedSprite == null)
-        {
-            hardHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Hard_Highlighted");
-            if (hardHighlightedSprite != null) Debug.Log("✅ Loaded Hard Highlighted sprite from Resources");
-        }
+    //     if (hardHighlightedSprite == null)
+    //     {
+    //         hardHighlightedSprite = Resources.Load<Sprite>("DifficultyButtons/Hard_Highlighted");
+    //         if (hardHighlightedSprite != null) Debug.Log("✅ Loaded Hard Highlighted sprite from Resources");
+    //     }
         
-        // Load level status icons from Resources
-        LoadLevelIconsFromResources();
-    }
+    //     // Load level status icons from Resources
+    //     LoadLevelIconsFromResources();
+    // }
     
-    void LoadLevelIconsFromResources()
-    {
-        // Load locked level icons (padlock icons)
-        if (lockedLevelNormalIcon == null)
-        {
-            lockedLevelNormalIcon = Resources.Load<Sprite>("LevelIcons/Locked_Normal");
-            if (lockedLevelNormalIcon != null) Debug.Log("🔒 Loaded Locked Normal (padlock) icon from Resources");
-        }
+    // void LoadLevelIconsFromResources()
+    // {
+    //     // Load locked level icons (padlock icons)
+    //     if (lockedLevelNormalIcon == null)
+    //     {
+    //         lockedLevelNormalIcon = Resources.Load<Sprite>("LevelIcons/Locked_Normal");
+    //         if (lockedLevelNormalIcon != null) Debug.Log("🔒 Loaded Locked Normal (padlock) icon from Resources");
+    //     }
         
-        if (lockedLevelHighlightedIcon == null)
-        {
-            lockedLevelHighlightedIcon = Resources.Load<Sprite>("LevelIcons/Locked_Highlighted");
-            if (lockedLevelHighlightedIcon != null) Debug.Log("🔒 Loaded Locked Highlighted (padlock) icon from Resources");
-        }
+    //     if (lockedLevelHighlightedIcon == null)
+    //     {
+    //         lockedLevelHighlightedIcon = Resources.Load<Sprite>("LevelIcons/Locked_Highlighted");
+    //         if (lockedLevelHighlightedIcon != null) Debug.Log("🔒 Loaded Locked Highlighted (padlock) icon from Resources");
+    //     }
         
-        // Load unlocked level icons (exclamation icons)
-        if (unlockedLevelNormalIcon == null)
-        {
-            unlockedLevelNormalIcon = Resources.Load<Sprite>("LevelIcons/Unlocked_Normal");
-            if (unlockedLevelNormalIcon != null) Debug.Log("🔓 Loaded Unlocked Normal (exclamation) icon from Resources");
-        }
+    //     // Load unlocked level icons (exclamation icons)
+    //     if (unlockedLevelNormalIcon == null)
+    //     {
+    //         unlockedLevelNormalIcon = Resources.Load<Sprite>("LevelIcons/Unlocked_Normal");
+    //         if (unlockedLevelNormalIcon != null) Debug.Log("🔓 Loaded Unlocked Normal (exclamation) icon from Resources");
+    //     }
         
-        if (unlockedLevelHighlightedIcon == null)
-        {
-            unlockedLevelHighlightedIcon = Resources.Load<Sprite>("LevelIcons/Unlocked_Highlighted");
-            if (unlockedLevelHighlightedIcon != null) Debug.Log("🔓 Loaded Unlocked Highlighted (exclamation) icon from Resources");
-        }
-    }
+    //     if (unlockedLevelHighlightedIcon == null)
+    //     {
+    //         unlockedLevelHighlightedIcon = Resources.Load<Sprite>("LevelIcons/Unlocked_Highlighted");
+    //         if (unlockedLevelHighlightedIcon != null) Debug.Log("🔓 Loaded Unlocked Highlighted (exclamation) icon from Resources");
+    //     }
+    // }
     
     void SetupButtonImageStates(Button button, Sprite normalSprite, Sprite highlightedSprite)
     {
