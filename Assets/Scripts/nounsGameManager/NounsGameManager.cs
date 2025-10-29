@@ -13,6 +13,9 @@ public class NounsGameManager : MonoBehaviour
     public Button continueButton;
     public Button[] choiceButtons; // For Easy (Multiple Choice)
     public Button backButton;
+
+    [Header("Progress Bar")]
+    [SerializeField] private ModuleProgressBar moduleProgressBar;
     
     [Header("Difficulty-Specific UI Panels")]
     public GameObject easyPanel;           // Multiple choice UI
@@ -71,6 +74,8 @@ public class NounsGameManager : MonoBehaviour
     private List<QuestionData> currentSessionQuestions = new List<QuestionData>();
     private Dictionary<int, float> questionResponseTimes = new Dictionary<int, float>();
     private Dictionary<int, int> questionAttempts = new Dictionary<int, int>();
+
+    public List<UnifiedQuestionData> CurrentQuestions => currentQuestions;
     
     // Dialog content - Filipino
     private string[] dialogMessagesFilipino = {
@@ -514,12 +519,13 @@ public class NounsGameManager : MonoBehaviour
         // Get difficulty from SceneController first
         LoadDifficultyFromSceneController();
         Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
-        
+
         // Hide Summary Panel initially - it should only show after game ends
         HideSummaryPanel();
-        
+
         // Initialize dialog boxes - hide question dialog, show intro dialog
-        
+
+        moduleProgressBar.ProgressSlider.gameObject.SetActive(true);
         SetupUniversalFont();
         SetupTypewriter();
         SetupButtons();
@@ -1715,7 +1721,13 @@ public class NounsGameManager : MonoBehaviour
         // Show continue button for next question
         continueButton.gameObject.SetActive(true);
         continueButton.onClick.RemoveAllListeners();
+
+        // Bandaid
+        continueButton.onClick.AddListener(moduleProgressBar.AddToAnsweredQuestions);
+        // 
+
         continueButton.onClick.AddListener(NextQuestion);
+
     }
     
 
@@ -1759,9 +1771,11 @@ public class NounsGameManager : MonoBehaviour
         
         // Hide all choice systems
         HideChoices();
-        
+
         // Hide continue button initially
         continueButton.gameObject.SetActive(false);
+
+        moduleProgressBar.ProgressSlider.gameObject.SetActive(false);
         
         // Show summary panel with session results
         ShowSummaryPanel();

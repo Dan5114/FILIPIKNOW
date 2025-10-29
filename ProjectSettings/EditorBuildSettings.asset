@@ -7,71 +7,74 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Main Menu/Main Menu.unity
-    guid: 00000000000000000000000000000000
+    guid: 642677bbba08eb24097ad3cb8da3eb39
   - enabled: 1
     path: Assets/Scenes/Main Menu/Modules Available.unity
-    guid: 00000000000000000000000000000000
+    guid: acfd4a3e0a50354418418c06218dea1e
   - enabled: 1
     path: Assets/Scenes/Module Selection/Modules Selection.unity
-    guid: 00000000000000000000000000000000
+    guid: b2d4a7506b70e8246b4b4c53b470125d
   - enabled: 1
     path: Assets/Scenes/Module Selection/Module 1.unity
-    guid: 00000000000000000000000000000000
+    guid: 527cfc2fa41e9ce4cba97b42397cfae4
   - enabled: 1
     path: Assets/Scenes/Module Selection/Module 2.unity
-    guid: 00000000000000000000000000000000
+    guid: 42310e93a67a68c4382599859184c7b2
   - enabled: 1
     path: Assets/Scenes/Module Selection/Module 3.unity
-    guid: 00000000000000000000000000000000
+    guid: dfceab9a13b2f554d86ecec15e20fc2b
   - enabled: 1
     path: Assets/Scenes/Module 1/Nouns.unity
-    guid: 00000000000000000000000000000000
+    guid: bd6f4a0eec240f244b398de94f4d20e9
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsIntroduction.unity
-    guid: 00000000000000000000000000000000
+    guid: 205daf50520aa254fb4055512c743d89
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsDifficultySelection.unity
-    guid: 00000000000000000000000000000000
+    guid: 0dac5a9cd8545c5408119e81afa013d5
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsMedium.unity
-    guid: 00000000000000000000000000000000
+    guid: cd2ff866db0c21a409009a8bfbf6da19
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsIntroductionMedium.unity
-    guid: 00000000000000000000000000000000
+    guid: ab8c8a37758ab83459db136b59ca68fe
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsHard.unity
-    guid: 00000000000000000000000000000000
+    guid: d702edd1d274e4b4f9c48f58d7e88551
   - enabled: 1
     path: Assets/Scenes/Module 1/NounsIntroductionHard.unity
-    guid: 00000000000000000000000000000000
+    guid: 9e6dfe37fd7fdb042820e3fcdc815cc5
   - enabled: 1
     path: Assets/Scenes/Module 1/Verbs.unity
-    guid: 00000000000000000000000000000000
+    guid: fbfaa377f7a3f86498c78e5ffa2f2848
   - enabled: 1
     path: Assets/Scenes/Module 1/Numbers.unity
-    guid: 00000000000000000000000000000000
+    guid: 073c70e43c335134bb2e81a1a4bb5b98
   - enabled: 1
     path: Assets/Scenes/Module 2/Pronouns.unity
-    guid: 00000000000000000000000000000000
+    guid: 3f5c7873ab36c5f4593560e4347d7ad4
   - enabled: 1
     path: Assets/Scenes/Module 2/Adjectives.unity
-    guid: 00000000000000000000000000000000
+    guid: 00c763b1d3b65a6479a108e66100a591
   - enabled: 1
     path: Assets/Scenes/Module 2/QuestionWords.unity
-    guid: 00000000000000000000000000000000
+    guid: fcddaca79c4262d4c928609695a0e105
   - enabled: 1
     path: Assets/Scenes/Module 2/BasicSentenceConstruction.unity
-    guid: 00000000000000000000000000000000
+    guid: 6f6e4ef8a2d73064ca97b88bad5a829f
   - enabled: 1
     path: Assets/Scenes/Module 3/TimeTelling.unity
-    guid: 00000000000000000000000000000000
+    guid: c01acec050daab24680648ad305c69cc
   - enabled: 1
     path: Assets/Scenes/Module 3/MoneyTransactions.unity
-    guid: 00000000000000000000000000000000
+    guid: 74237320629798443a72a96575daa411
   - enabled: 1
     path: Assets/Scenes/Module 3/MathVocabulary.unity
-    guid: 00000000000000000000000000000000
+    guid: 89c36f8645a58b14493b5548813d49aa
   - enabled: 1
     path: Assets/Scenes/Module 3/ShapesColors.unity
-    guid: 00000000000000000000000000000000
-  m_configObjects: {}
+    guid: 541789eec44a6644bb6c42bb7eb0704f
+  m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: ffe3de09dcbda1b4694a99c9f0db17b5, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 9625ee71696282241852a155a5dc6b6b, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 264358def2f4ad74fab5191d653f2e60, type: 2}
