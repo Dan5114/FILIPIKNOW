@@ -8,6 +8,11 @@ using System.Linq;
 
 public class NounsGameManager : MonoBehaviour
 {
+    [Header("UNIFIED QUESTIONS")]
+    [SerializeField] private UnifiedQuestions unifiedQuestionsReference;
+    [SerializeField] private bool shuffleQuestions = true;
+    private List<UnifiedQuestionData> unifiedQuestions;
+
     [Header("UI References")]
     public TextMeshProUGUI dialogText;
     public Button continueButton;
@@ -512,28 +517,7 @@ public class NounsGameManager : MonoBehaviour
             },
             xpReward = 30
         }
-    };
-
-    void Start()
-    {
-        // Get difficulty from SceneController first
-        LoadDifficultyFromSceneController();
-        Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
-
-        // Hide Summary Panel initially - it should only show after game ends
-        HideSummaryPanel();
-
-        // Initialize dialog boxes - hide question dialog, show intro dialog
-
-        moduleProgressBar.ProgressSlider.gameObject.SetActive(true);
-        SetupUniversalFont();
-        SetupTypewriter();
-        SetupButtons();
-        InitializeQuestions();
-        InitializeAdvancedSystems();
-        StartDialog();
-    }
-    
+    };    
     
     void LoadDifficultyFromSceneController()
     {
@@ -565,7 +549,7 @@ public class NounsGameManager : MonoBehaviour
             Debug.LogWarning("⚠️ SceneController not found, using default difficulty: Easy");
         }
     }
-    
+
     // Get appropriate dialog messages based on language setting
     private string[] GetDialogMessages()
     {
@@ -574,33 +558,65 @@ public class NounsGameManager : MonoBehaviour
         else
             return dialogMessagesEnglish;
     }
-    
+
     // Get appropriate questions based on language setting
+    // private string[] GetQuestions()
+    // {
+    //     if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
+    //         return questionsFilipino;
+    //     else
+    //         return questionsEnglish;
+    // }
+    
+    #region GET QUESTION DATA
     private string[] GetQuestions()
     {
-        if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
-            return questionsFilipino;
-        else
-            return questionsEnglish;
+        List<string> questions = new List<string>();
+
+        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        {
+            string question = unifiedQuestionData.questionText;
+            questions.Add(question);
+        }
+        return questions.ToArray();
     }
     
     // Get appropriate choices based on language setting
     private string[][] GetChoices()
     {
-        if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
-            return choicesFilipino;
-        else
-            return choicesEnglish;
+        // if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
+        //     return choicesFilipino;
+        // else
+        //     return choicesEnglish;
+
+        // New
+        List<string[]> choicesBundle = new List<string[]>();
+
+        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        {
+            string[] choices = unifiedQuestionData.choices;
+            choicesBundle.Add(choices);
+        }
+        return choicesBundle.ToArray();
     }
-    
+
     // Get appropriate correct answers based on language setting
     private string[][] GetCorrectAnswers()
     {
-        if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
-            return correctAnswersFilipino;
-        else
-            return correctAnswersEnglish;
+        // if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
+        //     return correctAnswersFilipino;
+        // else
+        //     return correctAnswersEnglish;
+        List<string[]> correctAnswersBundle = new List<string[]>();
+
+        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        {
+            string[] choices = unifiedQuestionData.acceptableAnswers;
+            correctAnswersBundle.Add(choices);
+        }
+        return correctAnswersBundle.ToArray();
     }
+    #endregion
     
     void SetupUniversalFont()
     {
@@ -722,7 +738,8 @@ public class NounsGameManager : MonoBehaviour
     {
         // Filter questions based on current difficulty
         currentQuestions.Clear();
-        currentQuestions.AddRange(allQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+        // currentQuestions.AddRange(allQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+        currentQuestions.AddRange(unifiedQuestions.Where(q => q.difficultyLevel == currentDifficulty));
         
         sessionStartTime = Time.time;
         sessionCorrectAnswers = 0;
@@ -1356,6 +1373,7 @@ public class NounsGameManager : MonoBehaviour
         Debug.Log("🔓 All choice buttons enabled (flag set)");
     }
 
+    #region Process Answer
     // New method for adaptive choice system
     public void OnChoiceSelected(string selectedChoice)
     {
@@ -1417,26 +1435,25 @@ public class NounsGameManager : MonoBehaviour
         Debug.Log($"Answer selected: {selectedAnswer}");
         ProcessAnswer(selectedAnswer, correctAnswer, isCorrect, buttonIndex);
     }
-    
+
     void ProcessAnswer(string selectedAnswer, string correctAnswer, bool isCorrect, int buttonIndex)
     {
-        
         // Handle fallback case (static questions)
         string[] questions = GetQuestions();
         string[][] correctAnswers = GetCorrectAnswers();
         if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
         {
             Debug.Log("Using fallback answer checking");
-            
+
             // Handle Medium difficulty
             if (currentDifficulty == DifficultyLevel.Medium && currentQuestionData != null)
             {
                 Debug.Log("Medium difficulty: Using unified question data");
                 correctAnswer = currentQuestionData.blankWord;
-                
+
                 // Check if selected answer matches the blank word
                 isCorrect = selectedAnswer.ToLower().Contains(currentQuestionData.blankWord.ToLower());
-                
+
                 Debug.Log($"Medium answer check: '{selectedAnswer}' contains '{correctAnswer}' = {isCorrect}");
             }
             else
@@ -1444,11 +1461,11 @@ public class NounsGameManager : MonoBehaviour
                 // Handle Easy difficulty (original logic)
                 string[] correctAnswersForQuestion = correctAnswers[currentQuestion];
                 correctAnswer = correctAnswersForQuestion[0]; // Use first correct answer for display
-                
+
                 // Check if selected answer is in the correct answers array
-                isCorrect = System.Array.Exists(correctAnswersForQuestion, answer => 
+                isCorrect = System.Array.Exists(correctAnswersForQuestion, answer =>
                     string.Equals(selectedAnswer.Trim(), answer.Trim(), System.StringComparison.OrdinalIgnoreCase));
-                
+
                 Debug.Log($"Easy answer check: '{selectedAnswer}' vs '{correctAnswer}' = {isCorrect}");
             }
         }
@@ -1462,19 +1479,19 @@ public class NounsGameManager : MonoBehaviour
             // Use SM2 question data
             QuestionData currentQ = reviewQuestions[currentQuestion];
             correctAnswer = currentQ.choices[currentQ.correctAnswer];
-            
+
             // More robust answer comparison
             isCorrect = string.Equals(selectedAnswer.Trim(), correctAnswer.Trim(), System.StringComparison.OrdinalIgnoreCase);
         }
-        
+
         // Debug logging
         Debug.Log($"Selected Answer: '{selectedAnswer}'");
         Debug.Log($"Correct Answer: '{correctAnswer}'");
         Debug.Log($"Is Correct: {isCorrect}");
-        
+
         // Track response time
         float responseTime = Time.time - sessionStartTime;
-        
+
         // Determine question ID for tracking
         int questionId = 0;
         if (reviewQuestions.Count > 0 && currentQuestion < reviewQuestions.Count)
@@ -1485,15 +1502,15 @@ public class NounsGameManager : MonoBehaviour
         {
             questionId = currentQuestion; // Use currentQuestion as ID for fallback
         }
-        
+
         // Track response time
         questionResponseTimes[questionId] = responseTime;
-        
+
         // Track attempts
         if (!questionAttempts.ContainsKey(questionId))
             questionAttempts[questionId] = 0;
         questionAttempts[questionId]++;
-        
+
         // Play sound effects via GameAudioManager
         if (GameAudioManager.Instance != null)
         {
@@ -1512,7 +1529,7 @@ public class NounsGameManager : MonoBehaviour
         {
             Debug.LogWarning("⚠️ GameAudioManager.Instance is null! Create GameAudioManager in Main Menu scene.");
         }
-        
+
         // Fallback: Play sound effects via OptionsMenu
         if (optionsMenu != null)
         {
@@ -1525,19 +1542,19 @@ public class NounsGameManager : MonoBehaviour
                 optionsMenu.PlayIncorrectAnswerSound();
             }
         }
-        
+
         // Trigger haptic feedback
         if (SettingsManager.Instance != null)
         {
             SettingsManager.Instance.TriggerHapticFeedback();
         }
-        
+
         // Show visual button feedback (green for correct, red for wrong)
         ShowButtonFeedback(buttonIndex, isCorrect);
-        
+
         // Disable all buttons to prevent multiple clicks during feedback
         DisableAllChoiceButtons();
-        
+
         // Update session statistics
         sessionTotalAnswers++;
         if (isCorrect)
@@ -1545,7 +1562,7 @@ public class NounsGameManager : MonoBehaviour
             sessionCorrectAnswers++;
             score += CalculateQuestionScore(currentQuestion, responseTime, questionAttempts[questionId]);
         }
-        
+
         // Process answer with enhanced SM2 algorithm
         if (SM2Algorithm.Instance != null)
         {
@@ -1566,14 +1583,14 @@ public class NounsGameManager : MonoBehaviour
         {
             Debug.LogWarning("SM2Algorithm.Instance is null, skipping answer processing");
         }
-        
+
         // Update gamification system
         if (GamificationSystem.Instance != null)
         {
             // Award XP based on performance
             int xpGained = CalculateXPGained(isCorrect, responseTime, questionAttempts[questionId]);
             GamificationSystem.Instance.AwardXP(xpGained, isCorrect ? "Correct Answer" : "Incorrect Answer");
-            
+
             // Update streak
             if (isCorrect)
             {
@@ -1583,18 +1600,19 @@ public class NounsGameManager : MonoBehaviour
                     GamificationSystem.Instance.UpdateStreak(userProgress.currentStreak);
                 }
             }
-            
+
             // Check for achievements
             GamificationSystem.Instance.CheckAchievements();
         }
-        
+
         // Generate detailed feedback
         string feedbackText = GenerateDetailedFeedback(selectedAnswer, correctAnswer, isCorrect, responseTime, questionId);
-        
+
         // Use adaptive dialog system for feedback if available
         if (adaptiveDialogManager != null)
         {
-            adaptiveDialogManager.ShowDialog(feedbackText, () => {
+            adaptiveDialogManager.ShowDialog(feedbackText, () =>
+            {
                 // DON'T hide choices - keep buttons visible with color until Continue is clicked
                 // HideChoices(); // REMOVED - buttons stay visible
                 ShowContinueButton();
@@ -1616,6 +1634,7 @@ public class NounsGameManager : MonoBehaviour
             ShowContinueButton();
         }
     }
+    #endregion
     
     void HideChoices()
     {
@@ -2680,7 +2699,7 @@ public class NounsGameManager : MonoBehaviour
         
         Debug.Log($"🏁 {currentDifficulty} level completed. Accuracy: {accuracy:F2}, Score: {score}");
     }
-    
+
     string GetCompletionMessage()
     {
         return currentDifficulty switch
@@ -2692,7 +2711,7 @@ public class NounsGameManager : MonoBehaviour
                                   "• Concrete and Abstract nouns (Tahas at Basal)\n" +
                                   "• Collective and Derived nouns (Lansakan at Hango)\n\n" +
                                   "🎯 Are you ready for Grade 2 level?",
-                                  
+
             DifficultyLevel.Medium => "🌟 Excellent! You completed the Grade 2 level!\n\n" +
                                     "📚 You now know:\n" +
                                     "• Using nouns in sentences\n" +
@@ -2700,7 +2719,7 @@ public class NounsGameManager : MonoBehaviour
                                     "• Identifying noun types in context\n" +
                                     "• Creating sentences\n\n" +
                                     "🎯 Are you ready for Grade 3 level?",
-                                    
+
             DifficultyLevel.Hard => "🌟 Excellent! You completed the Grade 3 level!\n\n" +
                                   "📚 You now know:\n" +
                                   "• Identifying nouns in complex sentences\n" +
@@ -2709,9 +2728,48 @@ public class NounsGameManager : MonoBehaviour
                                   "• Having conversations about nouns\n\n" +
                                   "🎓 You are now an expert in Filipino nouns!\n" +
                                   "🏆 Ready for more challenging lessons!",
-                                  
+
             _ => "🌟 Congratulations!"
         };
+    }
+    
+    private List<UnifiedQuestionData> ShuffleQuestions(UnifiedQuestions unifiedQuestions, bool shuffle)
+    {
+        if (!shuffle) return unifiedQuestions.GetUnifiedQuestions();
+        
+        List<UnifiedQuestionData> unifiedQuestionsCopy = new List<UnifiedQuestionData>(unifiedQuestions.GetUnifiedQuestions());
+
+        for (int i = unifiedQuestionsCopy.Count - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            (unifiedQuestionsCopy[i], unifiedQuestionsCopy[j]) =
+            (unifiedQuestionsCopy[j], unifiedQuestionsCopy[i]);
+        }
+
+        return unifiedQuestionsCopy;
+    }
+
+    private void Start()
+    {
+        // Get difficulty from SceneController first
+        LoadDifficultyFromSceneController();
+        Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
+
+        // Initialize and shuffle question list
+        unifiedQuestions = ShuffleQuestions(unifiedQuestionsReference, shuffleQuestions);
+
+        // Hide Summary Panel initially - it should only show after game ends
+        HideSummaryPanel();
+
+        // Initialize dialog boxes - hide question dialog, show intro dialog
+
+        moduleProgressBar.ProgressSlider.gameObject.SetActive(true);
+        SetupUniversalFont();
+        SetupTypewriter();
+        SetupButtons();
+        InitializeQuestions();
+        InitializeAdvancedSystems();
+        StartDialog();
     }
 
     void OnDestroy()

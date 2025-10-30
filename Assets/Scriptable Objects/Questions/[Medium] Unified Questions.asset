@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Medium] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 11
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with the correct Filipino noun:'
+    instruction: 'Fill in the blank with the correct noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay tumatakbo sa parke. (The ___ is running in the park.)
+    blankWord: aso
+    acceptableAnswers:
+    - aso
+    - mga aso
+    - ang aso
+    - pusa
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 12
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a proper noun (pangngalang pantangi):'
+    instruction: 'Fill in the blank with a proper noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nagluluto ng adobo. (___ is cooking adobo.)
+    blankWord: Maria
+    acceptableAnswers:
+    - Maria
+    - Si Maria
+    - Ana
+    - Juan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 13
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a common noun (pangngalang pambalana):'
+    instruction: 'Fill in the blank with a common noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nagluluto ng adobo. (___ is cooking adobo.)
+    blankWord: guro
+    acceptableAnswers:
+    - guro
+    - ang guro
+    - doktor
+    - nars
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 14
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a concrete noun (pangngalang tahas):'
+    instruction: 'Fill in the blank with a concrete noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nasa ibabaw ng mesa. (The ___ is on top of the table.)
+    blankWord: aklat
+    acceptableAnswers:
+    - aklat
+    - ang aklat
+    - lapis
+    - papel
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 15
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with an abstract noun (pangngalang basal):'
+    instruction: 'Fill in the blank with an abstract noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay napakahalaga sa buhay ng tao. (___ is very important
+      in human life.)
+    blankWord: pagmamahal
+    acceptableAnswers:
+    - pagmamahal
+    - pag-ibig
+    - kaligayahan
+    - kapayapaan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 16
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a collective noun (pangngalang lansakan):'
+    instruction: 'Fill in the blank with a collective noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay naglalakad sa damuhan. (The ___ is walking in the
+      grass.)
+    blankWord: kawan
+    acceptableAnswers:
+    - kawan
+    - ang kawan
+    - grupo
+    - pulutong
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 17
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a derived noun (pangngalang hango):'
+    instruction: 'Fill in the blank with a derived noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nagtuturo sa mga mag-aaral. (The ___ teaches students.)
+    blankWord: kaguruan
+    acceptableAnswers:
+    - kaguruan
+    - ang kaguruan
+    - pamunuan
+    - pamahalaan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 18
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a proper noun (pangngalang pantangi):'
+    instruction: 'Fill in the blank with a proper noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nakatira sa Maynila. (___ lives in Manila.)
+    blankWord: Juan
+    acceptableAnswers:
+    - Juan
+    - Si Juan
+    - Maria
+    - Pedro
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 19
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a common noun (pangngalang pambalana):'
+    instruction: 'Fill in the blank with a common noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nagbibigay ng gamot sa mga pasyente. (The ___ gives
+      medicine to patients.)
+    blankWord: doktor
+    acceptableAnswers:
+    - doktor
+    - ang doktor
+    - nars
+    - guro
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 20
+    difficultyLevel: 1
+    questionType: 1
+    questionText: 'Complete the sentence with a concrete noun (pangngalang tahas):'
+    instruction: 'Fill in the blank with a concrete noun:'
+    xpReward: 20
+    choices: []
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nasa ilalim ng puno. (The ___ is under the tree.)
+    blankWord: bato
+    acceptableAnswers:
+    - bato
+    - ang bato
+    - dahon
+    - bulaklak
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
