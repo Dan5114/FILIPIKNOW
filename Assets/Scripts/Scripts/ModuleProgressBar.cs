@@ -8,7 +8,6 @@ public class ModuleProgressBar : MonoBehaviour
 {
     [Header("REFERENCES")]
     [SerializeField] private Slider progressSlider;
-    [SerializeField] private NounsGameManager nounsGameManager;
 
     private int totalQuestions;
     private int answeredQuestions = 0;
@@ -66,18 +65,5 @@ public class ModuleProgressBar : MonoBehaviour
         progressSlider.value = targetValue;
         onProgress?.Invoke(targetValue);
         onCompleted?.Invoke();
-    }
-
-    private void Start()
-    {
-        if (progressSlider == null)
-        {
-            progressSlider = GetComponentInChildren<Slider>();
-        }
-        else
-        {
-            SetTotalQuestions(nounsGameManager.CurrentQuestions.Count);
-            SetProgress(0);
-        }
     }
 }

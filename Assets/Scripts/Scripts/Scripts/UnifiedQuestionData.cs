@@ -6,19 +6,22 @@ public class UnifiedQuestionData
     public int questionId;
     public DifficultyLevel difficultyLevel;
     public QuestionType questionType;
-    public string questionText;
-    public string instruction;
+    [TextArea(3, 20)] public string questionText;
+    [TextArea(3, 20)]public string instruction;
     public int xpReward;
     
+    [Header("GENERAL")]
     // Multiple Choice (Easy)
     public string[] choices;
+    [Tooltip("Only add 1, kinda buggy rn")] public string[] acceptableAnswers;
     public int correctChoiceIndex;
     
+    [Header("MEDIUM MODE")]
     // Fill-in-the-Blank (Medium)
-    public string sentenceTemplate;
+    [TextArea(3, 20)] public string sentenceTemplate;
     public string blankWord;
-    public string[] acceptableAnswers;
     
+    [Header("HARD MODE")]
     // Type Answer + Conversational (Hard)
     public string correctAnswer;
     public bool isConversational = false;

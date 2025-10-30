@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Easy] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 1
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which of the following is a noun (pangngalan) in Filipino?
+    instruction: 'Choose the noun from the options:'
+    xpReward: 10
+    choices:
+    - tumakbo (ran)
+    - masaya (happy)
+    - aso (dog)
+    - maganda (beautiful)
+    acceptableAnswers:
+    - aso (dog)
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 2
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a proper noun (pangngalang pantangi) in Filipino?
+    instruction: 'Choose the proper noun:'
+    xpReward: 10
+    choices:
+    - lungsod (city)
+    - Maynila (Manila)
+    - paaralan (school)
+    - guro (teacher)
+    acceptableAnswers:
+    - Maynila (Manila)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 3
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a common noun (pangngalang pambalana) in Filipino?
+    instruction: 'Choose the common noun:'
+    xpReward: 10
+    choices:
+    - Maria (name)
+    - doktor (doctor)
+    - Pilipinas (Philippines)
+    - Juan (name)
+    acceptableAnswers:
+    - doktor (doctor)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 4
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a concrete noun (pangngalang tahas) in Filipino?
+    instruction: 'Choose the concrete noun:'
+    xpReward: 10
+    choices:
+    - pag-ibig (love)
+    - lamesa (table)
+    - kaligayahan (happiness)
+    - takot (fear)
+    acceptableAnswers:
+    - lamesa (table)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 5
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is an abstract noun (pangngalang basal) in Filipino?
+    instruction: 'Choose the abstract noun:'
+    xpReward: 10
+    choices:
+    - aklat (book)
+    - pagkakaibigan (friendship)
+    - sapatos (shoes)
+    - telepono (phone)
+    acceptableAnswers:
+    - pagkakaibigan (friendship)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 6
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a collective noun (pangngalang lansakan) in Filipino?
+    instruction: 'Choose the collective noun:'
+    xpReward: 10
+    choices:
+    - bundok (mountain)
+    - kawan (flock)
+    - bahay (house)
+    - kotse (car)
+    acceptableAnswers:
+    - kawan (flock)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 7
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a derived noun (pangngalang hango) in Filipino?
+    instruction: 'Choose the derived noun:'
+    xpReward: 10
+    choices:
+    - guro (teacher)
+    - kaguruan (teaching staff)
+    - paaralan (school)
+    - mag-aaral (student)
+    acceptableAnswers:
+    - kaguruan (teaching staff)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 8
+    difficultyLevel: 0
+    questionType: 0
+    questionText: 'How many nouns are in this sentence: ''Si Ana ay bumili ng tinapay
+      sa panaderya.'' (Ana bought bread at the bakery.)'
+    instruction: 'Count the nouns in the sentence:'
+    xpReward: 10
+    choices:
+    - one
+    - two
+    - three
+    - four
+    acceptableAnswers:
+    - three
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 9
+    difficultyLevel: 0
+    questionType: 0
+    questionText: 'Fill in the blank: ''Ang ___ ay lumilipad sa langit.'' (The ___
+      flies in the sky.)'
+    instruction: 'Choose the appropriate noun:'
+    xpReward: 10
+    choices:
+    - isda (fish)
+    - aso (dog)
+    - ibon (bird)
+    - pusa (cat)
+    acceptableAnswers:
+    - ibon (bird)
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 10
+    difficultyLevel: 0
+    questionType: 0
+    questionText: Which is a proper noun (pangngalang pantangi) in Filipino?
+    instruction: 'Choose the proper noun:'
+    xpReward: 10
+    choices:
+    - lungsod (city)
+    - Maynila (Manila)
+    - paaralan (school)
+    - guro (teacher)
+    acceptableAnswers:
+    - Maynila (Manila)
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

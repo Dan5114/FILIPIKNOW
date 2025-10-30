@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Medium] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 11
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with the correct Filipino noun:
+
+
+      Ang
+      ___ ay tumatakbo sa parke. (The ___ is running in the park.)'
+    instruction: 'Fill in the blank with the correct noun:'
+    xpReward: 20
+    choices:
+    - aso
+    - mga aso
+    - ang aso
+    - pusa
+    acceptableAnswers:
+    - aso
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay tumatakbo sa parke. (The ___ is running in the park.)
+    blankWord: aso
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 12
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a proper noun (pangngalang pantangi):
+
+
+      Si
+      ___ ay nagluluto ng adobo. (___ is cooking adobo.)'
+    instruction: 'Fill in the blank with a proper noun:'
+    xpReward: 20
+    choices:
+    - Maria
+    - Si Maria
+    - Ana
+    - Juan
+    acceptableAnswers:
+    - Maria
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nagluluto ng adobo. (___ is cooking adobo.)
+    blankWord: Maria
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 13
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a common noun (pangngalang pambalana):
+
+
+      Si
+      ___ ay nagluluto ng adobo. (___ is cooking adobo.)'
+    instruction: 'Fill in the blank with a common noun:'
+    xpReward: 20
+    choices:
+    - guro
+    - ang guro
+    - doktor
+    - nars
+    acceptableAnswers:
+    - guro
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nagluluto ng adobo. (___ is cooking adobo.)
+    blankWord: guro
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 14
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a concrete noun (pangngalang tahas):
+
+
+      Ang
+      ___ ay nasa ibabaw ng mesa. (The ___ is on top of the table.)'
+    instruction: 'Fill in the blank with a concrete noun:'
+    xpReward: 20
+    choices:
+    - aklat
+    - ang aklat
+    - lapis
+    - papel
+    acceptableAnswers:
+    - aklat
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nasa ibabaw ng mesa. (The ___ is on top of the table.)
+    blankWord: aklat
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 15
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with an abstract noun (pangngalang basal):
+
+
+      Ang
+      ___ ay napakahalaga sa buhay ng tao. (___ is very important in human life.)'
+    instruction: 'Fill in the blank with an abstract noun:'
+    xpReward: 20
+    choices:
+    - pagmamahal
+    - pag-ibig
+    - kaligayahan
+    - kapayapaan
+    acceptableAnswers:
+    - pagmamahal
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay napakahalaga sa buhay ng tao. (___ is very important
+      in human life.)
+    blankWord: pagmamahal
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 16
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a collective noun (pangngalang lansakan):
+
+
+      Ang
+      ___ ay naglalakad sa damuhan. (The ___ is walking in the grass.)'
+    instruction: 'Fill in the blank with a collective noun:'
+    xpReward: 20
+    choices:
+    - kawan
+    - ang kawan
+    - grupo
+    - pulutong
+    acceptableAnswers:
+    - kawan
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay naglalakad sa damuhan. (The ___ is walking in the
+      grass.)
+    blankWord: kawan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 17
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a derived noun (pangngalang hango):
+
+
+      Ang
+      ___ ay nagtuturo sa mga mag-aaral. (The ___ teaches students.)'
+    instruction: 'Fill in the blank with a derived noun:'
+    xpReward: 20
+    choices:
+    - kaguruan
+    - ang kaguruan
+    - pamunuan
+    - pamahalaan
+    acceptableAnswers:
+    - kaguruan
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nagtuturo sa mga mag-aaral. (The ___ teaches students.)
+    blankWord: kaguruan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 18
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a proper noun (pangngalang pantangi):
+
+
+      Si
+      ___ ay nakatira sa Maynila. (___ lives in Manila.)'
+    instruction: 'Fill in the blank with a proper noun:'
+    xpReward: 20
+    choices:
+    - Juan
+    - Si Juan
+    - Maria
+    - Pedro
+    acceptableAnswers:
+    - Juan
+    correctChoiceIndex: 0
+    sentenceTemplate: Si ___ ay nakatira sa Maynila. (___ lives in Manila.)
+    blankWord: Juan
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 19
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a common noun (pangngalang pambalana):
+
+
+      Ang
+      ___ ay nagbibigay ng gamot sa mga pasyente. (The ___ gives medicine to patients.)'
+    instruction: 'Fill in the blank with a common noun:'
+    xpReward: 20
+    choices:
+    - doktor
+    - ang doktor
+    - nars
+    - guro
+    acceptableAnswers:
+    - doktor
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nagbibigay ng gamot sa mga pasyente. (The ___ gives
+      medicine to patients.)
+    blankWord: doktor
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 20
+    difficultyLevel: 1
+    questionType: 0
+    questionText: 'Complete the sentence with a concrete noun (pangngalang tahas):
+
+
+      Ang
+      ___ ay nasa ilalim ng puno. (The ___ is under the tree.)'
+    instruction: 'Fill in the blank with a concrete noun:'
+    xpReward: 20
+    choices:
+    - bato
+    - ang bato
+    - dahon
+    - bulaklak
+    acceptableAnswers:
+    - bato
+    correctChoiceIndex: 0
+    sentenceTemplate: Ang ___ ay nasa ilalim ng puno. (The ___ is under the tree.)
+    blankWord: bato
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
