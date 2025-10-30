@@ -10,6 +10,7 @@ public class NounsGameManager : MonoBehaviour
 {
     [Header("UNIFIED QUESTIONS")]
     [SerializeField] private UnifiedQuestions unifiedQuestionsReference;
+    [SerializeField] private int questionsLimit = 10;
     [SerializeField] private bool shuffleQuestions = true;
     private List<UnifiedQuestionData> unifiedQuestions;
 
@@ -731,7 +732,7 @@ public class NounsGameManager : MonoBehaviour
         InitializeUnifiedQuestions();
         
         // Legacy SM2 integration (keep for backward compatibility)
-        InitializeLegacyQuestions();
+        // InitializeLegacyQuestions();
     }
     
     void InitializeUnifiedQuestions()
@@ -739,7 +740,20 @@ public class NounsGameManager : MonoBehaviour
         // Filter questions based on current difficulty
         currentQuestions.Clear();
         // currentQuestions.AddRange(allQuestions.Where(q => q.difficultyLevel == currentDifficulty));
-        currentQuestions.AddRange(unifiedQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+        // currentQuestions.AddRange(currentQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+
+        // 
+        var filtered = unifiedQuestions.Where(q => q.difficultyLevel == currentDifficulty).ToList();
+        for (int i = filtered.Count - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            var tmp = filtered[i];
+            filtered[i] = filtered[j];
+            filtered[j] = tmp;
+        }
+        int takeCount = Math.Min(questionsLimit, filtered.Count);
+        currentQuestions.AddRange(filtered.Take(takeCount));
+        // 
         
         sessionStartTime = Time.time;
         sessionCorrectAnswers = 0;
@@ -1092,57 +1106,57 @@ public class NounsGameManager : MonoBehaviour
         // Start timing this question
         questionStartTime = Time.time;
         Debug.Log($"⏱️ Question {currentQuestion} started at {questionStartTime:F2}");
-        
+
         // Handle Medium difficulty - use EXACT same flow as Easy, just different content
-        if (currentDifficulty == DifficultyLevel.Medium && currentQuestions.Count > 0 && currentQuestion < currentQuestions.Count)
-        {
-            Debug.Log($"Using Medium question {currentQuestion} - SAME FLOW AS EASY");
-            currentQuestionData = currentQuestions[currentQuestion];
-            
-            // Use EXACT same logic as Easy mode fallback
-            string questionText = currentQuestionData.sentenceTemplate;
-            string[] choices = currentQuestionData.acceptableAnswers;
-            
-            Debug.Log($"Question text: {questionText}");
-            Debug.Log($"Choices count: {choices.Length}");
-            
-            // Use adaptive dialog system if available
-            if (adaptiveDialogManager != null)
-            {
-                Debug.Log("Using adaptive dialog system");
-                adaptiveDialogManager.ShowDialog(questionText, () => {
-                    // Display choices after dialog is shown
-                    DisplayChoices(choices);
-                });
-            }
-            else if (typewriterEffect != null)
-            {
-                Debug.Log("Using typewriter effect");
-                // Configure dialog text for auto-sizing first
-                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
-                // Clear any existing callbacks to prevent multiple subscriptions
-                typewriterEffect.OnTypingCompleted = null;
-                // Start typewriter with completion callback
-                typewriterEffect.StartTypewriter(questionText);
-                typewriterEffect.OnTypingCompleted += () => {
-                    // Display choices after typewriter completes
-                    DisplayChoices(choices);
-                };
-            }
-            else if (dialogText != null)
-            {
-                Debug.Log("Using direct dialog text");
-                // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
-                dialogText.text = questionText;
-                DisplayChoices(choices);
-            }
-            else
-            {
-                Debug.LogError("❌ No dialog system available!");
-            }
-            return;
-        }
-        
+        // if (currentDifficulty == DifficultyLevel.Medium && currentQuestions.Count > 0 && currentQuestion < currentQuestions.Count)
+        // {
+        //     Debug.Log($"Using Medium question {currentQuestion} - SAME FLOW AS EASY");
+        //     currentQuestionData = currentQuestions[currentQuestion];
+
+        //     // Use EXACT same logic as Easy mode fallback
+        //     string questionText = currentQuestionData.sentenceTemplate;
+        //     string[] choices = currentQuestionData.choices;
+
+        //     Debug.Log($"Question text: {questionText}");
+        //     Debug.Log($"Choices count: {choices.Length}");
+
+        //     // Use adaptive dialog system if available
+        //     if (adaptiveDialogManager != null)
+        //     {
+        //         Debug.Log("Using adaptive dialog system");
+        //         adaptiveDialogManager.ShowDialog(questionText, () => {
+        //             // Display choices after dialog is shown
+        //             DisplayChoices(choices);
+        //         });
+        //     }
+        //     else if (typewriterEffect != null)
+        //     {
+        //         Debug.Log("Using typewriter effect");
+        //         // Configure dialog text for auto-sizing first
+        //         // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
+        //         // Clear any existing callbacks to prevent multiple subscriptions
+        //         typewriterEffect.OnTypingCompleted = null;
+        //         // Start typewriter with completion callback
+        //         typewriterEffect.StartTypewriter(questionText);
+        //         typewriterEffect.OnTypingCompleted += () => {
+        //             // Display choices after typewriter completes
+        //             DisplayChoices(choices);
+        //         };
+        //     }
+        //     else if (dialogText != null)
+        //     {
+        //         Debug.Log("Using direct dialog text");
+        //         // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
+        //         dialogText.text = questionText;
+        //         DisplayChoices(choices);
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("❌ No dialog system available!");
+        //     }
+        //     return;
+        // }
+
         // Fallback to static questions if no review questions available
         string[] questions = GetQuestions();
         if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
@@ -1446,28 +1460,39 @@ public class NounsGameManager : MonoBehaviour
             Debug.Log("Using fallback answer checking");
 
             // Handle Medium difficulty
-            if (currentDifficulty == DifficultyLevel.Medium && currentQuestionData != null)
-            {
-                Debug.Log("Medium difficulty: Using unified question data");
-                correctAnswer = currentQuestionData.blankWord;
+            // if (currentDifficulty == DifficultyLevel.Medium && currentQuestionData != null)
+            // {
+            //     Debug.Log("Medium difficulty: Using unified question data");
+            //     correctAnswer = currentQuestionData.blankWord;
 
-                // Check if selected answer matches the blank word
-                isCorrect = selectedAnswer.ToLower().Contains(currentQuestionData.blankWord.ToLower());
+            //     // Check if selected answer matches the blank word
+            //     isCorrect = selectedAnswer.ToLower().Contains(currentQuestionData.blankWord.ToLower());
 
-                Debug.Log($"Medium answer check: '{selectedAnswer}' contains '{correctAnswer}' = {isCorrect}");
-            }
-            else
-            {
-                // Handle Easy difficulty (original logic)
-                string[] correctAnswersForQuestion = correctAnswers[currentQuestion];
-                correctAnswer = correctAnswersForQuestion[0]; // Use first correct answer for display
+            //     Debug.Log($"Medium answer check: '{selectedAnswer}' contains '{correctAnswer}' = {isCorrect}");
+            // }
+            // else
+            // {
+            //     // Handle Easy difficulty (original logic)
+            //     string[] correctAnswersForQuestion = correctAnswers[currentQuestion];
+            //     correctAnswer = correctAnswersForQuestion[0]; // Use first correct answer for display
 
-                // Check if selected answer is in the correct answers array
-                isCorrect = System.Array.Exists(correctAnswersForQuestion, answer =>
-                    string.Equals(selectedAnswer.Trim(), answer.Trim(), System.StringComparison.OrdinalIgnoreCase));
+            //     // Check if selected answer is in the correct answers array
+            //     isCorrect = System.Array.Exists(correctAnswersForQuestion, answer =>
+            //         string.Equals(selectedAnswer.Trim(), answer.Trim(), System.StringComparison.OrdinalIgnoreCase));
 
-                Debug.Log($"Easy answer check: '{selectedAnswer}' vs '{correctAnswer}' = {isCorrect}");
-            }
+            //     Debug.Log($"Easy answer check: '{selectedAnswer}' vs '{correctAnswer}' = {isCorrect}");
+            // }
+
+            // Bandaid fix
+            string[] correctAnswersForQuestion = correctAnswers[currentQuestion];
+            correctAnswer = correctAnswersForQuestion[0]; // Use first correct answer for display
+
+            // Check if selected answer is in the correct answers array
+            isCorrect = System.Array.Exists(correctAnswersForQuestion, answer =>
+                string.Equals(selectedAnswer.Trim(), answer.Trim(), System.StringComparison.OrdinalIgnoreCase));
+
+            Debug.Log($"Easy answer check: '{selectedAnswer}' vs '{correctAnswer}' = {isCorrect}");
+            // 
         }
         else if (currentQuestion >= reviewQuestions.Count)
         {
@@ -1633,6 +1658,7 @@ public class NounsGameManager : MonoBehaviour
             // HideChoices(); // REMOVED - buttons stay visible
             ShowContinueButton();
         }
+        moduleProgressBar.AddToAnsweredQuestions();
     }
     #endregion
     
@@ -1740,13 +1766,7 @@ public class NounsGameManager : MonoBehaviour
         // Show continue button for next question
         continueButton.gameObject.SetActive(true);
         continueButton.onClick.RemoveAllListeners();
-
-        // Bandaid
-        continueButton.onClick.AddListener(moduleProgressBar.AddToAnsweredQuestions);
-        // 
-
         continueButton.onClick.AddListener(NextQuestion);
-
     }
     
 
@@ -2273,6 +2293,7 @@ public class NounsGameManager : MonoBehaviour
     
     void ShowMediumUI()
     {
+        string[] choices = currentQuestionData.choices;
         // Use Easy UI structure (multiple choice buttons) for Medium difficulty
         if (easyPanel != null)
         {
@@ -2306,9 +2327,9 @@ public class NounsGameManager : MonoBehaviour
                 typewriterEffect.StartTypewriter(currentQuestionData.sentenceTemplate);
                 typewriterEffect.OnTypingCompleted += () => {
                     // Display choices after typewriter completes
-                    if (currentQuestionData.acceptableAnswers != null && currentQuestionData.acceptableAnswers.Length > 0)
+                    if (choices != null && choices.Length > 0)
                     {
-                        DisplayChoices(currentQuestionData.acceptableAnswers);
+                        DisplayChoices(choices);
                     }
                 };
             }
@@ -2318,9 +2339,9 @@ public class NounsGameManager : MonoBehaviour
                 // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = currentQuestionData.sentenceTemplate;
                 
-                if (currentQuestionData.acceptableAnswers != null && currentQuestionData.acceptableAnswers.Length > 0)
+                if (choices != null && choices.Length > 0)
                 {
-                    DisplayChoices(currentQuestionData.acceptableAnswers);
+                    DisplayChoices(choices);
                 }
             }
         }
@@ -2617,18 +2638,21 @@ public class NounsGameManager : MonoBehaviour
         {
             ShowUnifiedIncorrectFeedback(userAnswer);
         }
-        
+
         currentQuestion++;
+        moduleProgressBar.AddToAnsweredQuestions();
         Invoke(nameof(ShowNextQuestion), 2f);
     }
     
     void ShowUnifiedCorrectFeedback()
     {
-        string correctAnswer = currentQuestionData.questionType == QuestionType.MultipleChoice 
-            ? currentQuestionData.choices[currentQuestionData.correctChoiceIndex]
-            : currentQuestionData.questionType == QuestionType.FillInTheBlank
-            ? currentQuestionData.blankWord
-            : currentQuestionData.correctAnswer;
+        // string correctAnswer = currentQuestionData.questionType == QuestionType.MultipleChoice
+        //     ? currentQuestionData.choices[currentQuestionData.correctChoiceIndex]
+        //     : currentQuestionData.questionType == QuestionType.FillInTheBlank
+        //     ? currentQuestionData.blankWord
+        //     : currentQuestionData.correctAnswer;
+
+        string correctAnswer = currentQuestionData.acceptableAnswers[0];
             
         string feedback = $"🎉 Correct! '{correctAnswer}' is the right answer!\n\n" +
                          $"Points: +{currentQuestionData.xpReward}\n" +
@@ -2640,11 +2664,13 @@ public class NounsGameManager : MonoBehaviour
     
     void ShowUnifiedIncorrectFeedback(string userAnswer)
     {
-        string correctAnswer = currentQuestionData.questionType == QuestionType.MultipleChoice 
-            ? currentQuestionData.choices[currentQuestionData.correctChoiceIndex]
-            : currentQuestionData.questionType == QuestionType.FillInTheBlank
-            ? currentQuestionData.blankWord
-            : currentQuestionData.correctAnswer;
+        // string correctAnswer = currentQuestionData.questionType == QuestionType.MultipleChoice
+        //     ? currentQuestionData.choices[currentQuestionData.correctChoiceIndex]
+        //     : currentQuestionData.questionType == QuestionType.FillInTheBlank
+        //     ? currentQuestionData.blankWord
+        //     : currentQuestionData.correctAnswer;
+            
+        string correctAnswer = currentQuestionData.acceptableAnswers[0];
             
         string feedback = $"❌ '{userAnswer}' is not correct.\n\n" +
                          $"The correct answer is: '{correctAnswer}'\n\n" +
@@ -2732,11 +2758,11 @@ public class NounsGameManager : MonoBehaviour
             _ => "🌟 Congratulations!"
         };
     }
-    
+
     private List<UnifiedQuestionData> ShuffleQuestions(UnifiedQuestions unifiedQuestions, bool shuffle)
     {
         if (!shuffle) return unifiedQuestions.GetUnifiedQuestions();
-        
+
         List<UnifiedQuestionData> unifiedQuestionsCopy = new List<UnifiedQuestionData>(unifiedQuestions.GetUnifiedQuestions());
 
         for (int i = unifiedQuestionsCopy.Count - 1; i > 0; i--)
@@ -2747,6 +2773,21 @@ public class NounsGameManager : MonoBehaviour
         }
 
         return unifiedQuestionsCopy;
+    }
+
+    private void InitializeProgressBar(ModuleProgressBar moduleProgressBar)
+    {
+        moduleProgressBar.SetTotalQuestions(currentQuestions.Count);
+        moduleProgressBar.SetProgress(0);
+    }
+
+    private void Awake()
+    {
+        if(SM2Algorithm.Instance == null)
+        {
+            GameObject sm2Object = new GameObject("SM2Algorithm");
+            sm2Object.AddComponent<SM2Algorithm>();
+        }
     }
 
     private void Start()
@@ -2768,6 +2809,7 @@ public class NounsGameManager : MonoBehaviour
         SetupTypewriter();
         SetupButtons();
         InitializeQuestions();
+        if(moduleProgressBar != null) InitializeProgressBar(moduleProgressBar);
         InitializeAdvancedSystems();
         StartDialog();
     }

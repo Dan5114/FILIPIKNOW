@@ -24,11 +24,11 @@ MonoBehaviour:
     - masaya (happy)
     - aso (dog)
     - maganda (beautiful)
+    acceptableAnswers:
+    - aso (dog)
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - aso (dog)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -45,11 +45,11 @@ MonoBehaviour:
     - Maynila (Manila)
     - paaralan (school)
     - guro (teacher)
+    acceptableAnswers:
+    - Maynila (Manila)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - Maynila (Manila)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -66,11 +66,11 @@ MonoBehaviour:
     - doktor (doctor)
     - Pilipinas (Philippines)
     - Juan (name)
+    acceptableAnswers:
+    - doktor (doctor)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - doktor (doctor)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -87,11 +87,11 @@ MonoBehaviour:
     - lamesa (table)
     - kaligayahan (happiness)
     - takot (fear)
+    acceptableAnswers:
+    - lamesa (table)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - lamesa (table)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -108,11 +108,11 @@ MonoBehaviour:
     - pagkakaibigan (friendship)
     - sapatos (shoes)
     - telepono (phone)
+    acceptableAnswers:
+    - pagkakaibigan (friendship)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - pagkakaibigan (friendship)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -129,11 +129,11 @@ MonoBehaviour:
     - kawan (flock)
     - bahay (house)
     - kotse (car)
+    acceptableAnswers:
+    - kawan (flock)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - kawan (flock)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -150,11 +150,11 @@ MonoBehaviour:
     - kaguruan (teaching staff)
     - paaralan (school)
     - mag-aaral (student)
+    acceptableAnswers:
+    - kaguruan (teaching staff)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - kaguruan (teaching staff)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -172,11 +172,11 @@ MonoBehaviour:
     - two
     - three
     - four
+    acceptableAnswers:
+    - three
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - three
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -194,11 +194,11 @@ MonoBehaviour:
     - aso (dog)
     - ibon (bird)
     - pusa (cat)
+    acceptableAnswers:
+    - ibon (bird)
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - ibon (bird)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
@@ -215,11 +215,11 @@ MonoBehaviour:
     - Maynila (Manila)
     - paaralan (school)
     - guro (teacher)
+    acceptableAnswers:
+    - Maynila (Manila)
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
-    acceptableAnswers:
-    - Maynila (Manila)
     correctAnswer: 
     isConversational: 0
     conversationPrompts: []
