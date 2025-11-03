@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ModulesAvailable : MonoBehaviour
@@ -69,6 +70,11 @@ public class ModulesAvailable : MonoBehaviour
     public void GoToModule3()
     {
         GoToModule(3);
+    }
+
+    public void LoadQuiz()
+    {
+        SceneManager.LoadScene("Quiz", LoadSceneMode.Single);
     }
 
 

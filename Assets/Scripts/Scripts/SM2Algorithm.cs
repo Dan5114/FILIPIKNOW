@@ -254,6 +254,8 @@ public class SM2Algorithm : MonoBehaviour
     
     public void ProcessAnswer(QuestionData question, bool isCorrect, float responseTime = 0f)
     {
+        userProgress.questions.Add(question);
+        
         // Update basic statistics
         userProgress.totalQuestionsAnswered++;
         question.totalAttempts++;

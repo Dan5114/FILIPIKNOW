@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Module Selection/Module 3.unity
     guid: dfceab9a13b2f554d86ecec15e20fc2b
   - enabled: 1
+    path: Assets/Scenes/Quiz.unity
+    guid: 5259e583b3fd5314193dcfbc62a6a385
+  - enabled: 1
     path: Assets/Scenes/Module 1/Nouns.unity
     guid: bd6f4a0eec240f244b398de94f4d20e9
   - enabled: 1
