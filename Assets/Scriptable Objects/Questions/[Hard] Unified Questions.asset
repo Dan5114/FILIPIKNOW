@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Hard] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 21
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'What noun (pangngalan) is in this sentence: ''Ang mga mag-aaral
+      ay nag-aaral sa silid-aralan.'' (The students are studying in the classroom.)'
+    instruction: 'Type the noun you see in the sentence:'
+    xpReward: 30
+    choices:
+    - mga mag-aaral
+    - mag-aaral
+    - silid-aralan
+    - mga mag-aaral at silid-aralan
+    acceptableAnswers:
+    - mga mag-aaral
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 22
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'Identify the noun in this sentence: ''Ang kanyang pagmamahal sa
+      bayan ay dakila.'' (His love for the country is great.)'
+    instruction: 'Type the noun you see in the sentence:'
+    xpReward: 30
+    choices:
+    - pagmamahal
+    - bayan
+    - pagmamahal at bayan
+    - kanyang
+    acceptableAnswers:
+    - pagmamahal
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 23
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'What noun is in this sentence: ''Ang kagandahan ng kalikasan ay
+      dapat pangalagaan.'' (The beauty of nature should be protected.)'
+    instruction: 'Type the noun you see in the sentence:'
+    xpReward: 30
+    choices:
+    - kagandahan
+    - kalikasan
+    - kagandahan at kalikasan
+    acceptableAnswers:
+    - kagandahan
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 24
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'Identify the noun in this sentence: ''Ang kabutihan ng isang tao
+      ay nasa kanyang kalooban.'' (The goodness of a person is in their heart.)'
+    instruction: 'Type the noun you see in the sentence:'
+    xpReward: 30
+    choices:
+    - kabutihan
+    - tao
+    - kalooban
+    - kabutihan, tao, at kalooban
+    acceptableAnswers:
+    - kabutihan
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 25
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'What noun is in this sentence: ''Ang pagtulong sa kapwa ay tanda
+      ng mabuting pag-uugali.'' (Helping others is a sign of good character.)'
+    instruction: 'Type the noun in the sentence:'
+    xpReward: 30
+    choices:
+    - pagtulong
+    - kapwa
+    - pag-uugali
+    - pagtulong, kapwa, at pag-uugali
+    acceptableAnswers:
+    - pagtulong
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 26
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'Identify the noun in this sentence: ''Ang kaalaman ay susi sa
+      tagumpay.'' (Knowledge is the key to success.)'
+    instruction: 'Type the noun in the sentence:'
+    xpReward: 30
+    choices:
+    - kaalaman
+    - susi
+    - tagumpay
+    - kaalaman at tagumpay
+    acceptableAnswers:
+    - kaalaman
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 27
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'What noun is in this sentence: ''Ang pag-asa ay nagbibigay lakas
+      sa mga taong may problema.'' (Hope gives strength to people with problems.)'
+    instruction: 'Type the noun in the sentence:'
+    xpReward: 30
+    choices:
+    - pag-asa
+    - lakas
+    - tao
+    - problema
+    acceptableAnswers:
+    - pag-asa
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 28
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'Identify the noun in this sentence: ''Ang pagkakaisa ng mga mamamayan
+      ay nagdadala ng kapayapaan.'' (The unity of citizens brings peace.)'
+    instruction: 'Type the noun in the sentence:'
+    xpReward: 30
+    choices:
+    - pagkakaisa
+    - mamamayan
+    - kapayapaan
+    - pagkakaisa at kapayapaan
+    acceptableAnswers:
+    - pagkakaisa
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 29
+    difficultyLevel: 2
+    questionType: 0
+    questionText: 'What noun is in this sentence: ''Ang paggalang sa nakatatanda
+      ay tanda ng mabuting pagpapalaki.'' (Respect for elders is a sign of good upbringing.)'
+    instruction: 'Type the noun in the sentence:'
+    xpReward: 30
+    choices:
+    - paggalang
+    - nakatatanda
+    - pagpapalaki
+    - paggalang at pagpapalaki
+    acceptableAnswers:
+    - paggalang
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 30
+    difficultyLevel: 2
+    questionType: 0
+    questionText: What do we call words that refer to names of people, things, animals,
+      places, or events?
+    instruction: 'Answer Teacher Ana''s questions about nouns:'
+    xpReward: 30
+    choices:
+    - pangngalan
+    - noun
+    - pangalan
+    acceptableAnswers:
+    - pangngalan
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts:
+    - What do we call words that refer to names of people, things, animals, places,
+      or events?
+    - Give an example of a proper noun that refers to a place.
+    - Give an example of an abstract noun that refers to feelings.
+    characterResponses:
+    - Correct! We call those words 'pangngalan' (nouns).
+    - Great! Examples of proper nouns for places are Maynila, Cebu, or Baguio.
+    - Excellent! Examples of abstract nouns for feelings are pagmamahal (love), kaligayahan
+      (happiness), or pag-asa (hope).
+    hints:
+    - 'Hint: This is the Filipino word for ''noun''.'
+    - 'Hint: Places with specific names like cities.'
+    - 'Hint: Feelings that you cannot touch like love.'
