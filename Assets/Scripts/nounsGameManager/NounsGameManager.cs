@@ -1603,6 +1603,7 @@ public class NounsGameManager : MonoBehaviour
                 QuestionData tempQuestion = new QuestionData(currentQuestion, "Nouns", questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
                 SM2Algorithm.Instance.ProcessAnswer(tempQuestion, isCorrect, responseTime);
             }
+            Debug.Log("Processing Answer...");
         }
         else
         {
