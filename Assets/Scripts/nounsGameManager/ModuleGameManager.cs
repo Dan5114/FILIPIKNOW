@@ -6,8 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class NounsGameManager : MonoBehaviour
+public class ModuleGameManager : MonoBehaviour
 {
+    [Header("MODULE SETTINGS")]
+    [SerializeField] private string moduleName;
+
     [Header("UNIFIED QUESTIONS")]
     [SerializeField] private UnifiedQuestions unifiedQuestionsReference;
     [SerializeField] private int questionsLimit = 10;
@@ -81,6 +84,7 @@ public class NounsGameManager : MonoBehaviour
     private Dictionary<int, float> questionResponseTimes = new Dictionary<int, float>();
     private Dictionary<int, int> questionAttempts = new Dictionary<int, int>();
 
+    public string ModuleName => moduleName;
     public List<UnifiedQuestionData> CurrentQuestions => currentQuestions;
     
     // Dialog content - Filipino
@@ -522,7 +526,22 @@ public class NounsGameManager : MonoBehaviour
     
     void LoadDifficultyFromSceneController()
     {
-        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        string currentSceneName = SceneManager.GetActiveScene().name.ToLower();
+        if (currentSceneName.Contains("medium"))
+        {
+            currentDifficulty = DifficultyLevel.Medium;
+            return;
+        }else if (currentSceneName.Contains("hard"))
+        {
+            currentDifficulty = DifficultyLevel.Hard;
+            return;
+        }
+        else
+        {
+            currentDifficulty = DifficultyLevel.Easy;
+            return;
+        }
+
         if (currentSceneName == "NounsMedium")
         {
             currentDifficulty = DifficultyLevel.Medium;
@@ -778,7 +797,7 @@ public class NounsGameManager : MonoBehaviour
         {
             // Check if questions are already added
             List<QuestionData> existingQuestions = SM2Algorithm.Instance.GetAllQuestions();
-            bool hasNounsQuestions = existingQuestions.Any(q => q.module == "Nouns");
+            bool hasNounsQuestions = existingQuestions.Any(q => q.module == moduleName);
             
             if (!hasNounsQuestions)
             {
@@ -805,7 +824,7 @@ public class NounsGameManager : MonoBehaviour
                 List<QuestionData> allQuestions = SM2Algorithm.Instance.GetAllQuestions();
                 foreach (QuestionData q in allQuestions)
                 {
-                    if (q.module == "Nouns" && q.repetitions == 0)
+                    if (q.module == moduleName && q.repetitions == 0)
                     {
                         reviewQuestions.Add(q);
                     }
@@ -825,7 +844,7 @@ public class NounsGameManager : MonoBehaviour
                     QuestionData newQuestion = new QuestionData
                     {
                         questionId = i,
-                        module = "Nouns",
+                        module = moduleName,
                         question = staticQuestions[i],
                         choices = staticChoices[i],
                         correctAnswer = GetCorrectAnswerIndex(i),
@@ -1600,7 +1619,7 @@ public class NounsGameManager : MonoBehaviour
             {
                 // Create a temporary QuestionData for fallback questions
                 string[][] choices = GetChoices();
-                QuestionData tempQuestion = new QuestionData(currentQuestion, "Nouns", questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
+                QuestionData tempQuestion = new QuestionData(currentQuestion, moduleName, questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
                 SM2Algorithm.Instance.ProcessAnswer(tempQuestion, isCorrect, responseTime);
             }
             Debug.Log("Processing Answer...");
@@ -2795,7 +2814,7 @@ public class NounsGameManager : MonoBehaviour
     {
         // Get difficulty from SceneController first
         LoadDifficultyFromSceneController();
-        Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
+        // Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
 
         // Initialize and shuffle question list
         unifiedQuestions = ShuffleQuestions(unifiedQuestionsReference, shuffleQuestions);

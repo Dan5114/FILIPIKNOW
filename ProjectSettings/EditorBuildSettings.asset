@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Module 1/NounsIntroductionHard.unity
     guid: 9e6dfe37fd7fdb042820e3fcdc815cc5
   - enabled: 1
-    path: Assets/Scenes/Module 1/Verbs.unity
+    path: Assets/Scenes/Module 1/Verbs_Old.unity
     guid: fbfaa377f7a3f86498c78e5ffa2f2848
   - enabled: 1
     path: Assets/Scenes/Module 1/Numbers.unity

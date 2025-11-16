@@ -12,7 +12,7 @@ public class TestNounsGameManager : MonoBehaviour
     public TextMeshProUGUI testResultsText;
     public GameObject testResultsPanel;
     
-    private NounsGameManager nounsGameManager;
+    private ModuleGameManager nounsGameManager;
     private AdaptiveDialogManager adaptiveDialogManager;
     private AdaptiveChoiceManager adaptiveChoiceManager;
     private int testResults = 0;
@@ -21,7 +21,7 @@ public class TestNounsGameManager : MonoBehaviour
     void Start()
     {
         // Find components
-        nounsGameManager = FindObjectOfType<NounsGameManager>();
+        nounsGameManager = FindObjectOfType<ModuleGameManager>();
         adaptiveDialogManager = FindObjectOfType<AdaptiveDialogManager>();
         adaptiveChoiceManager = FindObjectOfType<AdaptiveChoiceManager>();
         

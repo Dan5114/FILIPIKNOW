@@ -24,7 +24,7 @@ public class QuickSetupHelper : MonoBehaviour
     
     [Space(10)]
     [Header("Game Manager")]
-    public NounsGameManager nounsGameManager;
+    public ModuleGameManager nounsGameManager;
     
     [ContextMenu("Auto-Assign All References")]
     public void AutoAssignAllReferences()
@@ -39,7 +39,7 @@ public class QuickSetupHelper : MonoBehaviour
             dialogBox = GameObject.Find("DialogBox");
             
         if (nounsGameManager == null)
-            nounsGameManager = FindObjectOfType<NounsGameManager>();
+            nounsGameManager = FindObjectOfType<ModuleGameManager>();
         
         // Assign IntroductionSummaryDialogBox references
         if (introductionSummaryDialogBox != null)
