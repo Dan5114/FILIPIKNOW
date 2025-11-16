@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70fdb9a9ba998643a67e5bfa1bd40c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleName: NounsHard
   unifiedQuestionsReference: {fileID: 11400000, guid: d169d0a9efc0516488943b954edd9e80, type: 2}
   questionsLimit: 10
   shuffleQuestions: 1
