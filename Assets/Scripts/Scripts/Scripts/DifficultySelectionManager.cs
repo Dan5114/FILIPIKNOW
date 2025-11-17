@@ -87,7 +87,7 @@ public class DifficultySelectionManager : MonoBehaviour
         SetupUI();
         // SetupButtonImages();
         LoadTopicProgress();
-        UpdateButtonStates();
+        // UpdateButtonStates();
     }
     
     void SetupUniversalFont()
@@ -706,12 +706,12 @@ public class DifficultySelectionManager : MonoBehaviour
     }
     
     // Refresh progress when returning to this scene
-    void OnEnable()
-    {
-        if (Application.isPlaying)
-        {
-            LoadTopicProgress();
-            UpdateButtonStates();
-        }
-    }
+    // void OnEnable()
+    // {
+    //     if (Application.isPlaying)
+    //     {
+    //         LoadTopicProgress();
+    //         UpdateButtonStates();
+    //     }
+    // }
 }
