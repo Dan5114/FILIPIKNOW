@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,15 +10,17 @@ public class MainMenu : MonoBehaviour
 
     public void LoadModulesAvailable()
     {
-        ModuleUnlockManager moduleUnlockManager = FindAnyObjectByType<ModuleUnlockManager>();
+        SceneManager.LoadScene("Modules Available");
 
-        if(moduleUnlockManager.GetUnlockedModules().Count <= 0)
-        {
-            SceneManager.LoadScene("Quiz");
-        }
-        else
-        {
-            SceneManager.LoadScene("Modules Available");
-        }
+        // ModuleUnlockManager moduleUnlockManager = FindAnyObjectByType<ModuleUnlockManager>();
+
+        // if(moduleUnlockManager.GetUnlockedModules().Count <= 0)
+        // {
+        //     SceneManager.LoadScene("Quiz");
+        // }
+        // else
+        // {
+        //     SceneManager.LoadScene("Modules Available");
+        // }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
-  m_Name: '[Easy] Unified Questions'
+  m_Name: '[Nouns - Easy] Unified Questions'
   m_EditorClassIdentifier: 
   unifiedQuestions:
   - questionId: 1

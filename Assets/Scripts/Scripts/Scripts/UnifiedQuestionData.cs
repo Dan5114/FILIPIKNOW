@@ -5,6 +5,7 @@ public class UnifiedQuestionData
 {
     public int questionId;
     public DifficultyLevel difficultyLevel;
+    public string moduleName;
     public QuestionType questionType;
     [TextArea(3, 20)] public string questionText;
     [TextArea(3, 20)]public string instruction;

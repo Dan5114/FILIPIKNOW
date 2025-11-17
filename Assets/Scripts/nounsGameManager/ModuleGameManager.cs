@@ -10,6 +10,7 @@ public class ModuleGameManager : MonoBehaviour
 {
     [Header("MODULE SETTINGS")]
     [SerializeField] private string moduleName;
+    [SerializeField] private List<string> dialogMessages;
 
     [Header("UNIFIED QUESTIONS")]
     [SerializeField] private UnifiedQuestions unifiedQuestionsReference;
@@ -573,10 +574,11 @@ public class ModuleGameManager : MonoBehaviour
     // Get appropriate dialog messages based on language setting
     private string[] GetDialogMessages()
     {
-        if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
-            return dialogMessagesFilipino;
-        else
-            return dialogMessagesEnglish;
+        return dialogMessages.ToArray();
+        // if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
+        //     return dialogMessagesFilipino;
+        // else
+        //     return dialogMessagesEnglish;
     }
 
     // Get appropriate questions based on language setting
@@ -806,7 +808,7 @@ public class ModuleGameManager : MonoBehaviour
                 string[][] choices = GetChoices();
                 for (int i = 0; i < questions.Length; i++)
                 {
-                    SM2Algorithm.Instance.AddQuestion(i, "Nouns", questions[i], choices[i], GetCorrectAnswerIndex(i));
+                    SM2Algorithm.Instance.AddQuestion(i, moduleName, questions[i], choices[i], GetCorrectAnswerIndex(i));
                     Debug.Log($"Added question {i}: {questions[i]}");
                 }
             }
@@ -815,7 +817,7 @@ public class ModuleGameManager : MonoBehaviour
         // Get review questions and new questions
         if (SM2Algorithm.Instance != null)
         {
-            reviewQuestions = SM2Algorithm.Instance.GetQuestionsForReview("Nouns");
+            reviewQuestions = SM2Algorithm.Instance.GetQuestionsForReview(moduleName);
             Debug.Log($"Found {reviewQuestions.Count} review questions");
             
             // If no review questions, get all new questions
@@ -892,7 +894,7 @@ public class ModuleGameManager : MonoBehaviour
         // Start session tracking
         if (SM2Algorithm.Instance != null)
         {
-            SM2Algorithm.Instance.StartSession("Nouns");
+            SM2Algorithm.Instance.StartSession(moduleName);
         }
         
         // Subscribe to gamification events

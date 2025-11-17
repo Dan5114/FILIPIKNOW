@@ -1,40 +1,30 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Module1Selection : MonoBehaviour
 {
-    [Header("Option Buttons")]
-    public Button nounsButton;
-    public Button verbsButton;
-    public Button numbersButton;
-    public Button backButton;
-
-    private void Start()
-    {
-        // Set up button listeners
-        if (nounsButton != null)
-            nounsButton.onClick.AddListener(() => SelectOption("Nouns"));
-        
-        if (verbsButton != null)
-            verbsButton.onClick.AddListener(() => SelectOption("Verbs"));
-        
-        if (numbersButton != null)
-            numbersButton.onClick.AddListener(() => SelectOption("Numbers"));
-        
-        if (backButton != null)
-            backButton.onClick.AddListener(GoBack);
-    }
-
     public void SelectOption(string option)
     {
-        if (SceneController.Instance != null)
+        DifficultyUnlockManager difficultyUnlockManager = DifficultyUnlockManager.Instance;
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        sm2.SetCurrentTopic(option);
+
+        if(difficultyUnlockManager.Unlocked.Count <= 0)
         {
-            SceneController.Instance.GoToModuleContent(1, option);
+            SceneManager.LoadScene("Quiz");
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(option);
+            if (SceneController.Instance != null)
+            {
+                SceneController.Instance.GoToModuleContent(1, option);
+            }
         }
+
+        // else
+        // {
+        //     SceneManager.LoadScene(option);
+        // }
     }
 
     public void GoBack()
@@ -45,24 +35,8 @@ public class Module1Selection : MonoBehaviour
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Modules Available");
+            SceneManager.LoadScene("Modules Available");
         }
-    }
-
-    // Individual option methods for direct button assignment
-    public void SelectNouns()
-    {
-        SelectOption("Nouns");
-    }
-
-    public void SelectVerbs()
-    {
-        SelectOption("Verbs");
-    }
-
-    public void SelectNumbers()
-    {
-        SelectOption("Numbers");
     }
 }
 

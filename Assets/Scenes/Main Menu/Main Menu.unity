@@ -741,6 +741,8 @@ GameObject:
   m_Component:
   - component: {fileID: 125082084}
   - component: {fileID: 125082083}
+  - component: {fileID: 125082086}
+  - component: {fileID: 125082087}
   - component: {fileID: 125082085}
   m_Layer: 0
   m_Name: SM2Algorithm
@@ -791,7 +793,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125082082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bcff52934a282b4b94296388ce8a76c, type: 3}
   m_Name: 
@@ -803,7 +805,46 @@ MonoBehaviour:
   masteryThreshold: 60
   accuracyThreshold: 50
   levelThreshold: 0
+  moduleUnlockMode: 1
+--- !u!114 &125082086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125082082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce8bd1fea4954d449c171ab506fe49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allTopics:
+  - Nouns
+  - Verbs
+  - Numbers
+  unlockMediumScore: 5
+  unlockHardScore: 8
+  hardSpeedThreshold: 3
+  mediumSpeedThreshold: 6
   moduleUnlockMode: 2
+--- !u!114 &125082087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125082082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3626ddec3d55b428bc200501b8444d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionsPerLevel: 10
+  masteryThreshold: 0.8
+  initialEaseFactor: 2.5
+  easyInterval: 1
+  mediumInterval: 3
+  hardInterval: 7
 --- !u!1 &148364134
 GameObject:
   m_ObjectHideFlags: 0

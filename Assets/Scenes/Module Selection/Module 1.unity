@@ -443,7 +443,6 @@ GameObject:
   - component: {fileID: 833706133}
   - component: {fileID: 833706132}
   - component: {fileID: 833706131}
-  - component: {fileID: 833706134}
   m_Layer: 5
   m_Name: Numbers
   m_TagString: Untagged
@@ -517,14 +516,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectNumbers
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Numbers
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &833706132
@@ -565,22 +564,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833706129}
   m_CullTransparentMesh: 1
---- !u!114 &833706134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833706129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c66e46fbdac4d84296879fc4bb3ad0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 833706131}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  moduleName: Numbers
 --- !u!1 &1085997770
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +576,6 @@ GameObject:
   - component: {fileID: 1085997774}
   - component: {fileID: 1085997773}
   - component: {fileID: 1085997772}
-  - component: {fileID: 1085997775}
   m_Layer: 5
   m_Name: Verbs
   m_TagString: Untagged
@@ -667,14 +649,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectVerbs
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Verbs
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1085997773
@@ -715,22 +697,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085997770}
   m_CullTransparentMesh: 1
---- !u!114 &1085997775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085997770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c66e46fbdac4d84296879fc4bb3ad0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1085997772}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  moduleName: Verbs
 --- !u!1 &1217523687
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +816,6 @@ GameObject:
   - component: {fileID: 1244894016}
   - component: {fileID: 1244894015}
   - component: {fileID: 1244894014}
-  - component: {fileID: 1244894017}
   m_Layer: 5
   m_Name: Nouns
   m_TagString: Untagged
@@ -924,14 +889,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectNouns
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Nouns
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1244894015
@@ -972,22 +937,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244894012}
   m_CullTransparentMesh: 1
---- !u!114 &1244894017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244894012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c66e46fbdac4d84296879fc4bb3ad0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1244894014}
-  lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  moduleName: Nouns
 --- !u!1 &1277360065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,10 +1029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21872ecd3e98b3408564fb84049f801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nounsButton: {fileID: 0}
-  verbsButton: {fileID: 0}
-  numbersButton: {fileID: 0}
-  backButton: {fileID: 0}
 --- !u!1 &1345363257
 GameObject:
   m_ObjectHideFlags: 0
