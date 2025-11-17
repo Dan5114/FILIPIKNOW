@@ -822,6 +822,8 @@ MonoBehaviour:
   - Nouns
   - Verbs
   - Numbers
+  unlockNextModuleDifficultyScore: 8
+  unlockNextModuleDifficultySpeed: 5
   unlockMediumScore: 5
   unlockHardScore: 8
   hardSpeedThreshold: 5
