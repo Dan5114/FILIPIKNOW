@@ -15,6 +15,7 @@ MonoBehaviour:
   unifiedQuestions:
   - questionId: 21
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'What noun (pangngalan) is in this sentence: ''Ang mga mag-aaral
       ay nag-aaral sa silid-aralan.'' (The students are studying in the classroom.)'
@@ -37,6 +38,7 @@ MonoBehaviour:
     hints: []
   - questionId: 22
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'Identify the noun in this sentence: ''Ang kanyang pagmamahal sa
       bayan ay dakila.'' (His love for the country is great.)'
@@ -59,6 +61,7 @@ MonoBehaviour:
     hints: []
   - questionId: 23
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'What noun is in this sentence: ''Ang kagandahan ng kalikasan ay
       dapat pangalagaan.'' (The beauty of nature should be protected.)'
@@ -80,6 +83,7 @@ MonoBehaviour:
     hints: []
   - questionId: 24
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'Identify the noun in this sentence: ''Ang kabutihan ng isang tao
       ay nasa kanyang kalooban.'' (The goodness of a person is in their heart.)'
@@ -102,6 +106,7 @@ MonoBehaviour:
     hints: []
   - questionId: 25
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'What noun is in this sentence: ''Ang pagtulong sa kapwa ay tanda
       ng mabuting pag-uugali.'' (Helping others is a sign of good character.)'
@@ -124,6 +129,7 @@ MonoBehaviour:
     hints: []
   - questionId: 26
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'Identify the noun in this sentence: ''Ang kaalaman ay susi sa
       tagumpay.'' (Knowledge is the key to success.)'
@@ -146,6 +152,7 @@ MonoBehaviour:
     hints: []
   - questionId: 27
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'What noun is in this sentence: ''Ang pag-asa ay nagbibigay lakas
       sa mga taong may problema.'' (Hope gives strength to people with problems.)'
@@ -168,6 +175,7 @@ MonoBehaviour:
     hints: []
   - questionId: 28
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'Identify the noun in this sentence: ''Ang pagkakaisa ng mga mamamayan
       ay nagdadala ng kapayapaan.'' (The unity of citizens brings peace.)'
@@ -190,6 +198,7 @@ MonoBehaviour:
     hints: []
   - questionId: 29
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: 'What noun is in this sentence: ''Ang paggalang sa nakatatanda
       ay tanda ng mabuting pagpapalaki.'' (Respect for elders is a sign of good upbringing.)'
@@ -212,6 +221,7 @@ MonoBehaviour:
     hints: []
   - questionId: 30
     difficultyLevel: 2
+    moduleName: Nouns
     questionType: 0
     questionText: What do we call words that refer to names of people, things, animals,
       places, or events?

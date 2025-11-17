@@ -1,0 +1,456 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Numbers - Hard] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 101
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Two plus three equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - lima
+    - apat
+    - anim
+    - pito
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 102
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Four plus five equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - walo
+    - pito
+    - anim
+    - siyam
+    acceptableAnswers:
+    - siyam
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 103
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Ten minus three equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - pito
+    - walo
+    - siyam
+    - anim
+    acceptableAnswers:
+    - pito
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 104
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Five times two equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - walo
+    - pito
+    - sampu
+    - anim
+    acceptableAnswers:
+    - sampu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 105
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Ten divided by two equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - apat
+    - tatlo
+    - lima
+    - anim
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 106
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: What number comes before twenty?
+    instruction: 
+    xpReward: 30
+    choices:
+    - labing-walo
+    - labing-pito
+    - labing-anim
+    - labing-siyam
+    acceptableAnswers:
+    - labing-siyam
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 107
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: What number comes after thirty?
+    instruction: 
+    xpReward: 30
+    choices:
+    - "dalawampu\u2019t siyam"
+    - "tatlumpu\u2019t isa"
+    - apatnapu
+    - "dalawampu\u2019t walo"
+    acceptableAnswers:
+    - "tatlumpu\u2019t isa"
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 108
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: 'Which is larger: ten or nine? Answer in Filipino.'
+    instruction: 
+    xpReward: 30
+    choices:
+    - sampu
+    - siyam
+    - walo
+    - labing-isa
+    acceptableAnswers:
+    - sampu
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 109
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Half of forty is what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - labinlimang
+    - sampu
+    - dalawampu
+    - labing-walo
+    acceptableAnswers:
+    - dalawampu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 110
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Double of fifteen is what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - tatlumpu
+    - "dalawampu\u2019t lima"
+    - dalawampu
+    - apatnapu
+    acceptableAnswers:
+    - tatlumpu
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 111
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: You buy twelve eggs and add eight more. How many in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - labing-walo
+    - labing-siyam
+    - dalawampu
+    - "dalawampu\u2019t isa"
+    acceptableAnswers:
+    - dalawampu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 112
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Maria counted thirty stars then saw five more. What\u2019s the
+      total in Filipino?"
+    instruction: 
+    xpReward: 30
+    choices:
+    - apatnapu
+    - "tatlumpu\u2019t lima"
+    - "tatlumpu\u2019t apat"
+    - "dalawampu\u2019t siyam"
+    acceptableAnswers:
+    - "tatlumpu\u2019t lima"
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 113
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Ten students left but twenty remained. How many are left in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - dalawampu
+    - sampu
+    - labinlimang
+    - "dalawampu\u2019t lima"
+    acceptableAnswers:
+    - dalawampu
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 114
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Say the Filipino word for first.
+    instruction: 
+    xpReward: 30
+    choices:
+    - pangalawa
+    - una
+    - huli
+    - ikatlo
+    acceptableAnswers:
+    - una
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 115
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Say the Filipino word for second.
+    instruction: 
+    xpReward: 30
+    choices:
+    - ikalawa
+    - una
+    - ikatlo
+    - ikaapat
+    acceptableAnswers:
+    - ikalawa
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 116
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Thirty divided by six equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - anim
+    - apat
+    - tatlo
+    - lima
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 117
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Forty divided by eight equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - anim
+    - apat
+    - tatlo
+    - lima
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 118
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: Fifty minus twenty equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - "dalawampu\u2019t lima"
+    - "dalawampu\u2019t apat"
+    - tatlumpu
+    - labing-siyam
+    acceptableAnswers:
+    - tatlumpu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 119
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: One hundred minus fifty equals what in Filipino?
+    instruction: 
+    xpReward: 30
+    choices:
+    - limampu
+    - sampu
+    - dalawampu
+    - tatlumpu
+    acceptableAnswers:
+    - limampu
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 120
+    difficultyLevel: 2
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Add ten and thirty. What\u2019s the result in Filipino?"
+    instruction: 
+    xpReward: 30
+    choices:
+    - apatnapu
+    - "tatlumpu\u2019t lima"
+    - "dalawampu\u2019t siyam"
+    - limampu
+    acceptableAnswers:
+    - apatnapu
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

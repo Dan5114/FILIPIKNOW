@@ -51,8 +51,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Module 1/Verbs.unity
     guid: 63d3682eb2a8307499488d88eb16ef40
   - enabled: 1
+    path: Assets/Scenes/Module 1/VerbsDifficultySelection.unity
+    guid: 97fde7b580eb3f646a2c3701485e3687
+  - enabled: 1
     path: Assets/Scenes/Module 1/Numbers.unity
-    guid: 073c70e43c335134bb2e81a1a4bb5b98
+    guid: 839cf567056e23148ad9cfb5c5126199
+  - enabled: 1
+    path: Assets/Scenes/Module 1/NumbersDifficultySelection.unity
+    guid: 86a6a6706045e0d4286708d09c6ef663
   - enabled: 1
     path: Assets/Scenes/Module 2/Pronouns.unity
     guid: 3f5c7873ab36c5f4593560e4347d7ad4

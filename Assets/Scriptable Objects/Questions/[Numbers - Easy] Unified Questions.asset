@@ -10,23 +10,68 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
-  m_Name: '[Nouns - Easy] Unified Questions'
+  m_Name: '[Numbers - Easy] Unified Questions'
   m_EditorClassIdentifier: 
   unifiedQuestions:
-  - questionId: 1
+  - questionId: 76
     difficultyLevel: 0
-    moduleName: Nouns
+    moduleName: Numbers
     questionType: 0
-    questionText: Which of the following is a noun (pangngalan) in Filipino?
-    instruction: 'Choose the noun from the options:'
+    questionText: I placed one apple on the desk. Tell me the Filipino word for one.
+    instruction: 
     xpReward: 10
     choices:
-    - tumakbo (ran)
-    - masaya (happy)
-    - aso (dog)
-    - maganda (beautiful)
+    - isa
+    - dalawa
+    - tatlo
+    - apat
     acceptableAnswers:
-    - aso (dog)
+    - isa
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 77
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: Look at these two books. How do we say two in Filipino?
+    instruction: 
+    xpReward: 10
+    choices:
+    - isa
+    - dalawa
+    - tatlo
+    - apat
+    acceptableAnswers:
+    - dalawa
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 78
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Three students just walked in. What\u2019s the Filipino word for
+      three?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - isa
+    - dalawa
+    - tatlo
+    - apat
+    acceptableAnswers:
+    - tatlo
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
@@ -35,20 +80,20 @@ MonoBehaviour:
     conversationPrompts: []
     characterResponses: []
     hints: []
-  - questionId: 2
+  - questionId: 79
     difficultyLevel: 0
-    moduleName: Nouns
+    moduleName: Numbers
     questionType: 0
-    questionText: Which is a proper noun (pangngalang pantangi) in Filipino?
-    instruction: 'Choose the proper noun:'
+    questionText: "After four comes\u2026? Say it in Filipino."
+    instruction: 
     xpReward: 10
     choices:
-    - lungsod (city)
-    - Maynila (Manila)
-    - paaralan (school)
-    - guro (teacher)
+    - anim
+    - lima
+    - tatlo
+    - siyam
     acceptableAnswers:
-    - Maynila (Manila)
+    - lima
     correctChoiceIndex: 1
     sentenceTemplate: 
     blankWord: 
@@ -57,131 +102,20 @@ MonoBehaviour:
     conversationPrompts: []
     characterResponses: []
     hints: []
-  - questionId: 3
+  - questionId: 80
     difficultyLevel: 0
-    moduleName: Nouns
+    moduleName: Numbers
     questionType: 0
-    questionText: Which is a common noun (pangngalang pambalana) in Filipino?
-    instruction: 'Choose the common noun:'
+    questionText: "I\u2019m holding five pencils. What\u2019s five in Filipino?"
+    instruction: 
     xpReward: 10
     choices:
-    - Maria (name)
-    - doktor (doctor)
-    - Pilipinas (Philippines)
-    - Juan (name)
+    - apat
+    - tatlo
+    - lima
+    - dalawa
     acceptableAnswers:
-    - doktor (doctor)
-    correctChoiceIndex: 1
-    sentenceTemplate: 
-    blankWord: 
-    correctAnswer: 
-    isConversational: 0
-    conversationPrompts: []
-    characterResponses: []
-    hints: []
-  - questionId: 4
-    difficultyLevel: 0
-    moduleName: Nouns
-    questionType: 0
-    questionText: Which is a concrete noun (pangngalang tahas) in Filipino?
-    instruction: 'Choose the concrete noun:'
-    xpReward: 10
-    choices:
-    - pag-ibig (love)
-    - lamesa (table)
-    - kaligayahan (happiness)
-    - takot (fear)
-    acceptableAnswers:
-    - lamesa (table)
-    correctChoiceIndex: 1
-    sentenceTemplate: 
-    blankWord: 
-    correctAnswer: 
-    isConversational: 0
-    conversationPrompts: []
-    characterResponses: []
-    hints: []
-  - questionId: 5
-    difficultyLevel: 0
-    moduleName: Nouns
-    questionType: 0
-    questionText: Which is an abstract noun (pangngalang basal) in Filipino?
-    instruction: 'Choose the abstract noun:'
-    xpReward: 10
-    choices:
-    - aklat (book)
-    - pagkakaibigan (friendship)
-    - sapatos (shoes)
-    - telepono (phone)
-    acceptableAnswers:
-    - pagkakaibigan (friendship)
-    correctChoiceIndex: 1
-    sentenceTemplate: 
-    blankWord: 
-    correctAnswer: 
-    isConversational: 0
-    conversationPrompts: []
-    characterResponses: []
-    hints: []
-  - questionId: 6
-    difficultyLevel: 0
-    moduleName: Nouns
-    questionType: 0
-    questionText: Which is a collective noun (pangngalang lansakan) in Filipino?
-    instruction: 'Choose the collective noun:'
-    xpReward: 10
-    choices:
-    - bundok (mountain)
-    - kawan (flock)
-    - bahay (house)
-    - kotse (car)
-    acceptableAnswers:
-    - kawan (flock)
-    correctChoiceIndex: 1
-    sentenceTemplate: 
-    blankWord: 
-    correctAnswer: 
-    isConversational: 0
-    conversationPrompts: []
-    characterResponses: []
-    hints: []
-  - questionId: 7
-    difficultyLevel: 0
-    moduleName: Nouns
-    questionType: 0
-    questionText: Which is a derived noun (pangngalang hango) in Filipino?
-    instruction: 'Choose the derived noun:'
-    xpReward: 10
-    choices:
-    - guro (teacher)
-    - kaguruan (teaching staff)
-    - paaralan (school)
-    - mag-aaral (student)
-    acceptableAnswers:
-    - kaguruan (teaching staff)
-    correctChoiceIndex: 1
-    sentenceTemplate: 
-    blankWord: 
-    correctAnswer: 
-    isConversational: 0
-    conversationPrompts: []
-    characterResponses: []
-    hints: []
-  - questionId: 8
-    difficultyLevel: 0
-    moduleName: Nouns
-    questionType: 0
-    questionText: 'How many nouns are in this sentence: ''Si Ana ay bumili ng tinapay
-      sa panaderya.'' (Ana bought bread at the bakery.)'
-    instruction: 'Count the nouns in the sentence:'
-    xpReward: 10
-    choices:
-    - one
-    - two
-    - three
-    - four
-    acceptableAnswers:
-    - three
+    - lima
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
@@ -190,21 +124,64 @@ MonoBehaviour:
     conversationPrompts: []
     characterResponses: []
     hints: []
-  - questionId: 9
+  - questionId: 81
     difficultyLevel: 0
-    moduleName: Nouns
+    moduleName: Numbers
     questionType: 0
-    questionText: 'Fill in the blank: ''Ang ___ ay lumilipad sa langit.'' (The ___
-      flies in the sky.)'
-    instruction: 'Choose the appropriate noun:'
+    questionText: Imagine you bought six bananas. How do we say six in Filipino?
+    instruction: 
     xpReward: 10
     choices:
-    - isda (fish)
-    - aso (dog)
-    - ibon (bird)
-    - pusa (cat)
+    - pito
+    - walo
+    - siyam
+    - anim
     acceptableAnswers:
-    - ibon (bird)
+    - anim
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 82
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Seven birds flew past the window. What\u2019s seven in Filipino?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - pito
+    - walo
+    - siyam
+    acceptableAnswers:
+    - pito
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 83
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Before nine comes\u2026? Say it in Filipino."
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - pito
+    - walo
+    - siyam
+    acceptableAnswers:
+    - walo
     correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
@@ -213,21 +190,43 @@ MonoBehaviour:
     conversationPrompts: []
     characterResponses: []
     hints: []
-  - questionId: 10
+  - questionId: 84
     difficultyLevel: 0
-    moduleName: Nouns
+    moduleName: Numbers
     questionType: 0
-    questionText: Which is a proper noun (pangngalang pantangi) in Filipino?
-    instruction: 'Choose the proper noun:'
+    questionText: "It\u2019s ten o\u2019clock. What\u2019s ten in Filipino?"
+    instruction: 
     xpReward: 10
     choices:
-    - lungsod (city)
-    - Maynila (Manila)
-    - paaralan (school)
-    - guro (teacher)
+    - siyam
+    - walo
+    - pito
+    - sampu
     acceptableAnswers:
-    - Maynila (Manila)
-    correctChoiceIndex: 1
+    - sampu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 85
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: 'Which is bigger: one or two? Answer in Filipino.'
+    instruction: 
+    xpReward: 10
+    choices:
+    - tatlo
+    - dalawa
+    - isa
+    - apat
+    acceptableAnswers:
+    - dalawa
+    correctChoiceIndex: 2
     sentenceTemplate: 
     blankWord: 
     correctAnswer: 

@@ -129,11 +129,11 @@ public class SceneController : MonoBehaviour
                     break;
                 case "verbs":
                     Debug.Log("🎯 Routing Verbs to VerbDifficultySelection");
-                    LoadScene("VerbDifficultySelection");
+                    LoadScene("VerbsDifficultySelection");
                     break;
                 case "numbers":
-                    Debug.Log("🎯 Routing Numbers to NumberDifficultySelection");
-                    LoadScene("NumberDifficultySelection");
+                    Debug.Log("🎯 Routing Numbers to NumbersDifficultySelection");
+                    LoadScene("NumbersDifficultySelection");
                     break;
                 default:
                     Debug.Log($"🎯 Routing {contentType} directly to {contentType} scene");

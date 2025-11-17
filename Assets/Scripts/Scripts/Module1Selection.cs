@@ -9,7 +9,7 @@ public class Module1Selection : MonoBehaviour
         SM2Algorithm sm2 = SM2Algorithm.Instance;
         sm2.SetCurrentTopic(option);
 
-        if(difficultyUnlockManager.Unlocked.Count <= 0)
+        if(!difficultyUnlockManager.IsModuleUnlocked(option))
         {
             SceneManager.LoadScene("Quiz");
         }

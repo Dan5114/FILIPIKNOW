@@ -13,20 +13,219 @@ MonoBehaviour:
   m_Name: '[Verbs - Easy] Unified Questions'
   m_EditorClassIdentifier: 
   unifiedQuestions:
-  - questionId: 1
+  - questionId: 31
     difficultyLevel: 0
+    moduleName: Verbs
     questionType: 0
-    questionText: Which of the following is a noun (pangngalan) in Filipino?
-    instruction: 'Choose the noun from the options:'
+    questionText: Point to the Filipino word that means "eat."
+    instruction: 
     xpReward: 10
     choices:
-    - tumakbo (ran)
-    - masaya (happy)
-    - aso (dog)
-    - maganda (beautiful)
+    - uminom
+    - matulog
+    - kumain
+    - magtrabaho
     acceptableAnswers:
-    - aso (dog)
+    - kumain
     correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 32
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Choose the Filipino verb that matches the action of drinking water.
+    instruction: 
+    xpReward: 10
+    choices:
+    - uminom
+    - kumain
+    - matulog
+    - maglinis
+    acceptableAnswers:
+    - uminom
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 33
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Identify the Filipino verb used when someone goes to sleep.
+    instruction: 
+    xpReward: 10
+    choices:
+    - mag-aral
+    - magtrabaho
+    - maglinis
+    - matulog
+    acceptableAnswers:
+    - matulog
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 34
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Select the Filipino verb that describes writing with a pen.
+    instruction: 
+    xpReward: 10
+    choices:
+    - magbasa
+    - magsulat
+    - maglinis
+    - maglaro
+    acceptableAnswers:
+    - magsulat
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 35
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Find the Filipino verb that means reading a book.
+    instruction: 
+    xpReward: 10
+    choices:
+    - magsulat
+    - magbasa
+    - maglinis
+    - mag-aral
+    acceptableAnswers:
+    - magbasa
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 36
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Pick the Filipino verb that describes buying food at the market.
+    instruction: 
+    xpReward: 10
+    choices:
+    - bumili
+    - magbenta
+    - maglinis
+    - magtrabaho
+    acceptableAnswers:
+    - bumili
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 37
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Spot the Filipino verb that means selling fruit.
+    instruction: 
+    xpReward: 10
+    choices:
+    - bumili
+    - maglinis
+    - magluto
+    - magbenta
+    acceptableAnswers:
+    - magbenta
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 38
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Match the Filipino verb to the action of studying for class.
+    instruction: 
+    xpReward: 10
+    choices:
+    - magtrabaho
+    - maglinis
+    - mag-aral
+    - magluto
+    acceptableAnswers:
+    - mag-aral
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 39
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Choose the Filipino verb that describes singing at karaoke.
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - kumanta
+    - magbasa
+    - magsulat
+    acceptableAnswers:
+    - kumanta
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 40
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: Identify which of these is NOT a verb.
+    instruction: 
+    xpReward: 10
+    choices:
+    - laruan
+    - mag-aral
+    - magbasa
+    - magluto
+    acceptableAnswers:
+    - laruan
+    correctChoiceIndex: 0
     sentenceTemplate: 
     blankWord: 
     correctAnswer: 

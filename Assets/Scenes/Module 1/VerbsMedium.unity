@@ -912,7 +912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5935f15bc1b5f2f449ce298d33cc1c6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e3cea43e031b16488eafd65f05f01ac, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1217,15 +1217,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choice 2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
-  m_sharedMaterial: {fileID: -6686636746340509485, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1242,10 +1242,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65
   m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1539,15 +1539,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choice 3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
-  m_sharedMaterial: {fileID: -6686636746340509485, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1564,10 +1564,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65
   m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1674,15 +1674,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choice 4
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
-  m_sharedMaterial: {fileID: -6686636746340509485, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1699,10 +1699,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65
   m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1910,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &798451144
 Transform:
   m_ObjectHideFlags: 0
@@ -2413,7 +2413,6 @@ GameObject:
   - component: {fileID: 1326119141}
   - component: {fileID: 1326119140}
   - component: {fileID: 1326119142}
-  - component: {fileID: 1326119143}
   m_Layer: 5
   m_Name: ChoiceButton2
   m_TagString: Untagged
@@ -2524,18 +2523,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1326119143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326119138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d85ec2518cd95c448e124143bb5b534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1442474724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2767,7 +2754,6 @@ GameObject:
   - component: {fileID: 1462222784}
   - component: {fileID: 1462222783}
   - component: {fileID: 1462222785}
-  - component: {fileID: 1462222786}
   m_Layer: 5
   m_Name: ChoiceButton4
   m_TagString: Untagged
@@ -2878,18 +2864,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1462222786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1462222781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d85ec2518cd95c448e124143bb5b534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1603536835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,14 +2873,67 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603536837}
-  - component: {fileID: 1603536838}
+  - component: {fileID: 1603536836}
   m_Layer: 0
-  m_Name: QuizManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1603536836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603536835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70fdb9a9ba998643a67e5bfa1bd40c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moduleName: Verbs
+  dialogMessages:
+  - Kumusta! Ako si Teacher Ana.
+  - Ngayon ay matututunan natin ang tungkol sa PANDIWA.
+  - Ang pandiwa ay mga salitang nagsasaad ng kilos o galaw.
+  - 'Halimbawa: tumakbo, kumain, naglaro, umiyak'
+  - Handa ka na ba para sa ating laro?
+  unifiedQuestionsReference: {fileID: 11400000, guid: 6aa5a214e1dc84540ad1ec8e55387068, type: 2}
+  questionsLimit: 10
+  shuffleQuestions: 1
+  dialogText: {fileID: 1206508220}
+  continueButton: {fileID: 285650540}
+  choiceButtons:
+  - {fileID: 2131897232}
+  - {fileID: 1326119142}
+  - {fileID: 2105455634}
+  - {fileID: 1462222785}
+  backButton: {fileID: 568230142}
+  moduleProgressBar: {fileID: 2079358248}
+  easyPanel: {fileID: 0}
+  mediumPanel: {fileID: 0}
+  hardPanel: {fileID: 0}
+  fillInBlankInput: {fileID: 0}
+  sentenceText: {fileID: 0}
+  mediumInstructionText: {fileID: 0}
+  typingInput: {fileID: 0}
+  questionText: {fileID: 0}
+  hardInstructionText: {fileID: 0}
+  conversationalPanel: {fileID: 0}
+  conversationText: {fileID: 0}
+  conversationButtons: []
+  conversationButtonTexts: []
+  adaptiveDialogManager: {fileID: 0}
+  adaptiveChoiceManager: {fileID: 0}
+  questionDatabase: {fileID: 0}
+  currentDifficulty: 1
+  typewriterEffect: {fileID: 1206508221}
+  timesBoldFont: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
+  characterAnimator: {fileID: 1012767148}
+  optionsMenu: {fileID: 0}
+  useUniversalFont: 1
 --- !u!4 &1603536837
 Transform:
   m_ObjectHideFlags: 0
@@ -2922,31 +2949,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1603536838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603536835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7569a41eb76ff04792366701be5dbc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questionText: {fileID: 1206508220}
-  choiceButtons:
-  - {fileID: 2131897232}
-  - {fileID: 1326119142}
-  - {fileID: 2105455634}
-  - {fileID: 1462222785}
-  backButton: {fileID: 568230142}
-  continueButton: {fileID: 285650540}
-  topicQuestions:
-  - {fileID: 11400000, guid: d57aa10d78398f44a9817aba2908256d, type: 2}
-  - {fileID: 11400000, guid: 4d5148298cdd6e84d991bc867c7702c0, type: 2}
-  - {fileID: 11400000, guid: 011724fa11773a14dae2eca630774294, type: 2}
-  questionCount: 10
 --- !u!1 &1639780576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3540,15 +3542,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choice 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
-  m_sharedMaterial: {fileID: -6686636746340509485, guid: 28d08f16764b565478bfe2c8aab51c59, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3565,10 +3567,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 65
   m_fontSizeBase: 65
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3833,7 +3835,6 @@ GameObject:
   - component: {fileID: 2105455633}
   - component: {fileID: 2105455632}
   - component: {fileID: 2105455634}
-  - component: {fileID: 2105455635}
   m_Layer: 5
   m_Name: ChoiceButton3
   m_TagString: Untagged
@@ -3944,18 +3945,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2105455635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105455630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d85ec2518cd95c448e124143bb5b534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2131897228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3968,7 +3957,6 @@ GameObject:
   - component: {fileID: 2131897231}
   - component: {fileID: 2131897230}
   - component: {fileID: 2131897232}
-  - component: {fileID: 2131897233}
   m_Layer: 5
   m_Name: ChoiceButton1
   m_TagString: Untagged
@@ -4079,18 +4067,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2131897233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131897228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d85ec2518cd95c448e124143bb5b534, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2190463762841002585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4100,15 +4076,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2190463761974412531, guid: 44f80ee20865d7449b1e80f6b70cc532, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2190463763180196377, guid: 44f80ee20865d7449b1e80f6b70cc532, type: 3}
       propertyPath: m_Name
       value: ProgressBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 2190463763180196377, guid: 44f80ee20865d7449b1e80f6b70cc532, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2190463763180196379, guid: 44f80ee20865d7449b1e80f6b70cc532, type: 3}
       propertyPath: m_Pivot.x

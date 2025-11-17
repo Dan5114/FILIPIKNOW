@@ -31,6 +31,13 @@ public class DifficultyUnlockManager : MonoBehaviour
 
     public Dictionary<string, HashSet<DifficultyLevel>> Unlocked => unlocked;
 
+    public bool IsModuleUnlocked(string topic)
+    {
+        if(unlocked.ContainsKey(topic))return true;
+
+        return false;
+    }
+
     public bool IsUnlocked(string topic, DifficultyLevel level)
     {
         if (!unlocked.ContainsKey(topic))
