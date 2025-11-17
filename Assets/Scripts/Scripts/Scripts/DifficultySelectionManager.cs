@@ -87,7 +87,7 @@ public class DifficultySelectionManager : MonoBehaviour
         SetupUI();
         // SetupButtonImages();
         LoadTopicProgress();
-        UpdateButtonStates();
+        // UpdateButtonStates();
     }
     
     void SetupUniversalFont()
@@ -605,11 +605,11 @@ public class DifficultySelectionManager : MonoBehaviour
     void SelectDifficulty(DifficultyLevel difficulty)
     {
         // Check if difficulty is accessible
-        if (LearningProgressionManager.Instance != null && !LearningProgressionManager.Instance.CanAccessLevel(topicName, difficulty))
-        {
-            ShowAccessDeniedMessage(difficulty);
-            return;
-        }
+        // if (LearningProgressionManager.Instance != null && !LearningProgressionManager.Instance.CanAccessLevel(topicName, difficulty))
+        // {
+        //     ShowAccessDeniedMessage(difficulty);
+        //     return;
+        // }
         
         // Store selected difficulty
         if (SceneController.Instance != null)
@@ -706,12 +706,12 @@ public class DifficultySelectionManager : MonoBehaviour
     }
     
     // Refresh progress when returning to this scene
-    void OnEnable()
-    {
-        if (Application.isPlaying)
-        {
-            LoadTopicProgress();
-            UpdateButtonStates();
-        }
-    }
+    // void OnEnable()
+    // {
+    //     if (Application.isPlaying)
+    //     {
+    //         LoadTopicProgress();
+    //         UpdateButtonStates();
+    //     }
+    // }
 }

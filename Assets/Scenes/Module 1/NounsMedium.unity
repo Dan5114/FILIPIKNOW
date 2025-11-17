@@ -362,7 +362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSlider: {fileID: 1086169840}
-  nounsGameManager: {fileID: 1964144013}
   onProgress:
     m_PersistentCalls:
       m_Calls: []
@@ -4095,7 +4094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70fdb9a9ba998643a67e5bfa1bd40c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleName: Nouns
+  dialogMessages: []
   unifiedQuestionsReference: {fileID: 11400000, guid: 27e15cee6b5b8a64382bb2e6d36657c9, type: 2}
+  questionsLimit: 10
   shuffleQuestions: 1
   dialogText: {fileID: 500483844}
   continueButton: {fileID: 518704515}

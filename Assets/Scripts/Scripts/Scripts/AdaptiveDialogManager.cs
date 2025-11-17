@@ -242,7 +242,7 @@ public class AdaptiveDialogManager : MonoBehaviour
     TypewriterEffect GetEffectiveTypewriterEffect()
     {
         // First try to find NounsGameManager's TypewriterEffect
-        NounsGameManager nounsManager = FindObjectOfType<NounsGameManager>();
+        ModuleGameManager nounsManager = FindObjectOfType<ModuleGameManager>();
         if (nounsManager != null && nounsManager.typewriterEffect != null)
         {
             Debug.Log("Using NounsGameManager's TypewriterEffect");

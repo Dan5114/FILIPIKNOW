@@ -7,64 +7,80 @@ using System;
 
 public class QuizManager : MonoBehaviour
 {
-    [Header("UI REFERENCES")]
+    public static string SelectedTopic = "";
+    public static DifficultyLevel SelectedDifficulty = DifficultyLevel.Medium;
+
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private Button[] choiceButtons;
     [SerializeField] private Button backButton;
     [SerializeField] private Button continueButton;
 
-    [Header("SETTINGS")]
-    [SerializeField] private string moduleName = "Nouns";
-    [SerializeField] private int questionCount = 5;
+    [Header("Quiz Settings")]
+    [SerializeField] private List<UnifiedQuestions> topicQuestions;
+    [SerializeField] private int questionCount = 10;
 
-    private List<QuestionData> quizQuestions = new List<QuestionData>();
+    private List<UnifiedQuestionData> quizQuestions = new();
+    private UnifiedQuestionData currentQuestion;
+
     private int currentIndex = 0;
-    private QuestionData currentQuestion;
+    private int correctCount = 0;
+    private float totalResponseTime = 0f;
+    private float questionStartTime = 0f;
 
-    private void GenerateMiniQuiz(string moduleName, int questionCount)
+    private void Start()
     {
-        if (SM2Algorithm.Instance == null)
+        SelectedTopic = SM2Algorithm.Instance.CurrentTopic;
+
+        if (string.IsNullOrEmpty(SelectedTopic))
         {
-            Debug.LogError("SM2Algorithm.Instance not found!");
+            Debug.LogError("QuizManager: No topic selected!");
+            questionText.text = "No topic selected!";
             return;
         }
-        List<QuestionData> allQuestions = new List<QuestionData>();
 
-        allQuestions.AddRange(SM2Algorithm.Instance.GetQuestionsForReview(moduleName, questionCount));
-        allQuestions.AddRange(SM2Algorithm.Instance.GetWeakQuestions(moduleName, questionCount));
+        LoadQuestions();
+        ShowNextQuestion();
 
-        var questions = allQuestions.ToList();
-        for (int i = questions.Count - 1; i > 0; i--)
+        if (backButton != null)
+            backButton.onClick.AddListener(() =>
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Module 1"));
+    }
+
+    private void LoadQuestions()
+    {
+        // Pull medium questions only
+        var allQuestions = topicQuestions
+            .SelectMany(q => q.GetUnifiedQuestions())
+            .Where(q => q.difficultyLevel == DifficultyLevel.Medium &&
+                        q.questionText.Length > 0 &&
+                        q.choices != null &&
+                        q.choices.Length > 0 &&
+                        q.moduleName.ToLower() == SelectedTopic.ToLower())
+            // .Where(q => q.questionText.Contains(SelectedTopic) || true) // fallback if topic not tagged
+            .ToList();
+
+        if (allQuestions.Count == 0)
+        {
+            Debug.LogError("No medium questions found for topic: " + SelectedTopic);
+            questionText.text = "No available questions!";
+            return;
+        }
+
+        // Shuffle
+        for (int i = allQuestions.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
-            var tmp = questions[i];
-            questions[i] = questions[j];
-            questions[j] = tmp;
-        }
-        int takeCount = Math.Min(questionCount, questions.Count);
-        quizQuestions.AddRange(questions.Take(questionCount));
-
-        if (quizQuestions.Count < questionCount)
-        {
-            var all = SM2Algorithm.Instance.GetAllQuestions()
-                .Where(q => q.module == moduleName)
-                .ToList();
-
-            quizQuestions.AddRange(all.Take(questionCount).ToList());
-            Debug.Log("No weak questions. Using random ones from module instead.");
+            var temp = allQuestions[i];
+            allQuestions[i] = allQuestions[j];
+            allQuestions[j] = temp;
         }
 
-        Debug.Log($"Quiz generated with {quizQuestions.Count} questions for module '{moduleName}'.");
+        quizQuestions = allQuestions.Take(questionCount).ToList();
     }
 
     private void ShowNextQuestion()
     {
-        if (quizQuestions == null || quizQuestions.Count == 0)
-        {
-            questionText.text = "No available quiz questions right now!";
-            return;
-        }
-
         if (currentIndex >= quizQuestions.Count)
         {
             EndQuiz();
@@ -72,26 +88,20 @@ public class QuizManager : MonoBehaviour
         }
 
         currentQuestion = quizQuestions[currentIndex];
-        questionText.text = currentQuestion.question;
+        questionText.text = currentQuestion.questionText;
 
-        SetupChoiceButtons();
+        SetupButtons();
+        questionStartTime = Time.time; // timer starts
     }
 
-    private void SetupChoiceButtons()
+    private void SetupButtons()
     {
-        if (choiceButtons == null || choiceButtons.Length == 0)
-        {
-            Debug.LogError("No choice buttons assigned!");
-            return;
-        }
-
         for (int i = 0; i < choiceButtons.Length; i++)
         {
             if (i < currentQuestion.choices.Length)
             {
                 choiceButtons[i].gameObject.SetActive(true);
-                var btnText = choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>();
-                btnText.text = currentQuestion.choices[i];
+                choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = currentQuestion.choices[i];
 
                 int index = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
@@ -108,91 +118,91 @@ public class QuizManager : MonoBehaviour
 
     private void OnChoiceSelected(int index)
     {
-        bool isCorrect = index == currentQuestion.correctAnswer;
-        float responseTime = 0f;
+        float responseTime = Time.time - questionStartTime;
+        totalResponseTime += responseTime;
 
-        SM2Algorithm.Instance.ProcessAnswer(currentQuestion, isCorrect, responseTime);
+        bool isCorrect = index == currentQuestion.correctChoiceIndex;
 
         if (isCorrect)
-            questionText.text = $"Correct!\n\n{currentQuestion.explanation}";
+        {
+            correctCount++;
+            questionText.text = $"Correct!\n\n{currentQuestion.instruction}";
+        }
         else
-            questionText.text = $"Wrong!\n\nCorrect answer: {currentQuestion.choices[currentQuestion.correctAnswer]}";
+        {
+            questionText.text =
+                $"Wrong!\nCorrect answer: {currentQuestion.choices[currentQuestion.correctChoiceIndex]}";
+        }
 
+        // Feedback
         ShowButtonFeedback(index, isCorrect);
+
+        // SM2 + Learning Progression store the result
+        LearningProgressionManager.Instance.RecordQuestionAnswer(
+            SelectedTopic,
+            currentQuestion.questionId,
+            DifficultyLevel.Medium,
+            isCorrect,
+            responseTime,
+            1
+        );
+
         continueButton.gameObject.SetActive(true);
         continueButton.onClick.RemoveAllListeners();
         continueButton.onClick.AddListener(() =>
         {
+            ResetButtonColors();
             currentIndex++;
             ShowNextQuestion();
-            ResetButtons(choiceButtons);
         });
     }
 
-    private void ShowButtonFeedback(int buttonIndex, bool isCorrect)
+    private void ShowButtonFeedback(int index, bool isCorrect)
     {
-        if (choiceButtons == null || buttonIndex >= choiceButtons.Length) return;
-        
-        Button clickedButton = choiceButtons[buttonIndex];
-        if (clickedButton == null) return;
-        
-        ChoiceButtonFeedback feedback = clickedButton.GetComponent<ChoiceButtonFeedback>();
+        var btn = choiceButtons[index];
+        var feedback = btn.GetComponent<ChoiceButtonFeedback>();
+
         if (feedback != null)
         {
-            if (isCorrect)
-            {
-                feedback.ShowCorrect();
-            }
-            else
-            {
-                feedback.ShowWrong();
-            }
+            if (isCorrect) feedback.ShowCorrect();
+            else feedback.ShowWrong();
         }
         else
         {
-            Debug.LogWarning($"ChoiceButtonFeedback component not found on button {buttonIndex}");
+            btn.image.color = isCorrect ? Color.green : Color.red;
+        }
+    }
+
+    private void ResetButtonColors()
+    {
+        foreach (var btn in choiceButtons)
+        {
+            var feedback = btn.GetComponent<ChoiceButtonFeedback>();
+            if (feedback != null) feedback.ResetToDefault();
+            else btn.image.color = Color.white;
         }
     }
 
     private void EndQuiz()
     {
-        questionText.text = $"You’ve finished your quiz!\n{ShowStats()}";
+        float accuracy = (float)correctCount / quizQuestions.Count;
+        float avgResponseTime = totalResponseTime / quizQuestions.Count;
+
+        questionText.text =
+            $"Quiz Finished!\nScore: {correctCount}/{quizQuestions.Count}\nAvg Speed: {avgResponseTime:F2}s";
+
+        // Unlock difficulty based on score + speed
+        DifficultyUnlockManager.Instance.EvaluateUnlocks(SelectedTopic, correctCount, avgResponseTime);
+
+        // Update actual topic progress
+        LearningProgressionManager.Instance.UpdateTopicProgress(
+            SelectedTopic,
+            DifficultyLevel.Medium,
+            true,
+            accuracy
+        );
+
         continueButton.gameObject.SetActive(false);
-        foreach(Button button in choiceButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
-    }
-
-    private string ShowStats()
-    {
-        if (SM2Algorithm.Instance == null) return "";
-
-        var progress = SM2Algorithm.Instance.GetUserProgress();
-        float accuracy = SM2Algorithm.Instance.GetOverallAccuracy();
-
-        string stats = $"Level: {progress.level}\nXP: {progress.experience}\nAccuracy: {accuracy:F1}%";
-
-        Debug.Log(stats);
-
-        return stats;
-    }
-
-    private void ResetButtons(Button[] choiceButtons)
-    {
-        foreach(Button button in choiceButtons)
-        {
-            button.GetComponent<ChoiceButtonFeedback>().ResetToDefault();
-        }
-    }
-
-    private void Start()
-    {
-        GenerateMiniQuiz(moduleName, questionCount);
-        ShowNextQuestion();
-
-        if (backButton != null)
-            backButton.onClick.AddListener(() =>
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu"));
+        foreach (var b in choiceButtons) b.gameObject.SetActive(false);
     }
 }

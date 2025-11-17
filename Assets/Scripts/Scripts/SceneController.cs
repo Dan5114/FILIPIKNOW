@@ -129,11 +129,11 @@ public class SceneController : MonoBehaviour
                     break;
                 case "verbs":
                     Debug.Log("🎯 Routing Verbs to VerbDifficultySelection");
-                    LoadScene("VerbDifficultySelection");
+                    LoadScene("VerbsDifficultySelection");
                     break;
                 case "numbers":
-                    Debug.Log("🎯 Routing Numbers to NumberDifficultySelection");
-                    LoadScene("NumberDifficultySelection");
+                    Debug.Log("🎯 Routing Numbers to NumbersDifficultySelection");
+                    LoadScene("NumbersDifficultySelection");
                     break;
                 default:
                     Debug.Log($"🎯 Routing {contentType} directly to {contentType} scene");
@@ -177,6 +177,33 @@ public class SceneController : MonoBehaviour
             default:
                 Debug.Log("🎯 Defaulting to Nouns scene (Easy)");
                 LoadScene("Nouns");
+                break;
+        }
+    }
+
+    public void GoToTopicModuleGame()
+    {
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        DifficultyLevel difficulty = GetSelectedDifficulty();
+        string topic = sm2.CurrentTopic;
+
+        switch (difficulty)
+        {
+            case DifficultyLevel.Easy:
+                Debug.Log("🎯 Navigating to Nouns scene (Easy)");
+                LoadScene(topic);
+                break;
+            case DifficultyLevel.Medium:
+                Debug.Log("🎯 Navigating to NounsMedium scene (Medium)");
+                LoadScene(topic+"Medium");
+                break;
+            case DifficultyLevel.Hard:
+                Debug.Log("🎯 Navigating to NounsHard scene (Hard)");
+                LoadScene(topic+"Hard");
+                break;
+            default:
+                Debug.Log("🎯 Defaulting to Nouns scene (Easy)");
+                LoadScene(topic);
                 break;
         }
     }

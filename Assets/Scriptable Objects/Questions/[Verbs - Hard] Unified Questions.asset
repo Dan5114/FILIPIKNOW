@@ -1,0 +1,484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Verbs - Hard] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 56
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Si Nanay ay ___ ng hapunan para sa pamilya."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - naglinis
+    - nag-aral
+    - natulog
+    - nagluto
+    acceptableAnswers:
+    - nagluto
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 57
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Ang estudyante ay ___ sa proyekto kahapon."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - naglinis
+    - nag-aral
+    - nagtrabaho
+    - nagluto
+    acceptableAnswers:
+    - nagtrabaho
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 58
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Which verb fits: "Ang doktor ay ___ ng pasyente sa ospital."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nag-aral
+    - naggamot
+    - naglinis
+    - nagluto
+    acceptableAnswers:
+    - naggamot
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 59
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Si Tatay ay ___ ng kotse sa garahe."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - naglinis
+    - nagluto
+    - nag-aral
+    - natulog
+    acceptableAnswers:
+    - naglinis
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 60
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Si Lola ay ___ ng kuwento sa mga apo."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - naglinis
+    - nagluto
+    - nag-aral
+    - nagsalita
+    acceptableAnswers:
+    - nagsalita
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 61
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Choose the correct verb: "Ang estudyante ay ___ ng pelikula sa
+      sinehan."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nag-aral
+    - nanood
+    - nagluto
+    - naglinis
+    acceptableAnswers:
+    - nanood
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 62
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Ang bata ay ___ ng musika sa radyo."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nag-aral
+    - nagluto
+    - nakinig
+    - naglinis
+    acceptableAnswers:
+    - nanood
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 63
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Ang guro ay ___ sa klase ngayong umaga."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nag-aral
+    - nagluto
+    - nagsalita
+    - naglinis
+    acceptableAnswers:
+    - nagsalita
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 64
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Ang bata ay ___ sa kaibigan sa labas ng paaralan."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagluto
+    - nag-aral
+    - naghintay
+    - naglinis
+    acceptableAnswers:
+    - naghintay
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 65
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Translate this command into Filipino: "Open the door."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - isara
+    - maglinis
+    - magluto
+    - buksan
+    acceptableAnswers:
+    - buksan
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 66
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Translate this command into Filipino: "Close the window."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - isara
+    - maglinis
+    - magluto
+    - buksan
+    acceptableAnswers:
+    - isara
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 67
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "___ ang sagot sa papel." (Write the answer
+      on the paper.)'
+    instruction: 
+    xpReward: 30
+    choices:
+    - isulat
+    - basahin
+    - linisin
+    - laruin
+    acceptableAnswers:
+    - isulat
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 67
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "___ nang mabuti sa mga tagubilin." (Listen
+      carefully to the instructions.)'
+    instruction: 
+    xpReward: 30
+    choices:
+    - makinig
+    - magsalita
+    - magbasa
+    - magsulat
+    acceptableAnswers:
+    - makinig
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 68
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "___ nang malakas para marinig ng lahat." (Speak
+      loudly so everyone hears.)'
+    instruction: 
+    xpReward: 30
+    choices:
+    - makinig
+    - magsalita
+    - magbasa
+    - magsulat
+    acceptableAnswers:
+    - magsalita
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 69
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Ang bata ay ___ ng bahay bago maglaro."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagluto
+    - naglinis
+    - nag-aral
+    - nagtrabaho
+    acceptableAnswers:
+    - naglinis
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 70
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Ang estudyante ay ___ para sa pagsusulit
+      bukas."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - naglinis
+    - nagluto
+    - nagtrabaho
+    - nag-aral
+    acceptableAnswers:
+    - nag-aral
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 71
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Si Tatay ay ___ ng almusal sa kusina."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagluto
+    - naglinis
+    - nag-aral
+    - nagtrabaho
+    acceptableAnswers:
+    - nagluto
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 72
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Complete the sentence: "Ang mga bata ay ___ sa parke buong hapon."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagluto
+    - naglinis
+    - naglaro
+    - nagtrabaho
+    acceptableAnswers:
+    - naglaro
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 73
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Fill in the blank: "Ang guro ay ___ ng tala sa pisara."'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagsulat
+    - naglinis
+    - naglaro
+    - nagbasa
+    acceptableAnswers:
+    - nagsulat
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 74
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Combine these: "Ang estudyante ay ___ ng libro at pagkatapos ay
+      ___ ng sagot." Fill with Filipino verbs.'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nag-aral / naglinis
+    - nagbasa / nagsulat
+    - nagluto / nagtrabaho
+    - nakinig / nagsalita
+    acceptableAnswers:
+    - nagbasa / nagsulat
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 75
+    difficultyLevel: 2
+    moduleName: Verbs
+    questionType: 0
+    questionText: 'Form a sentence: "Noong kahapon ako ay ___ sa iskwelahan." Choose
+      the correct Filipino verb.'
+    instruction: 
+    xpReward: 30
+    choices:
+    - nagluto
+    - naglinis
+    - nag-aral
+    - nagtrabaho
+    acceptableAnswers:
+    - nag-aral
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

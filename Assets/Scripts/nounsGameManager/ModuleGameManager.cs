@@ -6,8 +6,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class NounsGameManager : MonoBehaviour
+public class ModuleGameManager : MonoBehaviour
 {
+    [Header("MODULE SETTINGS")]
+    [SerializeField] private string moduleName;
+    [SerializeField] private List<string> dialogMessages;
+
     [Header("UNIFIED QUESTIONS")]
     [SerializeField] private UnifiedQuestions unifiedQuestionsReference;
     [SerializeField] private int questionsLimit = 10;
@@ -72,6 +76,7 @@ public class NounsGameManager : MonoBehaviour
     private int sessionCorrectAnswers = 0;
     private int sessionTotalAnswers = 0;
     private float sessionStartTime;
+    private float totalResponseTime = 0f;
     private float questionStartTime;
     private int conversationStep = 0;
     
@@ -81,6 +86,7 @@ public class NounsGameManager : MonoBehaviour
     private Dictionary<int, float> questionResponseTimes = new Dictionary<int, float>();
     private Dictionary<int, int> questionAttempts = new Dictionary<int, int>();
 
+    public string ModuleName => moduleName;
     public List<UnifiedQuestionData> CurrentQuestions => currentQuestions;
     
     // Dialog content - Filipino
@@ -522,7 +528,22 @@ public class NounsGameManager : MonoBehaviour
     
     void LoadDifficultyFromSceneController()
     {
-        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        string currentSceneName = SceneManager.GetActiveScene().name.ToLower();
+        if (currentSceneName.Contains("medium"))
+        {
+            currentDifficulty = DifficultyLevel.Medium;
+            return;
+        }else if (currentSceneName.Contains("hard"))
+        {
+            currentDifficulty = DifficultyLevel.Hard;
+            return;
+        }
+        else
+        {
+            currentDifficulty = DifficultyLevel.Easy;
+            return;
+        }
+
         if (currentSceneName == "NounsMedium")
         {
             currentDifficulty = DifficultyLevel.Medium;
@@ -554,10 +575,11 @@ public class NounsGameManager : MonoBehaviour
     // Get appropriate dialog messages based on language setting
     private string[] GetDialogMessages()
     {
-        if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
-            return dialogMessagesFilipino;
-        else
-            return dialogMessagesEnglish;
+        return dialogMessages.ToArray();
+        // if (SettingsManager.Instance != null && SettingsManager.Instance.IsFilipinoLanguage())
+        //     return dialogMessagesFilipino;
+        // else
+        //     return dialogMessagesEnglish;
     }
 
     // Get appropriate questions based on language setting
@@ -574,7 +596,7 @@ public class NounsGameManager : MonoBehaviour
     {
         List<string> questions = new List<string>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string question = unifiedQuestionData.questionText;
             questions.Add(question);
@@ -593,7 +615,7 @@ public class NounsGameManager : MonoBehaviour
         // New
         List<string[]> choicesBundle = new List<string[]>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string[] choices = unifiedQuestionData.choices;
             choicesBundle.Add(choices);
@@ -610,7 +632,7 @@ public class NounsGameManager : MonoBehaviour
         //     return correctAnswersEnglish;
         List<string[]> correctAnswersBundle = new List<string[]>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string[] choices = unifiedQuestionData.acceptableAnswers;
             correctAnswersBundle.Add(choices);
@@ -778,7 +800,7 @@ public class NounsGameManager : MonoBehaviour
         {
             // Check if questions are already added
             List<QuestionData> existingQuestions = SM2Algorithm.Instance.GetAllQuestions();
-            bool hasNounsQuestions = existingQuestions.Any(q => q.module == "Nouns");
+            bool hasNounsQuestions = existingQuestions.Any(q => q.module == moduleName);
             
             if (!hasNounsQuestions)
             {
@@ -787,7 +809,7 @@ public class NounsGameManager : MonoBehaviour
                 string[][] choices = GetChoices();
                 for (int i = 0; i < questions.Length; i++)
                 {
-                    SM2Algorithm.Instance.AddQuestion(i, "Nouns", questions[i], choices[i], GetCorrectAnswerIndex(i));
+                    SM2Algorithm.Instance.AddQuestion(i, moduleName, questions[i], choices[i], GetCorrectAnswerIndex(i));
                     Debug.Log($"Added question {i}: {questions[i]}");
                 }
             }
@@ -796,7 +818,7 @@ public class NounsGameManager : MonoBehaviour
         // Get review questions and new questions
         if (SM2Algorithm.Instance != null)
         {
-            reviewQuestions = SM2Algorithm.Instance.GetQuestionsForReview("Nouns");
+            reviewQuestions = SM2Algorithm.Instance.GetQuestionsForReview(moduleName);
             Debug.Log($"Found {reviewQuestions.Count} review questions");
             
             // If no review questions, get all new questions
@@ -805,7 +827,7 @@ public class NounsGameManager : MonoBehaviour
                 List<QuestionData> allQuestions = SM2Algorithm.Instance.GetAllQuestions();
                 foreach (QuestionData q in allQuestions)
                 {
-                    if (q.module == "Nouns" && q.repetitions == 0)
+                    if (q.module == moduleName && q.repetitions == 0)
                     {
                         reviewQuestions.Add(q);
                     }
@@ -825,7 +847,7 @@ public class NounsGameManager : MonoBehaviour
                     QuestionData newQuestion = new QuestionData
                     {
                         questionId = i,
-                        module = "Nouns",
+                        module = moduleName,
                         question = staticQuestions[i],
                         choices = staticChoices[i],
                         correctAnswer = GetCorrectAnswerIndex(i),
@@ -873,7 +895,7 @@ public class NounsGameManager : MonoBehaviour
         // Start session tracking
         if (SM2Algorithm.Instance != null)
         {
-            SM2Algorithm.Instance.StartSession("Nouns");
+            SM2Algorithm.Instance.StartSession(moduleName);
         }
         
         // Subscribe to gamification events
@@ -1391,7 +1413,11 @@ public class NounsGameManager : MonoBehaviour
     // New method for adaptive choice system
     public void OnChoiceSelected(string selectedChoice)
     {
-        Debug.Log($"Adaptive choice selected: {selectedChoice}");
+        // Debug.Log($"Adaptive choice selected: {selectedChoice}");
+
+        float responseTime = Time.time - questionStartTime;
+        totalResponseTime += responseTime;
+
         OnAnswerSelected(selectedChoice);
     }
     
@@ -1600,7 +1626,7 @@ public class NounsGameManager : MonoBehaviour
             {
                 // Create a temporary QuestionData for fallback questions
                 string[][] choices = GetChoices();
-                QuestionData tempQuestion = new QuestionData(currentQuestion, "Nouns", questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
+                QuestionData tempQuestion = new QuestionData(currentQuestion, moduleName, questions[currentQuestion], choices[currentQuestion], GetCorrectAnswerIndex(currentQuestion));
                 SM2Algorithm.Instance.ProcessAnswer(tempQuestion, isCorrect, responseTime);
             }
             Debug.Log("Processing Answer...");
@@ -1802,9 +1828,30 @@ public class NounsGameManager : MonoBehaviour
         DisplayQuestion();
     }
 
-    void EndGame()
+    private void EvaluateTopicMastery()
     {
-        Debug.Log("🎯 EndGame called - hiding dialog box and showing summary panel");
+        float accuracy = (float)sessionCorrectAnswers / currentQuestions.Count;
+        float avgResponseTime = totalResponseTime / currentQuestions.Count;
+
+        DifficultyUnlockManager dum = DifficultyUnlockManager.Instance;
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        string currentTopic = sm2.CurrentTopic;
+
+        dum.EvaluateNextDifficultyUnlock(currentTopic, currentDifficulty, sessionCorrectAnswers, avgResponseTime);
+
+        LearningProgressionManager.Instance.UpdateTopicProgress(
+            currentTopic,
+            DifficultyLevel.Medium,
+            true,
+            accuracy
+        );
+    }
+
+    private void EndGame()
+    {
+        // Debug.Log("🎯 EndGame called - hiding dialog box and showing summary panel");
+
+        EvaluateTopicMastery();
         
         // Hide the dialog box so summary panel can display properly
         HideDialogBox();
@@ -2031,27 +2078,31 @@ public class NounsGameManager : MonoBehaviour
 
     public void GoBack()
     {
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        string topic = sm2.CurrentTopic;
+
         // Navigate back to difficulty selection instead of Module 1
         if (SceneController.Instance != null)
         {
-            SceneController.Instance.LoadScene("NounsDifficultySelection");
+            SceneController.Instance.LoadScene($"{topic}DifficultySelection");
         }
         else
         {
-            SceneManager.LoadScene("NounsDifficultySelection");
+            SceneManager.LoadScene($"{topic}DifficultySelection");
         }
     }
     
     public void OnSummaryContinue()
     {
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
         // Navigate back to difficulty selection after summary
         if (SceneController.Instance != null)
         {
-            SceneController.Instance.LoadScene("NounsDifficultySelection");
+            SceneController.Instance.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
         }
         else
         {
-            SceneManager.LoadScene("NounsDifficultySelection");
+            SceneManager.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
         }
     }
     
@@ -2533,7 +2584,6 @@ public class NounsGameManager : MonoBehaviour
     
     void OnContinue()
     {
-        
         // Skip intro transition since we're going straight to questions
         
         // Check if we're using the unified system or legacy system
@@ -2795,7 +2845,7 @@ public class NounsGameManager : MonoBehaviour
     {
         // Get difficulty from SceneController first
         LoadDifficultyFromSceneController();
-        Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
+        // Debug.Log($"🎯 NounsGameManager Start: Current Difficulty after loading: {currentDifficulty}");
 
         // Initialize and shuffle question list
         unifiedQuestions = ShuffleQuestions(unifiedQuestionsReference, shuffleQuestions);

@@ -2875,7 +2875,7 @@ GameObject:
   - component: {fileID: 1603536837}
   - component: {fileID: 1603536836}
   m_Layer: 0
-  m_Name: NounsGameManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2893,7 +2893,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70fdb9a9ba998643a67e5bfa1bd40c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleName: Nouns
+  dialogMessages:
+  - Hello! I am Teacher Ana.
+  - Today we will learn about NOUNS.
+  - Nouns are words that name people, places, things, or animals.
+  - 'Examples: dog, school, Maria, water'
+  - Are you ready for our game?
   unifiedQuestionsReference: {fileID: 11400000, guid: 9a442e81a9f81014690bb592009413a4, type: 2}
+  questionsLimit: 10
   shuffleQuestions: 1
   dialogText: {fileID: 1206508220}
   continueButton: {fileID: 285650540}
@@ -3794,7 +3802,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSlider: {fileID: 741896257}
-  nounsGameManager: {fileID: 1603536836}
   onProgress:
     m_PersistentCalls:
       m_Calls: []

@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Numbers - Easy] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 76
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: I placed one apple on the desk. Tell me the Filipino word for one.
+    instruction: 
+    xpReward: 10
+    choices:
+    - isa
+    - dalawa
+    - tatlo
+    - apat
+    acceptableAnswers:
+    - isa
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 77
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: Look at these two books. How do we say two in Filipino?
+    instruction: 
+    xpReward: 10
+    choices:
+    - isa
+    - dalawa
+    - tatlo
+    - apat
+    acceptableAnswers:
+    - dalawa
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 78
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Three students just walked in. What\u2019s the Filipino word for
+      three?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - isa
+    - dalawa
+    - tatlo
+    - apat
+    acceptableAnswers:
+    - tatlo
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 79
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "After four comes\u2026? Say it in Filipino."
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - lima
+    - tatlo
+    - siyam
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 80
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "I\u2019m holding five pencils. What\u2019s five in Filipino?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - apat
+    - tatlo
+    - lima
+    - dalawa
+    acceptableAnswers:
+    - lima
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 81
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: Imagine you bought six bananas. How do we say six in Filipino?
+    instruction: 
+    xpReward: 10
+    choices:
+    - pito
+    - walo
+    - siyam
+    - anim
+    acceptableAnswers:
+    - anim
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 82
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Seven birds flew past the window. What\u2019s seven in Filipino?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - pito
+    - walo
+    - siyam
+    acceptableAnswers:
+    - pito
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 83
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "Before nine comes\u2026? Say it in Filipino."
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - pito
+    - walo
+    - siyam
+    acceptableAnswers:
+    - walo
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 84
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "It\u2019s ten o\u2019clock. What\u2019s ten in Filipino?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - siyam
+    - walo
+    - pito
+    - sampu
+    acceptableAnswers:
+    - sampu
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 85
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: 'Which is bigger: one or two? Answer in Filipino.'
+    instruction: 
+    xpReward: 10
+    choices:
+    - tatlo
+    - dalawa
+    - isa
+    - apat
+    acceptableAnswers:
+    - dalawa
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

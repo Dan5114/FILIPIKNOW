@@ -1,0 +1,358 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Verbs - Medium] Unified Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 41
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: At the beach a swimmer dives into the water. Which Filipino verb
+      describes this action?
+    instruction: 
+    xpReward: 20
+    choices:
+    - lumangoy
+    - tumakbo
+    - lumakad
+    - matulog
+    acceptableAnswers:
+    - lumangoy
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: lumangoy
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 42
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: During a fiesta everyone moves to the rhythm. Which Filipino verb
+      matches this?
+    instruction: 
+    xpReward: 20
+    choices:
+    - kumanta
+    - mag-aral
+    - sumayaw
+    - magtrabaho
+    acceptableAnswers:
+    - sumayaw
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 43
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: A teacher is guiding the class. Which Filipino verb expresses this?
+    instruction: 
+    xpReward: 20
+    choices:
+    - mag-aral
+    - magturo
+    - maglinis
+    - magtrabaho
+    acceptableAnswers:
+    - magturo
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 44
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: Music is playing softly. Which Filipino verb means what you do
+      to enjoy it?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magsalita
+    - magbasa
+    - magsulat
+    - makinig
+    acceptableAnswers:
+    - makinig
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 45
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: A student stands on stage delivering words. Which Filipino verb
+      fits here?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magsalita
+    - magbasa
+    - magsulat
+    - makinig
+    acceptableAnswers:
+    - magsalita
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 46
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: The family sits together in front of a TV. Which Filipino verb
+      describes their action?
+    instruction: 
+    xpReward: 20
+    choices:
+    - manood
+    - maglinis
+    - magbasa
+    - magsulat
+    acceptableAnswers:
+    - manood
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 47
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: In the kitchen food is being prepared. Which Filipino verb is correct?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magtrabaho
+    - maglinis
+    - magluto
+    - mag-aral
+    acceptableAnswers:
+    - magluto
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 48
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: "A broom is in someone\u2019s hand. Which Filipino verb describes
+      the action?"
+    instruction: 
+    xpReward: 20
+    choices:
+    - mag-aral
+    - magtrabaho
+    - magluto
+    - maglinis
+    acceptableAnswers:
+    - maglinis
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 49
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: Inside the office people are busy. Which Filipino verb describes
+      their activity?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magtrabaho
+    - magluto
+    - maglinis
+    - mag-aral
+    acceptableAnswers:
+    - magtrabaho
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 50
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: A student waits outside the school gate. Which Filipino verb describes
+      this?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magtrabaho
+    - maghintay
+    - magluto
+    - maglinis
+    acceptableAnswers:
+    - maghintay
+    correctChoiceIndex: 1
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 51
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: A book is in front of you and you want to see inside. Which Filipino
+      verb is used?
+    instruction: 
+    xpReward: 20
+    choices:
+    - isara
+    - buksan
+    - magluto
+    - maglinis
+    acceptableAnswers:
+    - buksan
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 52
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: The window is open but you want it shut. Which Filipino verb is
+      correct?
+    instruction: 
+    xpReward: 20
+    choices:
+    - maglinis
+    - buksan
+    - magluto
+    - isara
+    acceptableAnswers:
+    - isara
+    correctChoiceIndex: 3
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 53
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: Children are on the court with a ball. Which Filipino verb describes
+      their action?
+    instruction: 
+    xpReward: 20
+    choices:
+    - magtrabaho
+    - maglinis
+    - maglaro
+    - magluto
+    acceptableAnswers:
+    - maglaro
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 54
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: Maria lifts her voice at the festival. Which Filipino verb describes
+      her action?
+    instruction: 
+    xpReward: 20
+    choices:
+    - kumanta
+    - sumayaw
+    - magbasa
+    - magsulat
+    acceptableAnswers:
+    - kumanta
+    correctChoiceIndex: 0
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 55
+    difficultyLevel: 1
+    moduleName: Verbs
+    questionType: 0
+    questionText: Dancers move gracefully on stage. Which Filipino verb describes
+      their action?
+    instruction: 
+    xpReward: 20
+    choices:
+    - kumanta
+    - magbasa
+    - sumayaw
+    - maglinis
+    acceptableAnswers:
+    - sumayaw
+    correctChoiceIndex: 2
+    sentenceTemplate: 
+    blankWord: 
+    correctAnswer: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

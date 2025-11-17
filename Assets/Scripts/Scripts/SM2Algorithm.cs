@@ -168,6 +168,10 @@ public class SM2Algorithm : MonoBehaviour
     public System.Action<int> OnLevelUp;
     public System.Action<string> OnAchievementUnlocked;
     public System.Action<int> OnStreakUpdated;
+    private string currentTopic = "";
+
+    public string CurrentTopic => currentTopic;
+    public void SetCurrentTopic(string topic) => currentTopic = topic;
     
     void Awake()
     {

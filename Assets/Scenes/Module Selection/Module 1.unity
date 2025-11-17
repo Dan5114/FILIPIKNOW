@@ -516,14 +516,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectNumbers
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Numbers
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &833706132
@@ -649,14 +649,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectVerbs
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Verbs
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1085997773
@@ -889,14 +889,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1288350761}
         m_TargetAssemblyTypeName: Module1Selection, Assembly-CSharp
-        m_MethodName: SelectNouns
-        m_Mode: 1
+        m_MethodName: SelectOption
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Nouns
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1244894015
@@ -1029,10 +1029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f21872ecd3e98b3408564fb84049f801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nounsButton: {fileID: 0}
-  verbsButton: {fileID: 0}
-  numbersButton: {fileID: 0}
-  backButton: {fileID: 0}
 --- !u!1 &1345363257
 GameObject:
   m_ObjectHideFlags: 0
