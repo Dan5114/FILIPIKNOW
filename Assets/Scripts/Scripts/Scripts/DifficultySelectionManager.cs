@@ -605,11 +605,11 @@ public class DifficultySelectionManager : MonoBehaviour
     void SelectDifficulty(DifficultyLevel difficulty)
     {
         // Check if difficulty is accessible
-        if (LearningProgressionManager.Instance != null && !LearningProgressionManager.Instance.CanAccessLevel(topicName, difficulty))
-        {
-            ShowAccessDeniedMessage(difficulty);
-            return;
-        }
+        // if (LearningProgressionManager.Instance != null && !LearningProgressionManager.Instance.CanAccessLevel(topicName, difficulty))
+        // {
+        //     ShowAccessDeniedMessage(difficulty);
+        //     return;
+        // }
         
         // Store selected difficulty
         if (SceneController.Instance != null)

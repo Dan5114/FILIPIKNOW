@@ -76,6 +76,7 @@ public class ModuleGameManager : MonoBehaviour
     private int sessionCorrectAnswers = 0;
     private int sessionTotalAnswers = 0;
     private float sessionStartTime;
+    private float totalResponseTime = 0f;
     private float questionStartTime;
     private int conversationStep = 0;
     
@@ -595,7 +596,7 @@ public class ModuleGameManager : MonoBehaviour
     {
         List<string> questions = new List<string>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string question = unifiedQuestionData.questionText;
             questions.Add(question);
@@ -614,7 +615,7 @@ public class ModuleGameManager : MonoBehaviour
         // New
         List<string[]> choicesBundle = new List<string[]>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string[] choices = unifiedQuestionData.choices;
             choicesBundle.Add(choices);
@@ -631,7 +632,7 @@ public class ModuleGameManager : MonoBehaviour
         //     return correctAnswersEnglish;
         List<string[]> correctAnswersBundle = new List<string[]>();
 
-        foreach (UnifiedQuestionData unifiedQuestionData in unifiedQuestions)
+        foreach (UnifiedQuestionData unifiedQuestionData in currentQuestions)
         {
             string[] choices = unifiedQuestionData.acceptableAnswers;
             correctAnswersBundle.Add(choices);
@@ -1412,7 +1413,11 @@ public class ModuleGameManager : MonoBehaviour
     // New method for adaptive choice system
     public void OnChoiceSelected(string selectedChoice)
     {
-        Debug.Log($"Adaptive choice selected: {selectedChoice}");
+        // Debug.Log($"Adaptive choice selected: {selectedChoice}");
+
+        float responseTime = Time.time - questionStartTime;
+        totalResponseTime += responseTime;
+
         OnAnswerSelected(selectedChoice);
     }
     
@@ -1823,9 +1828,30 @@ public class ModuleGameManager : MonoBehaviour
         DisplayQuestion();
     }
 
-    void EndGame()
+    private void EvaluateTopicMastery()
     {
-        Debug.Log("🎯 EndGame called - hiding dialog box and showing summary panel");
+        float accuracy = (float)sessionCorrectAnswers / currentQuestions.Count;
+        float avgResponseTime = totalResponseTime / currentQuestions.Count;
+
+        DifficultyUnlockManager dum = DifficultyUnlockManager.Instance;
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        string currentTopic = sm2.CurrentTopic;
+
+        dum.EvaluateNextDifficultyUnlock(currentTopic, currentDifficulty, sessionCorrectAnswers, avgResponseTime);
+
+        LearningProgressionManager.Instance.UpdateTopicProgress(
+            currentTopic,
+            DifficultyLevel.Medium,
+            true,
+            accuracy
+        );
+    }
+
+    private void EndGame()
+    {
+        // Debug.Log("🎯 EndGame called - hiding dialog box and showing summary panel");
+
+        EvaluateTopicMastery();
         
         // Hide the dialog box so summary panel can display properly
         HideDialogBox();
@@ -2052,27 +2078,31 @@ public class ModuleGameManager : MonoBehaviour
 
     public void GoBack()
     {
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
+        string topic = sm2.CurrentTopic;
+
         // Navigate back to difficulty selection instead of Module 1
         if (SceneController.Instance != null)
         {
-            SceneController.Instance.LoadScene("NounsDifficultySelection");
+            SceneController.Instance.LoadScene($"{topic}DifficultySelection");
         }
         else
         {
-            SceneManager.LoadScene("NounsDifficultySelection");
+            SceneManager.LoadScene($"{topic}DifficultySelection");
         }
     }
     
     public void OnSummaryContinue()
     {
+        SM2Algorithm sm2 = SM2Algorithm.Instance;
         // Navigate back to difficulty selection after summary
         if (SceneController.Instance != null)
         {
-            SceneController.Instance.LoadScene("NounsDifficultySelection");
+            SceneController.Instance.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
         }
         else
         {
-            SceneManager.LoadScene("NounsDifficultySelection");
+            SceneManager.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
         }
     }
     
@@ -2554,7 +2584,6 @@ public class ModuleGameManager : MonoBehaviour
     
     void OnContinue()
     {
-        
         // Skip intro transition since we're going straight to questions
         
         // Check if we're using the unified system or legacy system

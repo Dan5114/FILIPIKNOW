@@ -2900,7 +2900,7 @@ MonoBehaviour:
   - Ang pandiwa ay mga salitang nagsasaad ng kilos o galaw.
   - 'Halimbawa: tumakbo, kumain, naglaro, umiyak'
   - Handa ka na ba para sa ating laro?
-  unifiedQuestionsReference: {fileID: 11400000, guid: 9a442e81a9f81014690bb592009413a4, type: 2}
+  unifiedQuestionsReference: {fileID: 11400000, guid: 354b92f3977252840a338108950c3abc, type: 2}
   questionsLimit: 10
   shuffleQuestions: 1
   dialogText: {fileID: 1206508220}

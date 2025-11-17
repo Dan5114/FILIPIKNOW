@@ -824,8 +824,8 @@ MonoBehaviour:
   - Numbers
   unlockMediumScore: 5
   unlockHardScore: 8
-  hardSpeedThreshold: 3
-  mediumSpeedThreshold: 6
+  hardSpeedThreshold: 5
+  mediumSpeedThreshold: 8
   moduleUnlockMode: 2
 --- !u!114 &125082087
 MonoBehaviour:

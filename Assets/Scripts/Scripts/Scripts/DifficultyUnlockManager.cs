@@ -8,7 +8,11 @@ public class DifficultyUnlockManager : MonoBehaviour
     [Header("SETTINGS")]
     [SerializeField] private List<string> allTopics;
 
-    [Header("Unlock Thresholds")]
+    [Header("Module Unlock Thresholds")]
+    [SerializeField] private int unlockNextModuleDifficultyScore = 8;
+    [SerializeField] private float unlockNextModuleDifficultySpeed = 5;
+
+    [Header("Quiz Unlock Thresholds")]
     [Tooltip("Score required to unlock MEDIUM difficulty.")]
     public int unlockMediumScore = 5;
 
@@ -82,7 +86,7 @@ public class DifficultyUnlockManager : MonoBehaviour
         if(save) Save();
     }
 
-    #region QUIZ UNLOCK LOGIC
+    #region DIFFICULTY UNLOCK LOGIC
     public void EvaluateUnlocks(string topic, int score, float avgTime)
     {
         // Easy always available
@@ -99,6 +103,25 @@ public class DifficultyUnlockManager : MonoBehaviour
         {
             Unlock(topic, DifficultyLevel.Hard);
         }
+    }
+
+    public bool EvaluateNextDifficultyUnlock(string topic, DifficultyLevel currentDifficulty, int score, float avgTime)
+    {
+        if (score >= unlockNextModuleDifficultyScore && avgTime <= unlockNextModuleDifficultySpeed)
+        {
+            if(currentDifficulty == DifficultyLevel.Easy)
+            {
+                Unlock(topic, DifficultyLevel.Medium);
+                return true;
+            }
+            else if(currentDifficulty == DifficultyLevel.Medium)
+            {
+                Unlock(topic, DifficultyLevel.Hard);
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
     #endregion
 
