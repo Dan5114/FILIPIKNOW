@@ -6,10 +6,14 @@ public class TopicButtonDifficultyHandler : MonoBehaviour
     [SerializeField] private string topicName;
     [SerializeField] private DifficultyLevel difficulty;
     [SerializeField] private Button button;
+    [SerializeField] private Image unlockStatusIcon;
 
     [Header("Visual Settings")]
     [SerializeField] private Color lockedColor = new Color(0.5f, 0.5f, 0.5f);
     [SerializeField] private Color unlockedColor = Color.white;
+    [SerializeField] private Sprite unlockedSprite;
+    [SerializeField] private Sprite lockedSprite;
+
 
     void Start()
     {
@@ -23,11 +27,13 @@ public class TopicButtonDifficultyHandler : MonoBehaviour
         if (!unlocked)
         {
             // canvasGroup.alpha = 0.4f;
+            unlockStatusIcon.sprite = lockedSprite;
             button.interactable = false;
         }
         else
         {
             // canvasGroup.alpha = 1f;
+            unlockStatusIcon.sprite = unlockedSprite;
             button.interactable = true;
 
             // button.onClick.AddListener(() =>

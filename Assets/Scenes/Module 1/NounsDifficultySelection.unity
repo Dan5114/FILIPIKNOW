@@ -190,7 +190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -467,8 +467,11 @@ MonoBehaviour:
   topicName: Nouns
   difficulty: 0
   button: {fileID: 254663544}
+  unlockStatusIcon: {fileID: 44796533}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
+  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &350145479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1020,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1269,8 +1272,11 @@ MonoBehaviour:
   topicName: Nouns
   difficulty: 1
   button: {fileID: 1496669156}
+  unlockStatusIcon: {fileID: 1509376077}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
+  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &1509376074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,7 +1343,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1717,8 +1723,11 @@ MonoBehaviour:
   topicName: Nouns
   difficulty: 2
   button: {fileID: 1842326607}
+  unlockStatusIcon: {fileID: 1061287810}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
+  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &2054588390
 GameObject:
   m_ObjectHideFlags: 0
