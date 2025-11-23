@@ -11,13 +11,11 @@ public class TopicButtonDifficultyHandler : MonoBehaviour
     [Header("Visual Settings")]
     [SerializeField] private Color lockedColor = new Color(0.5f, 0.5f, 0.5f);
     [SerializeField] private Color unlockedColor = Color.white;
-    [SerializeField] private Sprite unlockedSprite;
-    [SerializeField] private Sprite lockedSprite;
-
 
     void Start()
     {
-        bool unlocked = DifficultyUnlockManager.Instance.IsUnlocked(topicName, difficulty);
+        DifficultyUnlockManager difficultyUnlockManager = DifficultyUnlockManager.Instance;
+        bool unlocked = difficultyUnlockManager.IsUnlocked(topicName, difficulty);
         Debug.Log($"{topicName} {difficulty} unlocked: {unlocked}");
 
         var img = button.GetComponent<Image>();
@@ -27,13 +25,13 @@ public class TopicButtonDifficultyHandler : MonoBehaviour
         if (!unlocked)
         {
             // canvasGroup.alpha = 0.4f;
-            unlockStatusIcon.sprite = lockedSprite;
+            unlockStatusIcon.sprite = difficultyUnlockManager.LockedIcon;
             button.interactable = false;
         }
         else
         {
             // canvasGroup.alpha = 1f;
-            unlockStatusIcon.sprite = unlockedSprite;
+            unlockStatusIcon.sprite = difficultyUnlockManager.UnlockedIcon;
             button.interactable = true;
 
             // button.onClick.AddListener(() =>

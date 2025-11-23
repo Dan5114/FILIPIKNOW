@@ -822,6 +822,8 @@ MonoBehaviour:
   - Nouns
   - Verbs
   - Numbers
+  unlockedIcon: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
+  lockedIcon: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
   unlockNextModuleDifficultyScore: 8
   unlockNextModuleDifficultySpeed: 5
   unlockMediumScore: 5
