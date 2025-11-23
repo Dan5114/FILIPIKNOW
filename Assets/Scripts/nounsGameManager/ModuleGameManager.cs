@@ -544,32 +544,32 @@ public class ModuleGameManager : MonoBehaviour
             return;
         }
 
-        if (currentSceneName == "NounsMedium")
-        {
-            currentDifficulty = DifficultyLevel.Medium;
-            Debug.Log($"🎯 Auto-detected NounsMedium scene - setting difficulty to Medium");
-            return;
-        }
-        if (currentSceneName == "NounsHard")
-        {
-            currentDifficulty = DifficultyLevel.Hard;
-            Debug.Log($"🎯 Auto-detected NounsHard scene - setting difficulty to Hard");
-            return;
-        }
-        // Default behavior for Nouns scene - get from SceneController
-        if (SceneController.Instance != null)
-        {
-            DifficultyLevel selectedDifficulty = SceneController.Instance.GetSelectedDifficulty();
-            if (selectedDifficulty != DifficultyLevel.Easy)
-            {
-                currentDifficulty = selectedDifficulty;
-                Debug.Log($"🎯 Loaded difficulty from SceneController: {currentDifficulty}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("⚠️ SceneController not found, using default difficulty: Easy");
-        }
+        // if (currentSceneName == "NounsMedium")
+        // {
+        //     currentDifficulty = DifficultyLevel.Medium;
+        //     Debug.Log($"🎯 Auto-detected NounsMedium scene - setting difficulty to Medium");
+        //     return;
+        // }
+        // if (currentSceneName == "NounsHard")
+        // {
+        //     currentDifficulty = DifficultyLevel.Hard;
+        //     Debug.Log($"🎯 Auto-detected NounsHard scene - setting difficulty to Hard");
+        //     return;
+        // }
+        // // Default behavior for Nouns scene - get from SceneController
+        // if (SceneController.Instance != null)
+        // {
+        //     DifficultyLevel selectedDifficulty = SceneController.Instance.GetSelectedDifficulty();
+        //     if (selectedDifficulty != DifficultyLevel.Easy)
+        //     {
+        //         currentDifficulty = selectedDifficulty;
+        //         Debug.Log($"🎯 Loaded difficulty from SceneController: {currentDifficulty}");
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("⚠️ SceneController not found, using default difficulty: Easy");
+        // }
     }
 
     // Get appropriate dialog messages based on language setting

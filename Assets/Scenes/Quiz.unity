@@ -2390,7 +2390,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   characterAnimator: {fileID: 1012767148}
   timesBoldFont: {fileID: 0}
-  typingSpeed: 0.01231
+  typingSpeed: 0.02
   punctuationDelay: 0.2
   sentenceDelay: 0.5
   fixedFontSize: 80
@@ -2934,6 +2934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7569a41eb76ff04792366701be5dbc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typewriterEffect: {fileID: 1206508221}
   questionText: {fileID: 1206508220}
   choiceButtons:
   - {fileID: 2131897232}

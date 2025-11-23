@@ -7,6 +7,9 @@ using System;
 
 public class QuizManager : MonoBehaviour
 {
+    [Header("REFERENCES")]
+    [SerializeField] TypewriterEffect typewriterEffect;
+
     public static string SelectedTopic = "";
     public static DifficultyLevel SelectedDifficulty = DifficultyLevel.Medium;
 
@@ -88,10 +91,48 @@ public class QuizManager : MonoBehaviour
         }
 
         currentQuestion = quizQuestions[currentIndex];
-        questionText.text = currentQuestion.questionText;
+        // questionText.text = currentQuestion.questionText;
+        ShowTypewriterEffect(currentQuestion.questionText);
 
         SetupButtons();
         questionStartTime = Time.time; // timer starts
+    }
+
+    private void ShowTypewriterEffect(string message)
+    {
+        if(typewriterEffect != null)
+        {
+            typewriterEffect.OnTypingCompleted = null;
+            typewriterEffect.StartTypewriter(message);
+
+            typewriterEffect.OnTypingCompleted += () => {
+                DisplayChoices(currentQuestion.choices);
+            };
+        }
+        else
+        {
+            if(questionText != null)
+            {
+                questionText.text = message;
+
+            }
+        }
+    }
+
+    private void DisplayChoices(string[] choices)
+    {
+        for(int i = 0; i < choiceButtons.Length; i++)
+        {
+            if(i < choices.Length)
+            {
+                choiceButtons[i].gameObject.SetActive(true);
+                choiceButtons[i].interactable = true;
+            }
+            else
+            {
+                choiceButtons[i].gameObject.SetActive(false);
+            }
+        }
     }
 
     private void SetupButtons()
