@@ -7,6 +7,8 @@ public class DifficultyUnlockManager : MonoBehaviour
 
     [Header("SETTINGS")]
     [SerializeField] private List<string> allTopics;
+    [SerializeField] private Sprite unlockedIcon;
+    [SerializeField] private Sprite lockedIcon;
 
     [Header("Module Unlock Thresholds")]
     [SerializeField] private int unlockNextModuleDifficultyScore = 8;
@@ -34,6 +36,9 @@ public class DifficultyUnlockManager : MonoBehaviour
     private Dictionary<string, HashSet<DifficultyLevel>> unlocked = new();
 
     public Dictionary<string, HashSet<DifficultyLevel>> Unlocked => unlocked;
+
+    public Sprite UnlockedIcon => unlockedIcon;
+    public Sprite LockedIcon => lockedIcon;
 
     public bool IsModuleUnlocked(string topic)
     {
