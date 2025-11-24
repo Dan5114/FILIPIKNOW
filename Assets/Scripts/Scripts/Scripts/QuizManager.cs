@@ -31,25 +31,6 @@ public class QuizManager : MonoBehaviour
     private float totalResponseTime = 0f;
     private float questionStartTime = 0f;
 
-    private void Start()
-    {
-        SelectedTopic = SM2Algorithm.Instance.CurrentTopic;
-
-        if (string.IsNullOrEmpty(SelectedTopic))
-        {
-            Debug.LogError("QuizManager: No topic selected!");
-            questionText.text = "No topic selected!";
-            return;
-        }
-
-        LoadQuestions();
-        ShowNextQuestion();
-
-        if (backButton != null)
-            backButton.onClick.AddListener(() =>
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Module 1"));
-    }
-
     private void LoadQuestions()
     {
         // Pull medium questions only
@@ -60,7 +41,6 @@ public class QuizManager : MonoBehaviour
                         q.choices != null &&
                         q.choices.Length > 0 &&
                         q.moduleName.ToLower() == SelectedTopic.ToLower())
-            // .Where(q => q.questionText.Contains(SelectedTopic) || true) // fallback if topic not tagged
             .ToList();
 
         if (allQuestions.Count == 0)
@@ -95,7 +75,7 @@ public class QuizManager : MonoBehaviour
         ShowTypewriterEffect(currentQuestion.questionText);
 
         SetupButtons();
-        questionStartTime = Time.time; // timer starts
+        questionStartTime = Time.time;
     }
 
     private void ShowTypewriterEffect(string message)
@@ -212,6 +192,9 @@ public class QuizManager : MonoBehaviour
         {
             btn.image.color = isCorrect ? Color.green : Color.red;
         }
+
+        GameAudioManager gameAudioManager = GameAudioManager.Instance;
+        if(gameAudioManager != null) gameAudioManager.PlayCorrectOrWrong(isCorrect);
     }
 
     private void ResetButtonColors()
@@ -245,5 +228,24 @@ public class QuizManager : MonoBehaviour
 
         continueButton.gameObject.SetActive(false);
         foreach (var b in choiceButtons) b.gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        SelectedTopic = SM2Algorithm.Instance.CurrentTopic;
+
+        if (string.IsNullOrEmpty(SelectedTopic))
+        {
+            Debug.LogError("QuizManager: No topic selected!");
+            questionText.text = "No topic selected!";
+            return;
+        }
+
+        LoadQuestions();
+        ShowNextQuestion();
+
+        if (backButton != null)
+            backButton.onClick.AddListener(() =>
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Module 1"));
     }
 }

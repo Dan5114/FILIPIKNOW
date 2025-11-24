@@ -151,6 +151,19 @@ public class GameAudioManager : MonoBehaviour
     /// <summary>
     /// Play correct answer sound with optional haptic feedback
     /// </summary>
+    
+    public void PlayCorrectOrWrong(bool correct)
+    {
+        if (correct)
+        {
+            PlayCorrectAnswer();
+        }
+        else
+        {
+            PlayWrongAnswer();
+        }
+    }
+
     public void PlayCorrectAnswer()
     {
         PlaySoundEffect(correctAnswerSound);
