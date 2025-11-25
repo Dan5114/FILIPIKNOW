@@ -2044,7 +2044,9 @@ public class ModuleGameManager : MonoBehaviour
         
         // Calculate session statistics
         float sessionAccuracy = sessionTotalAnswers > 0 ? (float)sessionCorrectAnswers / sessionTotalAnswers * 100f : 0f;
-        float averageResponseTime = questionResponseTimes.Values.Count > 0 ? questionResponseTimes.Values.Average() : 0f;
+        // float averageResponseTime = questionResponseTimes.Values.Count > 0 ? questionResponseTimes.Values.Average() : 0f;
+        float averageResponseTime = totalResponseTime / currentQuestions.Count;
+        Debug.Log($"Average Response Time: {averageResponseTime}s");
         int currentStreak = 0;
         
         // Get streak from SM2 if available
@@ -2079,7 +2081,7 @@ public class ModuleGameManager : MonoBehaviour
                 
                 // Display only clean data (numbers) without labels
                 summaryTexts[0].text = score.ToString(); // Total XP
-                summaryTexts[1].text = averageResponseTime.ToString("F1"); // Speed
+                summaryTexts[1].text = averageResponseTime.ToString("F2"); // Speed
                 summaryTexts[2].text = sessionAccuracy.ToString("F1"); // Accuracy
                 summaryTexts[3].text = currentStreak.ToString(); // Streak
             }
@@ -2852,6 +2854,9 @@ public class ModuleGameManager : MonoBehaviour
     // Update the signature to accept an optional buttonIndex
     void ProcessUnifiedAnswer(bool isCorrect, string userAnswer, int buttonIndex = -1)
     {
+        float responseTime = Time.time - questionStartTime;
+        totalResponseTime += responseTime;
+
         sessionTotalAnswers++;
         
         // 1. VISUAL FEEDBACK (The Missing Piece!)
@@ -2891,7 +2896,6 @@ public class ModuleGameManager : MonoBehaviour
         // 3. Process Logic
         if (questionState != null)
         {
-            float responseTime = Time.time - questionStartTime;
             SM2Algorithm.Instance.ProcessAnswer(questionState, isCorrect, responseTime);
         }
         
