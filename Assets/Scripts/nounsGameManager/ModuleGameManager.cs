@@ -757,32 +757,141 @@ public class ModuleGameManager : MonoBehaviour
         // InitializeLegacyQuestions();
     }
     
+    // void InitializeUnifiedQuestions()
+    // {
+    //     // Filter questions based on current difficulty
+    //     currentQuestions.Clear();
+    //     // currentQuestions.AddRange(allQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+    //     // currentQuestions.AddRange(currentQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+
+    //     // 
+    //     var filtered = unifiedQuestions.Where(q => q.difficultyLevel == currentDifficulty).ToList();
+    //     for (int i = filtered.Count - 1; i > 0; i--)
+    //     {
+    //         int j = UnityEngine.Random.Range(0, i + 1);
+    //         var tmp = filtered[i];
+    //         filtered[i] = filtered[j];
+    //         filtered[j] = tmp;
+    //     }
+    //     int takeCount = Math.Min(questionsLimit, filtered.Count);
+    //     currentQuestions.AddRange(filtered.Take(takeCount));
+    //     // 
+        
+    //     sessionStartTime = Time.time;
+    //     sessionCorrectAnswers = 0;
+    //     sessionTotalAnswers = 0;
+    //     currentQuestion = 0;
+        
+    //     Debug.Log($"🎯 Initialized {currentQuestions.Count} {currentDifficulty} questions");
+    // }
+
     void InitializeUnifiedQuestions()
     {
-        // Filter questions based on current difficulty
-        currentQuestions.Clear();
-        // currentQuestions.AddRange(allQuestions.Where(q => q.difficultyLevel == currentDifficulty));
-        // currentQuestions.AddRange(currentQuestions.Where(q => q.difficultyLevel == currentDifficulty));
+        List<QuestionData> savedQuestions = SM2Algorithm.Instance.GetAllQuestions()
+            .Where(q => q.module == moduleName) 
+            .ToList();
 
-        // 
-        var filtered = unifiedQuestions.Where(q => q.difficultyLevel == currentDifficulty).ToList();
-        for (int i = filtered.Count - 1; i > 0; i--)
+        List<UnifiedQuestionData> questionsForReview = new List<UnifiedQuestionData>();
+        List<UnifiedQuestionData> newQuestions = new List<UnifiedQuestionData>();
+        
+        Dictionary<int, QuestionData> savedStateMap = savedQuestions.ToDictionary(q => q.questionId);
+
+        var allPotentialQuestions = unifiedQuestionsReference.GetUnifiedQuestions()
+            .Where(q => q.difficultyLevel <= currentDifficulty)
+            .ToList();
+
+        // Separate into Review vs New
+        foreach (var uq in allPotentialQuestions)
+        {
+            if (savedStateMap.ContainsKey(uq.questionId))
+            {
+                questionsForReview.Add(uq);
+            }
+            else
+            {
+                newQuestions.Add(uq);
+            }
+        }
+
+        // SORTING LOGIC
+        questionsForReview.Sort((a, b) => 
+        {
+            if (!savedStateMap.ContainsKey(a.questionId) || !savedStateMap.ContainsKey(b.questionId))
+                return 0;
+
+            QuestionData stateA = savedStateMap[a.questionId];
+            QuestionData stateB = savedStateMap[b.questionId];
+
+            // PRIORITY 1: Is it a "Just Failed" question? (Interval == 0)
+            bool isFailedA = stateA.interval == 0;
+            bool isFailedB = stateB.interval == 0;
+
+            if (isFailedA && !isFailedB) return -1; // A comes first (Failed)
+            if (!isFailedA && isFailedB) return 1;  // B comes first (Failed)
+
+            // PRIORITY 2: Sort by Date (Ascending - Oldest/Overdue first)
+            int dateCompare = stateA.nextReview.CompareTo(stateB.nextReview);
+            if (dateCompare != 0) return dateCompare;
+
+            // PRIORITY 3: Sort by Interval (Ascending - Smaller interval = Harder = First)
+            return stateA.interval.CompareTo(stateB.interval);
+        });
+
+        // Shuffle New Questions
+        for (int i = newQuestions.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
-            var tmp = filtered[i];
-            filtered[i] = filtered[j];
-            filtered[j] = tmp;
+            (newQuestions[i], newQuestions[j]) = (newQuestions[j], newQuestions[i]);
         }
-        int takeCount = Math.Min(questionsLimit, filtered.Count);
-        currentQuestions.AddRange(filtered.Take(takeCount));
-        // 
+
+        // Build final list
+        currentQuestions.Clear();
         
+        // Add Reviews (up to limit)
+        int reviewsToTake = Math.Min(questionsForReview.Count, questionsLimit);
+        currentQuestions.AddRange(questionsForReview.Take(reviewsToTake));
+
+        // Fill remaining with New
+        int remainingSlots = questionsLimit - currentQuestions.Count;
+        if (remainingSlots > 0 && newQuestions.Count > 0)
+        {
+            int newToTake = Math.Min(remainingSlots, newQuestions.Count);
+            currentQuestions.AddRange(newQuestions.Take(newToTake));
+
+            // Fill remaining with anything
+            remainingSlots = questionsLimit - currentQuestions.Count;
+            if(remainingSlots > 0)
+            {
+                int countToTakeForBackup = Math.Min(remainingSlots, unifiedQuestions.Count);
+                List<UnifiedQuestionData> backupQuestions = ShuffleQuestions(unifiedQuestionsReference, shuffleQuestions);
+                currentQuestions.AddRange(backupQuestions.Take(countToTakeForBackup));
+            }
+        }
+
         sessionStartTime = Time.time;
         sessionCorrectAnswers = 0;
         sessionTotalAnswers = 0;
         currentQuestion = 0;
-        
-        Debug.Log($"🎯 Initialized {currentQuestions.Count} {currentDifficulty} questions");
+        score = 0;
+
+        Debug.Log("--- FINAL SESSION ORDER ---");
+        foreach(UnifiedQuestionData uq in currentQuestions)
+        {
+            QuestionData realState = SM2Algorithm.Instance.GetAllQuestions()
+                .FirstOrDefault(q => q.questionId == uq.questionId);
+
+            if (realState != null)
+            {
+                string priority = realState.interval == 0 ? "FAILED/NOW" : "REVIEW";
+                Debug.Log($"[{priority}] ID: {realState.questionId} | Interval: {realState.interval} | Due: {realState.nextReview}\nQuestion: {realState.question}");
+            }
+            else
+            {
+                Debug.Log($"[NEW] ID: {uq.questionId} | Interval: 1 (Default)\nQuestion: {uq.questionText}");
+            }
+        }
+        Debug.Log("---------------------------");
+        Debug.Log($"Session Ready: {reviewsToTake} Reviews, {Math.Min(remainingSlots, newQuestions.Count)} New.");
     }
     
     void InitializeLegacyQuestions()
@@ -1119,8 +1228,10 @@ public class ModuleGameManager : MonoBehaviour
         backButton.gameObject.SetActive(true);
         
         // Use legacy system for ALL difficulties to maintain same flow
-        Debug.Log($"🎯 Using legacy system for {currentDifficulty} difficulty");
-        DisplayQuestion();
+        // Debug.Log($"🎯 Using legacy system for {currentDifficulty} difficulty");
+
+        // DisplayQuestion();
+        ShowNextQuestion();
     }
 
     void DisplayQuestion()
@@ -1183,18 +1294,18 @@ public class ModuleGameManager : MonoBehaviour
         string[] questions = GetQuestions();
         if (reviewQuestions.Count == 0 && currentQuestion < questions.Length)
         {
-            Debug.Log($"Using fallback static question {currentQuestion}");
+            // Debug.Log($"Using fallback static question {currentQuestion}");
             
             string questionText = questions[currentQuestion];
             string[][] choices = GetChoices();
             
-            Debug.Log($"Question text: {questionText}");
-            Debug.Log($"Choices count: {choices[currentQuestion].Length}");
+            // Debug.Log($"Question text: {questionText}");
+            // Debug.Log($"Choices count: {choices[currentQuestion].Length}");
             
             // Use adaptive dialog system if available
             if (adaptiveDialogManager != null)
             {
-                Debug.Log("Using adaptive dialog system");
+                // Debug.Log("Using adaptive dialog system");
                 adaptiveDialogManager.ShowDialog(questionText, () => {
                     // Display choices after dialog is shown
                     DisplayChoices(choices[currentQuestion]);
@@ -1202,7 +1313,7 @@ public class ModuleGameManager : MonoBehaviour
             }
             else if (typewriterEffect != null)
             {
-                Debug.Log("Using typewriter effect");
+                // Debug.Log("Using typewriter effect");
                 // Configure dialog text for auto-sizing first
                 // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 // Clear any existing callbacks to prevent multiple subscriptions
@@ -1216,14 +1327,14 @@ public class ModuleGameManager : MonoBehaviour
             }
             else if (dialogText != null)
             {
-                Debug.Log("Using direct dialog text");
+                // Debug.Log("Using direct dialog text");
                 // ConfigureDialogTextForAutoSizing(); // Disabled to allow manual ScrollRect setup
                 dialogText.text = questionText;
                 DisplayChoices(choices[currentQuestion]);
             }
             else
             {
-                Debug.LogError("No dialog system available!");
+                // Debug.LogError("No dialog system available!");
             }
             return;
         }
@@ -1541,7 +1652,8 @@ public class ModuleGameManager : MonoBehaviour
         Debug.Log($"Is Correct: {isCorrect}");
 
         // Track response time
-        float responseTime = Time.time - sessionStartTime;
+        // float responseTime = Time.time - sessionStartTime;
+        float responseTime = Time.time - questionStartTime;
 
         // Determine question ID for tracking
         int questionId = 0;
@@ -1568,12 +1680,12 @@ public class ModuleGameManager : MonoBehaviour
             if (isCorrect)
             {
                 GameAudioManager.Instance.PlayCorrectAnswer();
-                Debug.Log("✅ Playing correct answer sound via GameAudioManager");
+                Debug.Log("Playing correct answer sound via GameAudioManager");
             }
             else
             {
                 GameAudioManager.Instance.PlayWrongAnswer();
-                Debug.Log("❌ Playing wrong answer sound via GameAudioManager");
+                Debug.Log("Playing wrong answer sound via GameAudioManager");
             }
         }
         else
@@ -1799,6 +1911,7 @@ public class ModuleGameManager : MonoBehaviour
 
     public void NextQuestion()
     {
+        questionStartTime = Time.time;
         currentQuestion++;
         continueButton.gameObject.SetActive(false);
         
@@ -2251,9 +2364,15 @@ public class ModuleGameManager : MonoBehaviour
     
     void ShowNextQuestion()
     {
+        ResetAllButtonFeedback();
+        EnableAllChoiceButtons();
+
+        questionStartTime = Time.time;
+
         if (currentQuestion >= currentQuestions.Count)
         {
-            EndUnifiedGame();
+            // EndUnifiedGame();
+            EndGame();
             return;
         }
         
@@ -2490,7 +2609,7 @@ public class ModuleGameManager : MonoBehaviour
         // Prevent clicks if disabled (buttons stay opaque!)
         if (!canClickChoices)
         {
-            Debug.Log("🔒 Choice button click blocked - buttons disabled");
+            Debug.Log("Choice button click blocked - buttons disabled");
             return;
         }
         
@@ -2502,7 +2621,7 @@ public class ModuleGameManager : MonoBehaviour
             // Unified system (Medium/Hard)
             bool isCorrect = choiceIndex == currentQuestionData.correctChoiceIndex;
             string userAnswer = currentQuestionData.choices[choiceIndex];
-            ProcessUnifiedAnswer(isCorrect, userAnswer);
+            ProcessUnifiedAnswer(isCorrect, userAnswer, choiceIndex);
         }
         else
         {
@@ -2659,30 +2778,128 @@ public class ModuleGameManager : MonoBehaviour
         return false;
     }
     
-    void ProcessUnifiedAnswer(bool isCorrect, string userAnswer)
+    // void ProcessUnifiedAnswer(bool isCorrect, string userAnswer)
+    // {
+    //     sessionTotalAnswers++;
+        
+    //     // Play sound effects via GameAudioManager
+    //     if (GameAudioManager.Instance != null)
+    //     {
+    //         if (isCorrect)
+    //         {
+    //             GameAudioManager.Instance.PlayCorrectAnswer();
+    //             Debug.Log("Playing correct answer sound via GameAudioManager");
+    //         }
+    //         else
+    //         {
+    //             GameAudioManager.Instance.PlayWrongAnswer();
+    //             Debug.Log("Playing wrong answer sound via GameAudioManager");
+    //         }
+    //     }
+
+    //     //////
+    //     // 2. SM2 Synchronization
+    //     // We need to find the specific QuestionData object tracked by SM2
+    //     QuestionData questionState = SM2Algorithm.Instance.GetAllQuestions()
+    //         .FirstOrDefault(q => q.questionId == currentQuestionData.questionId);
+
+    //     // If it's a NEW question (not in save file yet), convert and add it
+    //     if (questionState == null)
+    //     {
+    //         Debug.Log($"Registering new question ID {currentQuestionData.questionId} to SM2");
+    //         questionState = ConvertUnifiedToSM2(currentQuestionData);
+            
+    //         // Add to SM2 (This adds it to the list and saves)
+    //         SM2Algorithm.Instance.AddQuestion(
+    //             questionState.questionId, 
+    //             questionState.module, 
+    //             questionState.question, 
+    //             questionState.choices, 
+    //             questionState.correctAnswer
+    //         );
+            
+    //         // Re-fetch the reference to ensure we are modifying the object inside the list
+    //         questionState = SM2Algorithm.Instance.GetAllQuestions()
+    //             .FirstOrDefault(q => q.questionId == currentQuestionData.questionId);
+    //     }
+
+    //     // 3. Process the Answer in SM2
+    //     if (questionState != null)
+    //     {
+    //         float responseTime = Time.time - questionStartTime;
+    //         SM2Algorithm.Instance.ProcessAnswer(questionState, isCorrect, responseTime);
+    //         Debug.Log($"Saved. ID: {questionState.questionId} | Interval: {questionState.interval} | Next: {questionState.nextReview}");
+    //     }
+    //     /////
+        
+    //     if (isCorrect)
+    //     {
+    //         sessionCorrectAnswers++;
+    //         score += currentQuestionData.xpReward;
+            
+    //         ShowUnifiedCorrectFeedback();
+    //     }
+    //     else
+    //     {
+    //         ShowUnifiedIncorrectFeedback(userAnswer);
+    //     }
+
+    //     currentQuestion++;
+    //     moduleProgressBar.AddToAnsweredQuestions();
+    //     Invoke(nameof(ShowNextQuestion), 2f);
+    // }
+
+    // Update the signature to accept an optional buttonIndex
+    void ProcessUnifiedAnswer(bool isCorrect, string userAnswer, int buttonIndex = -1)
     {
         sessionTotalAnswers++;
         
-        // Play sound effects via GameAudioManager
+        // 1. VISUAL FEEDBACK (The Missing Piece!)
+        // If a specific button was clicked (Easy Mode), light it up!
+        if (buttonIndex != -1)
+        {
+            ShowButtonFeedback(buttonIndex, isCorrect);
+            DisableAllChoiceButtons(); // Lock buttons so you can't click twice
+        }
+
+        // Play sound effects
         if (GameAudioManager.Instance != null)
         {
-            if (isCorrect)
-            {
-                GameAudioManager.Instance.PlayCorrectAnswer();
-                Debug.Log("✅ Playing correct answer sound via GameAudioManager");
-            }
-            else
-            {
-                GameAudioManager.Instance.PlayWrongAnswer();
-                Debug.Log("❌ Playing wrong answer sound via GameAudioManager");
-            }
+            if (isCorrect) GameAudioManager.Instance.PlayCorrectAnswer();
+            else GameAudioManager.Instance.PlayWrongAnswer();
+        }
+
+        // 2. SM2 Synchronization
+        QuestionData questionState = SM2Algorithm.Instance.GetAllQuestions()
+            .FirstOrDefault(q => q.questionId == currentQuestionData.questionId);
+
+        // If New, Register it
+        if (questionState == null)
+        {
+            questionState = ConvertUnifiedToSM2(currentQuestionData);
+            SM2Algorithm.Instance.AddQuestion(
+                questionState.questionId, 
+                questionState.module, 
+                questionState.question, 
+                questionState.choices, 
+                questionState.correctAnswer
+            );
+            questionState = SM2Algorithm.Instance.GetAllQuestions()
+                .FirstOrDefault(q => q.questionId == currentQuestionData.questionId);
+        }
+
+        // 3. Process Logic
+        if (questionState != null)
+        {
+            float responseTime = Time.time - questionStartTime;
+            SM2Algorithm.Instance.ProcessAnswer(questionState, isCorrect, responseTime);
         }
         
+        // 4. Show Feedback Text
         if (isCorrect)
         {
             sessionCorrectAnswers++;
             score += currentQuestionData.xpReward;
-            
             ShowUnifiedCorrectFeedback();
         }
         else
@@ -2692,6 +2909,8 @@ public class ModuleGameManager : MonoBehaviour
 
         currentQuestion++;
         moduleProgressBar.AddToAnsweredQuestions();
+        
+        // Auto-advance after 2 seconds
         Invoke(nameof(ShowNextQuestion), 2f);
     }
     
@@ -2705,7 +2924,7 @@ public class ModuleGameManager : MonoBehaviour
 
         string correctAnswer = currentQuestionData.acceptableAnswers[0];
             
-        string feedback = $"🎉 Correct! '{correctAnswer}' is the right answer!\n\n" +
+        string feedback = $"Correct! '{correctAnswer}' is the right answer!\n\n" +
                          $"Points: +{currentQuestionData.xpReward}\n" +
                          $"Total Points: {score}";
         
@@ -2723,7 +2942,7 @@ public class ModuleGameManager : MonoBehaviour
             
         string correctAnswer = currentQuestionData.acceptableAnswers[0];
             
-        string feedback = $"❌ '{userAnswer}' is not correct.\n\n" +
+        string feedback = $"'{userAnswer}' is not correct.\n\n" +
                          $"The correct answer is: '{correctAnswer}'\n\n" +
                          $"Try again on the next question!";
         
@@ -2752,11 +2971,11 @@ public class ModuleGameManager : MonoBehaviour
         float sessionDuration = Time.time - sessionStartTime;
         float accuracy = sessionTotalAnswers > 0 ? (float)sessionCorrectAnswers / sessionTotalAnswers : 0f;
         
-        string summary = $"🎉 {currentDifficulty} level completed!\n\n" +
-                        $"📊 Accuracy: {(accuracy * 100):F1}%\n" +
-                        $"⏱️ Time: {sessionDuration:F1}s\n" +
-                        $"🏆 Total Points: {score}\n" +
-                        $"✅ Correct: {sessionCorrectAnswers}/{sessionTotalAnswers}\n\n" +
+        string summary = $"{currentDifficulty} level completed!\n\n" +
+                        $"Accuracy: {(accuracy * 100):F1}%\n" +
+                        $"⏱Time: {sessionDuration:F1}s\n" +
+                        $"Total Points: {score}\n" +
+                        $"Correct: {sessionCorrectAnswers}/{sessionTotalAnswers}\n\n" +
                         GetCompletionMessage();
         
         if (adaptiveDialogManager != null)
@@ -2830,6 +3049,29 @@ public class ModuleGameManager : MonoBehaviour
     {
         moduleProgressBar.SetTotalQuestions(currentQuestions.Count);
         moduleProgressBar.SetProgress(0);
+    }
+
+    private QuestionData ConvertUnifiedToSM2(UnifiedQuestionData unified)
+    {
+        // Determine the correct answer index or text
+        int correctIndex = unified.correctChoiceIndex;
+                
+        return new QuestionData
+        {
+            questionId = unified.questionId,
+            module = moduleName,
+            question = unified.questionText,
+            choices = unified.choices ?? new string[0],
+            correctAnswer = correctIndex,
+            difficulty = (int)unified.difficultyLevel,
+
+            // Default SM2 values
+            interval = 1,
+            repetitions = 0,
+            easeFactor = 2.5f,
+            nextReview = DateTime.Now,
+            firstSeen = DateTime.Now
+        };
     }
 
     private void Awake()
