@@ -139,6 +139,8 @@ public class QuizManager : MonoBehaviour
 
     private void OnChoiceSelected(int index)
     {
+        ToggleButtons(false);
+
         float responseTime = Time.time - questionStartTime;
         totalResponseTime += responseTime;
 
@@ -197,6 +199,14 @@ public class QuizManager : MonoBehaviour
         if(gameAudioManager != null) gameAudioManager.PlayCorrectOrWrong(isCorrect);
     }
 
+    private void ToggleButtons(bool enabled)
+    {
+        foreach(Button button in choiceButtons)
+        {
+            button.interactable = enabled;
+        }
+    }
+
     private void ResetButtonColors()
     {
         foreach (var btn in choiceButtons)
@@ -209,14 +219,31 @@ public class QuizManager : MonoBehaviour
 
     private void EndQuiz()
     {
+        DifficultyUnlockManager difficultyUnlockManager = DifficultyUnlockManager.Instance;
         float accuracy = (float)correctCount / quizQuestions.Count;
         float avgResponseTime = totalResponseTime / quizQuestions.Count;
 
+        string modeUnlockMessage;
+
+        if(correctCount >= difficultyUnlockManager.unlockHardScore)
+        {
+            modeUnlockMessage = $"Easy, Medium, and Hard modes";
+        }
+        else if(correctCount >= difficultyUnlockManager.unlockMediumScore && correctCount < difficultyUnlockManager.unlockHardScore)
+        {
+            modeUnlockMessage = $"Easy and Medium modes";
+        }
+        else
+        {
+            modeUnlockMessage = $"Easy mode";
+        }
+
         questionText.text =
-            $"Quiz Finished!\nScore: {correctCount}/{quizQuestions.Count}\nAvg Speed: {avgResponseTime:F2}s";
+            $"Quiz Finished!\nScore: {correctCount}/{quizQuestions.Count}\nAvg Speed: {avgResponseTime:F2}s\n" + 
+            $"You have unlocked {modeUnlockMessage} for {SelectedTopic}!";
 
         // Unlock difficulty based on score + speed
-        DifficultyUnlockManager.Instance.EvaluateUnlocks(SelectedTopic, correctCount, avgResponseTime);
+        difficultyUnlockManager.EvaluateUnlocks(SelectedTopic, correctCount, avgResponseTime);
 
         // Update actual topic progress
         LearningProgressionManager.Instance.UpdateTopicProgress(
