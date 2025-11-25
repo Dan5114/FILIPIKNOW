@@ -22,7 +22,7 @@ MonoBehaviour:
 
       Ang
       ___ ay tumatakbo sa parke. (The ___ is running in the park.)'
-    instruction: 'Fill in the blank with the correct noun:'
+    instruction: 
     xpReward: 20
     choices:
     - aso
@@ -48,7 +48,7 @@ MonoBehaviour:
 
       Si
       ___ ay nagluluto ng adobo. (___ is cooking adobo.)'
-    instruction: 'Fill in the blank with a proper noun:'
+    instruction: 
     xpReward: 20
     choices:
     - Maria
@@ -74,7 +74,7 @@ MonoBehaviour:
 
       Si
       ___ ay nagluluto ng adobo. (___ is cooking adobo.)'
-    instruction: 'Fill in the blank with a common noun:'
+    instruction: 
     xpReward: 20
     choices:
     - guro
@@ -100,7 +100,7 @@ MonoBehaviour:
 
       Ang
       ___ ay nasa ibabaw ng mesa. (The ___ is on top of the table.)'
-    instruction: 'Fill in the blank with a concrete noun:'
+    instruction: 
     xpReward: 20
     choices:
     - aklat
@@ -126,7 +126,7 @@ MonoBehaviour:
 
       Ang
       ___ ay napakahalaga sa buhay ng tao. (___ is very important in human life.)'
-    instruction: 'Fill in the blank with an abstract noun:'
+    instruction: 
     xpReward: 20
     choices:
     - pagmamahal
@@ -153,7 +153,7 @@ MonoBehaviour:
 
       Ang
       ___ ay naglalakad sa damuhan. (The ___ is walking in the grass.)'
-    instruction: 'Fill in the blank with a collective noun:'
+    instruction: 
     xpReward: 20
     choices:
     - kawan
@@ -180,7 +180,7 @@ MonoBehaviour:
 
       Ang
       ___ ay nagtuturo sa mga mag-aaral. (The ___ teaches students.)'
-    instruction: 'Fill in the blank with a derived noun:'
+    instruction: 
     xpReward: 20
     choices:
     - kaguruan
@@ -206,7 +206,7 @@ MonoBehaviour:
 
       Si
       ___ ay nakatira sa Maynila. (___ lives in Manila.)'
-    instruction: 'Fill in the blank with a proper noun:'
+    instruction: 
     xpReward: 20
     choices:
     - Juan
@@ -232,7 +232,7 @@ MonoBehaviour:
 
       Ang
       ___ ay nagbibigay ng gamot sa mga pasyente. (The ___ gives medicine to patients.)'
-    instruction: 'Fill in the blank with a common noun:'
+    instruction: 
     xpReward: 20
     choices:
     - doktor
@@ -259,7 +259,7 @@ MonoBehaviour:
 
       Ang
       ___ ay nasa ilalim ng puno. (The ___ is under the tree.)'
-    instruction: 'Fill in the blank with a concrete noun:'
+    instruction: 
     xpReward: 20
     choices:
     - bato
