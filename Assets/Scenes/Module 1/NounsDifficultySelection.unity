@@ -470,8 +470,6 @@ MonoBehaviour:
   unlockStatusIcon: {fileID: 44796533}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
-  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &350145479
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,8 +1273,6 @@ MonoBehaviour:
   unlockStatusIcon: {fileID: 1509376077}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
-  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &1509376074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,8 +1498,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 79.48071, y: 25.161987}
-  m_SizeDelta: {x: 3222.274, y: 2593.9}
+  m_AnchoredPosition: {x: 350, y: 112}
+  m_SizeDelta: {x: 5187.3687, y: 2824.9673}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1817258350
 GameObject:
@@ -1726,8 +1722,6 @@ MonoBehaviour:
   unlockStatusIcon: {fileID: 1061287810}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
-  unlockedSprite: {fileID: 21300000, guid: 01ebc9ff28fa74e478272091b715c1c8, type: 3}
-  lockedSprite: {fileID: 21300000, guid: 65f585088c465ed4c83ca79166c1850d, type: 3}
 --- !u!1 &2054588390
 GameObject:
   m_ObjectHideFlags: 0
