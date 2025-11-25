@@ -170,6 +170,7 @@ public class SM2Algorithm : MonoBehaviour
     public System.Action<int> OnStreakUpdated;
     private string currentTopic = "";
 
+    public UserProgress UserProgress => userProgress;
     public string CurrentTopic => currentTopic;
     public void SetCurrentTopic(string topic) => currentTopic = topic;
     
@@ -180,6 +181,7 @@ public class SM2Algorithm : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             LoadProgress();
+            // ResetProgress(false);
         }
         else
         {
@@ -189,16 +191,17 @@ public class SM2Algorithm : MonoBehaviour
     
     void LoadProgress()
     {
-        string json = PlayerPrefs.GetString(PROGRESS_KEY, "");
-        if (!string.IsNullOrEmpty(json))
-        {
-            userProgress = JsonUtility.FromJson<UserProgress>(json);
-        }
-        else
-        {
-            userProgress = new UserProgress();
-        }
-        
+        // string json = PlayerPrefs.GetString(PROGRESS_KEY, "");
+        // Debug.Log(json);
+        // if (!string.IsNullOrEmpty(json))
+        // {
+        //     userProgress = JsonUtility.FromJson<UserProgress>(json);
+        // }
+        // else
+        // {
+        //     userProgress = new UserProgress();
+        // }
+        userProgress = new UserProgress();
         // Initialize module mastery if not set
         if (userProgress.moduleMastery == null)
             userProgress.moduleMastery = new Dictionary<string, float>();
@@ -209,6 +212,23 @@ public class SM2Algorithm : MonoBehaviour
         string json = JsonUtility.ToJson(userProgress);
         PlayerPrefs.SetString(PROGRESS_KEY, json);
         PlayerPrefs.Save();
+    }
+
+    public void RemoveDuplicates()
+    {
+        if (userProgress == null || userProgress.questions == null) return;
+
+        // Group by ID and keep the most recently updated one
+        var uniqueQuestions = userProgress.questions
+            .GroupBy(q => q.questionId)
+            .Select(g => g.OrderByDescending(q => q.lastReviewed).First())
+            .ToList();
+
+        if (userProgress.questions.Count != uniqueQuestions.Count)
+        {
+            Debug.LogWarning($"🧹 Removed {userProgress.questions.Count - uniqueQuestions.Count} duplicate questions from memory.");
+            userProgress.questions = uniqueQuestions;
+        }
     }
     
     public void AddQuestion(int questionId, string module, string question, string[] choices, int correctAnswer)
@@ -224,54 +244,59 @@ public class SM2Algorithm : MonoBehaviour
     
     public List<QuestionData> GetQuestionsForReview(string module = null, int maxQuestions = 5)
     {
-        List<QuestionData> reviewQuestions = new List<QuestionData>();
-        DateTime now = DateTime.Now;
+        // List<QuestionData> reviewQuestions = new List<QuestionData>();
+        // DateTime now = DateTime.Now;
         
-        foreach (QuestionData question in userProgress.questions)
-        {
-            // If module is specified, only get questions from that module
-            if (module != null && question.module != module)
-                continue;
+        // foreach (QuestionData question in userProgress.questions)
+        // {
+        //     // If module is specified, only get questions from that module
+        //     if (module != null && question.module != module)
+        //         continue;
                 
-            // If it's time for review
-            if (question.nextReview <= now)
-            {
-                reviewQuestions.Add(question);
-            }
-        }
+        //     // If it's time for review
+        //     if (question.nextReview <= now)
+        //     {
+        //         reviewQuestions.Add(question);
+        //     }
+        // }
         
-        // Sort by priority (earliest next review first, then by difficulty)
-        reviewQuestions.Sort((a, b) => {
-            int timeComparison = a.nextReview.CompareTo(b.nextReview);
-            if (timeComparison != 0) return timeComparison;
-            return b.difficulty.CompareTo(a.difficulty); // Harder questions first
-        });
+        // // Sort by priority (earliest next review first, then by difficulty)
+        // reviewQuestions.Sort((a, b) => {
+        //     int timeComparison = a.nextReview.CompareTo(b.nextReview);
+        //     if (timeComparison != 0) return timeComparison;
+        //     return b.difficulty.CompareTo(a.difficulty); // Harder questions first
+        // });
         
-        // Limit to max questions
-        if (reviewQuestions.Count > maxQuestions)
-        {
-            reviewQuestions = reviewQuestions.GetRange(0, maxQuestions);
-        }
+        // // Limit to max questions
+        // if (reviewQuestions.Count > maxQuestions)
+        // {
+        //     reviewQuestions = reviewQuestions.GetRange(0, maxQuestions);
+        // }
         
-        return reviewQuestions;
+        // return reviewQuestions;
+        RemoveDuplicates();
+        
+        return userProgress.questions
+            .Where(q => module == null || q.module == module)
+            .Where(q => q.nextReview <= DateTime.Now)
+            .OrderBy(q => q.nextReview)
+            .ThenByDescending(q => q.difficulty)
+            .Take(maxQuestions)
+            .ToList();
     }
     
     public void ProcessAnswer(QuestionData question, bool isCorrect, float responseTime = 0f)
     {
-        userProgress.questions.Add(question);
-        
         // Update basic statistics
         userProgress.totalQuestionsAnswered++;
         question.totalAttempts++;
+        question.responseTimes.Add(responseTime);
+        question.averageResponseTime = question.responseTimes.Average();
         
         // Calculate quality based on correctness and response time
         int quality = CalculateQuality(isCorrect, responseTime);
         question.quality = quality;
         question.qualityHistory.Add(quality);
-        
-        // Update response time tracking
-        question.responseTimes.Add(responseTime);
-        question.averageResponseTime = question.responseTimes.Average();
         
         // Update streak
         if (isCorrect)
@@ -318,6 +343,8 @@ public class SM2Algorithm : MonoBehaviour
     
     private int CalculateQuality(bool isCorrect, float responseTime)
     {
+        Debug.Log($"[Quality Debug] Response Time: {responseTime}s");
+
         if (!isCorrect) return 0; // Complete blackout
         
         // Quality based on response time (faster = higher quality)
@@ -329,11 +356,13 @@ public class SM2Algorithm : MonoBehaviour
     
     private void ProcessAnswerWithQuality(QuestionData question, int quality)
     {
+        Debug.Log($"[Quality Debug] Quality Score: {quality}\nQuestion: {question.question}");
+
         if (quality < 3)
         {
             // Reset on poor performance
             question.repetitions = 0;
-            question.interval = 1;
+            question.interval = 0;
             question.easeFactor = Mathf.Max(minEaseFactor, question.easeFactor - 0.2f);
         }
         else
@@ -341,14 +370,8 @@ public class SM2Algorithm : MonoBehaviour
             // Good performance - advance
             question.repetitions++;
             
-            if (question.repetitions == 1)
-            {
-                question.interval = 1;
-            }
-            else if (question.repetitions == 2)
-            {
-                question.interval = 6;
-            }
+            if (question.repetitions == 1) question.interval = 1;
+            else if (question.repetitions == 2) question.interval = 6;
             else
             {
                 question.interval = Mathf.RoundToInt(question.interval * question.easeFactor);
@@ -359,10 +382,6 @@ public class SM2Algorithm : MonoBehaviour
             {
                 question.easeFactor = Mathf.Min(maxEaseFactor, question.easeFactor + 0.1f);
             }
-            else if (quality == 3)
-            {
-                // No change to ease factor
-            }
             
             // Cap the interval
             question.interval = Mathf.Min(question.interval, maxInterval);
@@ -370,7 +389,22 @@ public class SM2Algorithm : MonoBehaviour
         
         // Update review dates
         question.lastReviewed = DateTime.Now;
-        question.nextReview = DateTime.Now.AddDays(question.interval);
+        
+        if (question.interval == 0)
+        {
+            question.nextReview = DateTime.Now;
+        }
+        else
+        {
+            question.nextReview = DateTime.Now.AddDays(question.interval);
+        }
+
+        if(!userProgress.questions.Contains(question)) userProgress.questions.Add(question);
+        else
+        { 
+            QuestionData existingQuestion = userProgress.questions.Find(q => q == question);
+            existingQuestion = question;
+        }
     }
     
     private void UpdateQuestionMastery(QuestionData question)
@@ -531,6 +565,7 @@ public class SM2Algorithm : MonoBehaviour
     
     public List<QuestionData> GetAllQuestions()
     {
+        RemoveDuplicates();
         return userProgress.questions;
     }
     
@@ -558,10 +593,11 @@ public class SM2Algorithm : MonoBehaviour
         return moduleQuestions.OrderByDescending(q => q.mastery).Take(count).ToList();
     }
     
-    public void ResetProgress()
+    public void ResetProgress(bool save = false)
     {
         userProgress = new UserProgress();
-        SaveProgress();
+
+        if(save) SaveProgress();
     }
     
     void OnApplicationPause(bool pauseStatus)
