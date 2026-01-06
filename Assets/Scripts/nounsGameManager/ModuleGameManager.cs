@@ -825,7 +825,7 @@ public class ModuleGameManager : MonoBehaviour
             }
         }
 
-        // 3. Now separate the UNIQUE pool into Review vs New
+        // 3. Separate the UNIQUE pool into Review vs New
         List<UnifiedQuestionData> questionsForReview = new List<UnifiedQuestionData>();
         List<UnifiedQuestionData> newQuestions = new List<UnifiedQuestionData>();
 
