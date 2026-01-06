@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Filipknow.UI
 {
@@ -36,10 +37,6 @@ namespace Filipknow.UI
         
         void Start()
         {
-            Debug.Log("========================================");
-            Debug.Log("🎬 NounsIntroductionManager Start() called");
-            Debug.Log("========================================");
-            
             try
             {
                 // Check for EventSystem
@@ -312,35 +309,41 @@ namespace Filipknow.UI
         
         string GetIntroductionTextForDifficulty()
         {
-            // Get difficulty from SceneController
             string difficulty = SceneController.Instance?.GetSelectedDifficultyAsString() ?? "Easy";
-            Debug.Log($"🔍 DEBUG: NounsIntroductionManager - Selected difficulty: {difficulty}");
-            
-            switch (difficulty.ToLower())
-            {
-                case "easy":
-                    return "Welcome to Nouns - Easy Mode!\n\n" +
-                           "Let's start with basic Filipino nouns like 'bahay' (house), 'kotse' (car), and 'aso' (dog).\n\n" +
+            Debug.Log($"DEBUG: NounsIntroductionManager - Selected difficulty: {difficulty}");
+
+            string intro = "Welcome to Nouns!\n\n" +
+                           "Let's review Filipino nouns like 'silya' (chair), 'pinto' (door), and 'sapatos' (shoes).\n\n" +
                            "You'll see questions, choose the correct Filipino word. Take your time and don't worry about making mistakes!\n\n" +
                            "Ready to begin your noun adventure?";
+
+            return intro;
+            
+            // switch (difficulty.ToLower())
+            // {
+            //     case "easy":
+            //         return "Welcome to Nouns - Easy Mode!\n\n" +
+            //                "Let's start with basic Filipino nouns like 'bahay' (house), 'kotse' (car), and 'aso' (dog).\n\n" +
+            //                "You'll see questions, choose the correct Filipino word. Take your time and don't worry about making mistakes!\n\n" +
+            //                "Ready to begin your noun adventure?";
                            
-                case "medium":
-                    return "Welcome to Nouns - Medium Mode!\n\n" +
-                           "Now we'll practice your advanced level! You'll see Filipino sentences with missing words.\n\n" +
-                           "Examples: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)\n\n" +
-                           "Select the correct Filipino noun to complete each sentence. You've got this!\n\n" +
-                           "Let's continue your learning journey!";
+            //     case "medium":
+            //         return "Welcome to Nouns - Medium Mode!\n\n" +
+            //                "Now we'll practice your advanced level! You'll see Filipino sentences with missing words.\n\n" +
+            //                "Examples: 'Ang ___ ay tumatakbo sa parke.' (The ___ is running in the park.)\n\n" +
+            //                "Select the correct Filipino noun to complete each sentence. You've got this!\n\n" +
+            //                "Let's continue your learning journey!";
                            
-                case "hard":
-                    return "Welcome to Nouns - Hard Mode!\n\n" +
-                           "Challenge time! Now you'll identify nouns in complex Filipino sentences.\n\n" +
-                           "Examples: 'Ang pagmamahal sa bayan ay dakila.' (His love for the country is great.)\n\n" +
-                           "Select the noun you find in each sentence. This level will test your knowledge!\n\n" +
-                           "Are you ready for the ultimate noun challenge?";
+            //     case "hard":
+            //         return "Welcome to Nouns - Hard Mode!\n\n" +
+            //                "Challenge time! Now you'll identify nouns in complex Filipino sentences.\n\n" +
+            //                "Examples: 'Ang pagmamahal sa bayan ay dakila.' (His love for the country is great.)\n\n" +
+            //                "Select the noun you find in each sentence. This level will test your knowledge!\n\n" +
+            //                "Are you ready for the ultimate noun challenge?";
                            
-                default:
-                    return introductionTexts[0]; // Fallback to default
-            }
+            //     default:
+            //         return introductionTexts[0]; // Fallback to default
+            // }
         }
         
         void EnableContinueButton()
@@ -357,32 +360,24 @@ namespace Filipknow.UI
         }
         
         void OnBackButtonClicked()
-        {
-            Debug.Log("========================================");
-            Debug.Log("🔙🔙🔙 BACK BUTTON CLICKED! 🔙🔙🔙");
-            Debug.Log("========================================");
-            Debug.Log("Returning to NounsDifficultySelection scene...");
-            
+        {            
             // Use SceneController if available, otherwise use direct SceneManager
             if (SceneController.Instance != null)
             {
                 Debug.Log("Using SceneController.Instance to load scene");
-                SceneController.Instance.LoadScene("NounsDifficultySelection");
+                // SceneController.Instance.LoadScene("NounsDifficultySelection");
+                SceneManager.LoadScene("Module 1");
             }
             else
             {
                 Debug.LogWarning("⚠️ SceneController.Instance is null, using SceneManager directly");
-                UnityEngine.SceneManagement.SceneManager.LoadScene("NounsDifficultySelection");
+                // UnityEngine.SceneManagement.SceneManager.LoadScene("NounsDifficultySelection");
+                SceneManager.LoadScene("Module 1");
             }
         }
         
         void OnContinueButtonClicked()
         {
-            Debug.Log("========================================");
-            Debug.Log("▶️▶️▶️ CONTINUE BUTTON CLICKED! ▶️▶️▶️");
-            Debug.Log("========================================");
-            Debug.Log("Proceeding to Nouns game scene...");
-            
             // Use SceneController if available, otherwise use direct SceneManager
             if (SceneController.Instance != null)
             {
@@ -392,7 +387,7 @@ namespace Filipknow.UI
             else
             {
                 Debug.LogWarning("⚠️ SceneController.Instance is null, using SceneManager directly");
-                UnityEngine.SceneManagement.SceneManager.LoadScene("Nouns");
+                SceneManager.LoadScene("Nouns");
             }
         }
         
