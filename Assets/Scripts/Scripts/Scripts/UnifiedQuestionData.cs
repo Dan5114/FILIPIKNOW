@@ -14,8 +14,11 @@ public class UnifiedQuestionData
     [Header("GENERAL")]
     // Multiple Choice (Easy)
     public string[] choices;
-    [Tooltip("Only add 1, kinda buggy rn")] public string[] acceptableAnswers;
     public int correctChoiceIndex;
+    public string correctAnswer;
+
+    [Header("IGNORE FOR NOW")]
+    [Tooltip("Only add 1, kinda buggy rn")] public string[] acceptableAnswers;
     
     [Header("MEDIUM MODE")]
     // Fill-in-the-Blank (Medium)
@@ -24,7 +27,6 @@ public class UnifiedQuestionData
     
     [Header("HARD MODE")]
     // Type Answer + Conversational (Hard)
-    public string correctAnswer;
     public bool isConversational = false;
     public string[] conversationPrompts;
     public string[] characterResponses;

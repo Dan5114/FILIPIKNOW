@@ -9,16 +9,26 @@ public class Module1Selection : MonoBehaviour
         SM2Algorithm sm2 = SM2Algorithm.Instance;
         sm2.SetCurrentTopic(option);
 
-        if(!difficultyUnlockManager.IsModuleUnlocked(option))
+        // COMMENTED OUT QUIZ
+        // if(!difficultyUnlockManager.IsModuleUnlocked(option))
+        // {
+        //     SceneManager.LoadScene("Quiz");
+        // }
+        // else
+        // {
+        //     if (SceneController.Instance != null)
+        //     {
+        //         SceneController.Instance.GoToModuleContent(1, option);
+        //     }
+        // }
+
+        // IMMEDIATELY GO TO MODULE CONTENT
+        if (SceneController.Instance != null)
         {
-            SceneManager.LoadScene("Quiz");
-        }
-        else
-        {
-            if (SceneController.Instance != null)
-            {
-                SceneController.Instance.GoToModuleContent(1, option);
-            }
+            // SceneController.Instance.GoToModuleContent(1, option);
+
+            // Immediately load module instead of difficulty selection
+            SceneManager.LoadScene($"{option}Introduction");
         }
 
         // else

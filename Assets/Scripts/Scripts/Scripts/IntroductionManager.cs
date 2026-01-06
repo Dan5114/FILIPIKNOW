@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Filipknow.UI
 {
@@ -329,11 +330,13 @@ namespace Filipknow.UI
             if (SceneController.Instance != null)
             {
                 Debug.Log("Using SceneController.Instance to load scene");
-                SceneController.Instance.LoadScene($"{topic}DifficultySelection");
+                // SceneController.Instance.LoadScene($"{topic}DifficultySelection");
+                SceneManager.LoadScene("Module 1");
             }
             else
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene($"{topic}DifficultySelection");
+                // UnityEngine.SceneManagement.SceneManager.LoadScene($"{topic}DifficultySelection");
+                SceneManager.LoadScene("Module 1");
             }
         }
         

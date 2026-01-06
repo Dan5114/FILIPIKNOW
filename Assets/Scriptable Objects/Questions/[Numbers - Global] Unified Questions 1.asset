@@ -1,0 +1,675 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Numbers - Global] Unified Questions 1'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 201
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You have one apple. What is 'one'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - isa
+    - tatlo
+    - apat
+    correctChoiceIndex: 1
+    correctAnswer: isa
+    acceptableAnswers:
+    - isa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 202
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She saw one bird flying. What is 'one'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lima
+    - pito
+    - isa
+    - siyam
+    correctChoiceIndex: 2
+    correctAnswer: isa
+    acceptableAnswers:
+    - isa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 203
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: There is one chair in the room. What is 'one'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sampu
+    - walo
+    - anim
+    - isa
+    correctChoiceIndex: 3
+    correctAnswer: isa
+    acceptableAnswers:
+    - isa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 204
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: He has two pets. What is 'two'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - tatlo
+    - apat
+    - lima
+    correctChoiceIndex: 0
+    correctAnswer: dalawa
+    acceptableAnswers:
+    - dalawa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 205
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You bought two pencils. What is 'two'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - siyam
+    - dalawa
+    - sampu
+    correctChoiceIndex: 2
+    correctAnswer: dalawa
+    acceptableAnswers:
+    - dalawa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 206
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: They invited two guests. What is 'two'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - walo
+    - labindalawa
+    - dalawa
+    - pito
+    correctChoiceIndex: 1
+    correctAnswer: dalawa
+    acceptableAnswers:
+    - dalawa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 207
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She counted three stars. What is 'three'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - tatlo
+    - dalawa
+    - apat
+    - lima
+    correctChoiceIndex: 0
+    correctAnswer: tatlo
+    acceptableAnswers:
+    - tatlo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 208
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You scored three points. What is 'three'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - siyam
+    - tatlo
+    - sampu
+    correctChoiceIndex: 2
+    correctAnswer: tatlo
+    acceptableAnswers:
+    - tatlo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 209
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: "He arrived at three o\u2019clock. What is 'three'?"
+    instruction: 
+    xpReward: 10
+    choices:
+    - walo
+    - pito
+    - labindalawa
+    - tatlo
+    correctChoiceIndex: 3
+    correctAnswer: tatlo
+    acceptableAnswers:
+    - tatlo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 210
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You drank four glasses of water. What is 'four'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - apat
+    - tatlo
+    - lima
+    - anim
+    correctChoiceIndex: 0
+    correctAnswer: apat
+    acceptableAnswers:
+    - apat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 211
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She bought four books. What is 'four'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - apat
+    - pito
+    - siyam
+    correctChoiceIndex: 1
+    correctAnswer: apat
+    acceptableAnswers:
+    - apat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 212
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: They need four chairs. What is 'four'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - apat
+    - sampu
+    - walo
+    - labindalawa
+    correctChoiceIndex: 0
+    correctAnswer: apat
+    acceptableAnswers:
+    - apat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 213
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: He has five pens. What is 'five'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - apat
+    - anim
+    - pito
+    - lima
+    correctChoiceIndex: 3
+    correctAnswer: lima
+    acceptableAnswers:
+    - lima
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 214
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You saw five birds outside. What is 'five'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - lima
+    - siyam
+    - sampu
+    correctChoiceIndex: 1
+    correctAnswer: lima
+    acceptableAnswers:
+    - lima
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 215
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She paid five pesos. What is 'five'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - tatlo
+    - walo
+    - lima
+    - labindalawa
+    correctChoiceIndex: 2
+    correctAnswer: lima
+    acceptableAnswers:
+    - lima
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 216
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: We invited six guests. What is 'six'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - anim
+    - apat
+    - pito
+    - lima
+    correctChoiceIndex: 0
+    correctAnswer: anim
+    acceptableAnswers:
+    - anim
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 217
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: He bought six eggs. What is 'six'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - anim
+    - siyam
+    - sampu
+    correctChoiceIndex: 1
+    correctAnswer: anim
+    acceptableAnswers:
+    - anim
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 218
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You answered six questions. What is 'six'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - tatlo
+    - walo
+    - anim
+    - labindalawa
+    correctChoiceIndex: 2
+    correctAnswer: anim
+    acceptableAnswers:
+    - anim
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 219
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: I saw seven birds outside. What is 'seven'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - pito
+    - lima
+    - anim
+    - siyam
+    correctChoiceIndex: 0
+    correctAnswer: pito
+    acceptableAnswers:
+    - pito
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 220
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She counted seven stars. What is 'seven'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - apat
+    - sampu
+    - pito
+    - walo
+    correctChoiceIndex: 2
+    correctAnswer: pito
+    acceptableAnswers:
+    - pito
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 221
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: They waited seven minutes. What is 'seven'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - tatlo
+    - labindalawa
+    - pito
+    correctChoiceIndex: 3
+    correctAnswer: pito
+    acceptableAnswers:
+    - pito
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 222
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: They waited eight minutes. What is 'eight'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - siyam
+    - walo
+    - sampu
+    - anim
+    correctChoiceIndex: 1
+    correctAnswer: walo
+    acceptableAnswers:
+    - walo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 223
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She bought eight pencils. What is 'eight'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - walo
+    - pito
+    - lima
+    - apat
+    correctChoiceIndex: 0
+    correctAnswer: walo
+    acceptableAnswers:
+    - walo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 224
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You saw eight cars. What is 'eight'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - tatlo
+    - labindalawa
+    - walo
+    correctChoiceIndex: 3
+    correctAnswer: walo
+    acceptableAnswers:
+    - walo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 225
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She counted nine stars. What is 'nine'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sampu
+    - walo
+    - siyam
+    - pito
+    correctChoiceIndex: 2
+    correctAnswer: siyam
+    acceptableAnswers:
+    - siyam
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 226
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: He scored nine points. What is 'nine'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lima
+    - anim
+    - siyam
+    - apat
+    correctChoiceIndex: 2
+    correctAnswer: siyam
+    acceptableAnswers:
+    - siyam
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 227
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: You waited nine minutes. What is 'nine'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - siyam
+    - tatlo
+    - labindalawa
+    correctChoiceIndex: 1
+    correctAnswer: siyam
+    acceptableAnswers:
+    - siyam
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 228
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: They need ten chairs. What is 'ten'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sampu
+    - siyam
+    - walo
+    - pito
+    correctChoiceIndex: 0
+    correctAnswer: sampu
+    acceptableAnswers:
+    - sampu
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 229
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: She counted ten books. What is 'ten'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lima
+    - sampu
+    - apat
+    - tatlo
+    correctChoiceIndex: 1
+    correctAnswer: sampu
+    acceptableAnswers:
+    - sampu
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 230
+    difficultyLevel: 0
+    moduleName: Numbers
+    questionType: 0
+    questionText: He paid ten pesos. What is 'ten'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - dalawa
+    - anim
+    - labindalawa
+    - sampu
+    correctChoiceIndex: 3
+    correctAnswer: sampu
+    acceptableAnswers:
+    - sampu
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
