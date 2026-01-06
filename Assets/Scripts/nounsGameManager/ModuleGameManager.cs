@@ -791,17 +791,45 @@ public class ModuleGameManager : MonoBehaviour
             .Where(q => q.module == moduleName) 
             .ToList();
 
-        List<UnifiedQuestionData> questionsForReview = new List<UnifiedQuestionData>();
-        List<UnifiedQuestionData> newQuestions = new List<UnifiedQuestionData>();
-        
         Dictionary<int, QuestionData> savedStateMap = savedQuestions.ToDictionary(q => q.questionId);
 
         var allPotentialQuestions = unifiedQuestionsReference.GetUnifiedQuestions()
-            .Where(q => q.difficultyLevel <= currentDifficulty)
+            .Where(q => (int)q.difficultyLevel <= (int)currentDifficulty)
             .ToList();
 
-        // Separate into Review vs New
-        foreach (var uq in allPotentialQuestions)
+        List<UnifiedQuestionData> uniqueQuestionsPool = new List<UnifiedQuestionData>();
+        HashSet<string> seenAnswers = new HashSet<string>();
+
+        // Separate first to prioritize "Failed/Due" cards when picking the unique winner
+        var sortedPotential = allPotentialQuestions.OrderBy(uq => 
+        {
+            // Failed > Overdue > New
+            if (savedStateMap.ContainsKey(uq.questionId))
+            {
+                var state = savedStateMap[uq.questionId];
+                if (state.interval == 0) return 0; // Top Priority (Failed)
+                if (state.nextReview <= DateTime.Now) return 1; // Due Review
+                return 3; // Future Review (Low priority)
+            }
+            return 2; // New Question (Medium priority)
+        }).ToList();
+
+        foreach (var uq in sortedPotential)
+        {
+            string answerKey = uq.correctAnswer.Trim().ToLowerInvariant();
+
+            if (!seenAnswers.Contains(answerKey))
+            {
+                uniqueQuestionsPool.Add(uq);
+                seenAnswers.Add(answerKey);
+            }
+        }
+
+        // 3. Now separate the UNIQUE pool into Review vs New
+        List<UnifiedQuestionData> questionsForReview = new List<UnifiedQuestionData>();
+        List<UnifiedQuestionData> newQuestions = new List<UnifiedQuestionData>();
+
+        foreach (var uq in uniqueQuestionsPool)
         {
             if (savedStateMap.ContainsKey(uq.questionId))
             {
@@ -813,59 +841,45 @@ public class ModuleGameManager : MonoBehaviour
             }
         }
 
-        // SORTING LOGIC
+        // 4. Sort Reviews (Standard SM2 Priority)
         questionsForReview.Sort((a, b) => 
         {
-            if (!savedStateMap.ContainsKey(a.questionId) || !savedStateMap.ContainsKey(b.questionId))
-                return 0;
+            if (!savedStateMap.ContainsKey(a.questionId) || !savedStateMap.ContainsKey(b.questionId)) return 0;
 
-            QuestionData stateA = savedStateMap[a.questionId];
-            QuestionData stateB = savedStateMap[b.questionId];
+            var stateA = savedStateMap[a.questionId];
+            var stateB = savedStateMap[b.questionId];
 
-            // PRIORITY 1: Is it a "Just Failed" question? (Interval == 0)
+            // Failed (Interval 0) first
             bool isFailedA = stateA.interval == 0;
             bool isFailedB = stateB.interval == 0;
+            if (isFailedA && !isFailedB) return -1;
+            if (!isFailedA && isFailedB) return 1;
 
-            if (isFailedA && !isFailedB) return -1; // A comes first (Failed)
-            if (!isFailedA && isFailedB) return 1;  // B comes first (Failed)
-
-            // PRIORITY 2: Sort by Date (Ascending - Oldest/Overdue first)
+            // Date second
             int dateCompare = stateA.nextReview.CompareTo(stateB.nextReview);
             if (dateCompare != 0) return dateCompare;
 
-            // PRIORITY 3: Sort by Interval (Ascending - Smaller interval = Harder = First)
-            return stateA.interval.CompareTo(stateB.interval);
+            return stateA.questionId.CompareTo(stateB.questionId);
         });
 
-        // Shuffle New Questions
+        // 5. Shuffle New Questions
         for (int i = newQuestions.Count - 1; i > 0; i--)
         {
             int j = UnityEngine.Random.Range(0, i + 1);
             (newQuestions[i], newQuestions[j]) = (newQuestions[j], newQuestions[i]);
         }
 
-        // Build final list
+        // 6. Build Final List
         currentQuestions.Clear();
         
-        // Add Reviews (up to limit)
         int reviewsToTake = Math.Min(questionsForReview.Count, questionsLimit);
         currentQuestions.AddRange(questionsForReview.Take(reviewsToTake));
 
-        // Fill remaining with New
         int remainingSlots = questionsLimit - currentQuestions.Count;
         if (remainingSlots > 0 && newQuestions.Count > 0)
         {
             int newToTake = Math.Min(remainingSlots, newQuestions.Count);
             currentQuestions.AddRange(newQuestions.Take(newToTake));
-
-            // Fill remaining with anything
-            remainingSlots = questionsLimit - currentQuestions.Count;
-            if(remainingSlots > 0)
-            {
-                int countToTakeForBackup = Math.Min(remainingSlots, unifiedQuestions.Count);
-                List<UnifiedQuestionData> backupQuestions = ShuffleQuestions(unifiedQuestionsReference, shuffleQuestions);
-                currentQuestions.AddRange(backupQuestions.Take(countToTakeForBackup));
-            }
         }
 
         sessionStartTime = Time.time;
@@ -874,24 +888,7 @@ public class ModuleGameManager : MonoBehaviour
         currentQuestion = 0;
         score = 0;
 
-        Debug.Log("--- FINAL SESSION ORDER ---");
-        foreach(UnifiedQuestionData uq in currentQuestions)
-        {
-            QuestionData realState = SM2Algorithm.Instance.GetAllQuestions()
-                .FirstOrDefault(q => q.questionId == uq.questionId);
-
-            if (realState != null)
-            {
-                string priority = realState.interval == 0 ? "FAILED/NOW" : "REVIEW";
-                Debug.Log($"[{priority}] ID: {realState.questionId} | Interval: {realState.interval} | Due: {realState.nextReview}\nQuestion: {realState.question}");
-            }
-            else
-            {
-                Debug.Log($"[NEW] ID: {uq.questionId} | Interval: 1 (Default)\nQuestion: {uq.questionText}");
-            }
-        }
-        Debug.Log("---------------------------");
-        Debug.Log($"Session Ready: {reviewsToTake} Reviews, {Math.Min(remainingSlots, newQuestions.Count)} New.");
+        Debug.Log($"Session Initialized: {currentQuestions.Count} Unique Questions ({reviewsToTake} Reviews, {Math.Min(remainingSlots, newQuestions.Count)} New)");
     }
     
     void InitializeLegacyQuestions()

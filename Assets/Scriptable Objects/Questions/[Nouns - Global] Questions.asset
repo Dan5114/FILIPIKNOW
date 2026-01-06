@@ -1,0 +1,675 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Nouns - Global] Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 401
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: You sat on the chair. What is 'chair'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - silya
+    - mesa
+    - aklat
+    - pinto
+    correctChoiceIndex: 0
+    correctAnswer: silya
+    acceptableAnswers:
+    - silya
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 402
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She bought a chair for her room. What is 'chair'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bintana
+    - lapis
+    - silya
+    - bag
+    correctChoiceIndex: 2
+    correctAnswer: silya
+    acceptableAnswers:
+    - silya
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 403
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They carried the chair outside. What is 'chair'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - silya
+    - laruan
+    - telepono
+    correctChoiceIndex: 1
+    correctAnswer: silya
+    acceptableAnswers:
+    - silya
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 404
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: He placed the book on the table. What is 'book'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - aklat
+    - mesa
+    - silya
+    - pinto
+    correctChoiceIndex: 0
+    correctAnswer: aklat
+    acceptableAnswers:
+    - aklat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 405
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She read a book before sleeping. What is 'book'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lapis
+    - bag
+    - aklat
+    - telepono
+    correctChoiceIndex: 2
+    correctAnswer: aklat
+    acceptableAnswers:
+    - aklat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 406
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They borrowed a book from the library. What is 'book'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - laruan
+    - bintana
+    - aklat
+    correctChoiceIndex: 3
+    correctAnswer: aklat
+    acceptableAnswers:
+    - aklat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 407
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: You opened the door. What is 'door'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - pinto
+    - bintana
+    - mesa
+    - silya
+    correctChoiceIndex: 0
+    correctAnswer: pinto
+    acceptableAnswers:
+    - pinto
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 408
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She closed the door gently. What is 'door'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - pinto
+    - aklat
+    - lapis
+    - bag
+    correctChoiceIndex: 0
+    correctAnswer: pinto
+    acceptableAnswers:
+    - pinto
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 409
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They painted the door red. What is 'door'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - laruan
+    - telepono
+    - pinto
+    correctChoiceIndex: 3
+    correctAnswer: pinto
+    acceptableAnswers:
+    - pinto
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 410
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: He looked out the window. What is 'window'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mesa
+    - bintana
+    - silya
+    - pinto
+    correctChoiceIndex: 1
+    correctAnswer: bintana
+    acceptableAnswers:
+    - bintana
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 411
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She cleaned the window. What is 'window'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - aklat
+    - lapis
+    - bintana
+    - bag
+    correctChoiceIndex: 2
+    correctAnswer: bintana
+    acceptableAnswers:
+    - bintana
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 412
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They opened the window for fresh air. What is 'window'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - laruan
+    - telepono
+    - bintana
+    correctChoiceIndex: 3
+    correctAnswer: bintana
+    acceptableAnswers:
+    - bintana
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 413
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: You wrote with a pencil. What is 'pencil'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lapis
+    - aklat
+    - mesa
+    - silya
+    correctChoiceIndex: 0
+    correctAnswer: lapis
+    acceptableAnswers:
+    - lapis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 414
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She sharpened her pencil. What is 'pencil'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - lapis
+    - pinto
+    - bintana
+    - bag
+    correctChoiceIndex: 0
+    correctAnswer: lapis
+    acceptableAnswers:
+    - lapis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 415
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They bought pencils at the store. What is 'pencil'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - lapis
+    - laruan
+    - telepono
+    correctChoiceIndex: 1
+    correctAnswer: lapis
+    acceptableAnswers:
+    - lapis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 416
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: He carried his bag to school. What is 'bag'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mesa
+    - silya
+    - bag
+    - pinto
+    correctChoiceIndex: 2
+    correctAnswer: bag
+    acceptableAnswers:
+    - bag
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 417
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She opened her bag. What is 'bag'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - aklat
+    - bag
+    - lapis
+    - bintana
+    correctChoiceIndex: 1
+    correctAnswer: bag
+    acceptableAnswers:
+    - bag
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 418
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They packed clothes in the bag. What is 'bag'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - laruan
+    - telepono
+    - bag
+    correctChoiceIndex: 3
+    correctAnswer: bag
+    acceptableAnswers:
+    - bag
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 419
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: You wore shoes to the party. What is 'shoes'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bag
+    - lapis
+    - aklat
+    - sapatos
+    correctChoiceIndex: 3
+    correctAnswer: sapatos
+    acceptableAnswers:
+    - sapatos
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 420
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She cleaned her shoes. What is 'shoes'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mesa
+    - silya
+    - sapatos
+    - pinto
+    correctChoiceIndex: 2
+    correctAnswer: sapatos
+    acceptableAnswers:
+    - sapatos
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 421
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They bought new shoes. What is 'shoes'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bintana
+    - laruan
+    - sapatos
+    - telepono
+    correctChoiceIndex: 2
+    correctAnswer: sapatos
+    acceptableAnswers:
+    - sapatos
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 422
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: He played with a toy. What is 'toy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - laruan
+    - sapatos
+    - bag
+    - lapis
+    correctChoiceIndex: 0
+    correctAnswer: laruan
+    acceptableAnswers:
+    - laruan
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 423
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She gave him a toy. What is 'toy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - aklat
+    - laruan
+    - mesa
+    - silya
+    correctChoiceIndex: 1
+    correctAnswer: laruan
+    acceptableAnswers:
+    - laruan
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 424
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They collected toys. What is 'toy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - laruan
+    - pinto
+    - bintana
+    - telepono
+    correctChoiceIndex: 0
+    correctAnswer: laruan
+    acceptableAnswers:
+    - laruan
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 425
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: You answered the phone. What is 'phone'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - bag
+    - lapis
+    - telepono
+    correctChoiceIndex: 3
+    correctAnswer: telepono
+    acceptableAnswers:
+    - telepono
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 426
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She called on the phone. What is 'phone'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - aklat
+    - mesa
+    - silya
+    - telepono
+    correctChoiceIndex: 3
+    correctAnswer: telepono
+    acceptableAnswers:
+    - telepono
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 427
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They bought a new phone. What is 'phone'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - pinto
+    - telepono
+    - bintana
+    - laruan
+    correctChoiceIndex: 1
+    correctAnswer: telepono
+    acceptableAnswers:
+    - telepono
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 428
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: He sat at the table. What is 'table'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - silya
+    - aklat
+    - lapis
+    - mesa
+    correctChoiceIndex: 3
+    correctAnswer: mesa
+    acceptableAnswers:
+    - mesa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 429
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: She cleaned the table. What is 'table'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bag
+    - mesa
+    - pinto
+    - bintana
+    correctChoiceIndex: 1
+    correctAnswer: mesa
+    acceptableAnswers:
+    - mesa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 430
+    difficultyLevel: 0
+    moduleName: Nouns
+    questionType: 0
+    questionText: They moved the table. What is 'table'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sapatos
+    - laruan
+    - mesa
+    - telepono
+    correctChoiceIndex: 2
+    correctAnswer: mesa
+    acceptableAnswers:
+    - mesa
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []

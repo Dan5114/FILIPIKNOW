@@ -1,0 +1,675 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8a0b46582e63a4185ce23c17da135c, type: 3}
+  m_Name: '[Verbs - Global] Questions'
+  m_EditorClassIdentifier: 
+  unifiedQuestions:
+  - questionId: 301
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: You carry the bag to school. What is 'carry'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - magbuhat
+    - maglinis
+    - magluto
+    correctChoiceIndex: 1
+    correctAnswer: magbuhat
+    acceptableAnswers:
+    - magbuhat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 302
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She carried the baby gently. What is 'carry'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - mag-aral
+    - magbuhat
+    - maghugas
+    correctChoiceIndex: 2
+    correctAnswer: magbuhat
+    acceptableAnswers:
+    - magbuhat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 303
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They carried boxes to the classroom. What is 'carry'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - magbuhat
+    - kumanta
+    - matulog
+    - bumili
+    correctChoiceIndex: 0
+    correctAnswer: magbuhat
+    acceptableAnswers:
+    - magbuhat
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 304
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: I need to study for my exam. What is 'study'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mag-aral
+    - magbasa
+    - maglinis
+    - magpahinga
+    correctChoiceIndex: 0
+    correctAnswer: mag-aral
+    acceptableAnswers:
+    - mag-aral
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 305
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She studies every night. What is 'study'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - kumain
+    - magluto
+    - maglakad
+    - mag-aral
+    correctChoiceIndex: 3
+    correctAnswer: mag-aral
+    acceptableAnswers:
+    - mag-aral
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 306
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They study Filipino grammar. What is 'study'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - uminom
+    - mag-aral
+    - matulog
+    correctChoiceIndex: 2
+    correctAnswer: mag-aral
+    acceptableAnswers:
+    - mag-aral
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 307
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: You sell fruits in the plaza. What is 'sell'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bumili
+    - magbenta
+    - magluto
+    - maglinis
+    correctChoiceIndex: 1
+    correctAnswer: magbenta
+    acceptableAnswers:
+    - magbenta
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 308
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He sells newspapers. What is 'sell'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mag-aral
+    - maglakad
+    - magbenta
+    - maghugas
+    correctChoiceIndex: 2
+    correctAnswer: magbenta
+    acceptableAnswers:
+    - magbenta
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 309
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They sell toys during the fair. What is 'sell'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - magpahinga
+    - magbasa
+    - magbenta
+    correctChoiceIndex: 3
+    correctAnswer: magbenta
+    acceptableAnswers:
+    - magbenta
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 310
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He fixes broken toys. What is 'fix'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - kumpunihin
+    - maglinis
+    - magbenta
+    - mag-aral
+    correctChoiceIndex: 0
+    correctAnswer: kumpunihin
+    acceptableAnswers:
+    - kumpunihin
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 311
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She fixes her computer. What is 'fix'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - magluto
+    - maghugas
+    - kumpunihin
+    correctChoiceIndex: 3
+    correctAnswer: kumpunihin
+    acceptableAnswers:
+    - kumpunihin
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 312
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They fix the chairs. What is 'fix'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - kumpunihin
+    - matulog
+    - magpahinga
+    correctChoiceIndex: 1
+    correctAnswer: kumpunihin
+    acceptableAnswers:
+    - kumpunihin
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 313
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She teaches math to her siblings. What is 'teach'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mag-aral
+    - magturo
+    - magbasa
+    - maglinis
+    correctChoiceIndex: 1
+    correctAnswer: magturo
+    acceptableAnswers:
+    - magturo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 314
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He teaches Filipino. What is 'teach'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - magluto
+    - magturo
+    - maghugas
+    correctChoiceIndex: 2
+    correctAnswer: magturo
+    acceptableAnswers:
+    - magturo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 315
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They teach children at school. What is 'teach'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - matulog
+    - magpahinga
+    - magturo
+    correctChoiceIndex: 3
+    correctAnswer: magturo
+    acceptableAnswers:
+    - magturo
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 316
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He buys vegetables at the market. What is 'buy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - magbenta
+    - bumili
+    - magluto
+    - maglinis
+    correctChoiceIndex: 1
+    correctAnswer: bumili
+    acceptableAnswers:
+    - bumili
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 317
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She buys clothes. What is 'buy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - mag-aral
+    - maglakad
+    - maghugas
+    - bumili
+    correctChoiceIndex: 3
+    correctAnswer: bumili
+    acceptableAnswers:
+    - bumili
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 318
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They buy tickets. What is 'buy'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - bumili
+    - sumayaw
+    - magpahinga
+    - magbasa
+    correctChoiceIndex: 0
+    correctAnswer: bumili
+    acceptableAnswers:
+    - bumili
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 319
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She answers the phone politely. What is 'answer'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumagot
+    - mag-aral
+    - maglinis
+    - maglakad
+    correctChoiceIndex: 0
+    correctAnswer: sumagot
+    acceptableAnswers:
+    - sumagot
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 320
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He answers the teacher. What is 'answer'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumagot
+    - magluto
+    - maghugas
+    - matulog
+    correctChoiceIndex: 0
+    correctAnswer: sumagot
+    acceptableAnswers:
+    - sumagot
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 321
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They answer the questions. What is 'answer'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - sumagot
+    - magpahinga
+    - magbasa
+    correctChoiceIndex: 1
+    correctAnswer: sumagot
+    acceptableAnswers:
+    - sumagot
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 322
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She closes the door gently. What is 'close'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - magbukas
+    - maglinis
+    - magsara
+    - magluto
+    correctChoiceIndex: 2
+    correctAnswer: magsara
+    acceptableAnswers:
+    - magsara
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 323
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: He closes the window. What is 'close'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - maghugas
+    - matulog
+    - magsara
+    correctChoiceIndex: 3
+    correctAnswer: magsara
+    acceptableAnswers:
+    - magsara
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 324
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They close the shop. What is 'close'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - magsara
+    - magpahinga
+    - magbasa
+    correctChoiceIndex: 1
+    correctAnswer: magsara
+    acceptableAnswers:
+    - magsara
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 325
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: I open the window every morning. What is 'open'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - magbukas
+    - magsara
+    - maglinis
+    - magluto
+    correctChoiceIndex: 0
+    correctAnswer: magbukas
+    acceptableAnswers:
+    - magbukas
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 326
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She opens the book. What is 'open'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - maghugas
+    - matulog
+    - magbukas
+    correctChoiceIndex: 3
+    correctAnswer: magbukas
+    acceptableAnswers:
+    - magbukas
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 327
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They open the store. What is 'open'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - magpahinga
+    - magbukas
+    - matulog
+    correctChoiceIndex: 2
+    correctAnswer: magbukas
+    acceptableAnswers:
+    - magbukas
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 328
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: We clean the house every weekend. What is 'clean'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - magluto
+    - magbenta
+    - mag-aral
+    - maglinis
+    correctChoiceIndex: 3
+    correctAnswer: maglinis
+    acceptableAnswers:
+    - maglinis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 329
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: She cleans her desk. What is 'clean'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - maglakad
+    - maglinis
+    - maghugas
+    - matulog
+    correctChoiceIndex: 1
+    correctAnswer: maglinis
+    acceptableAnswers:
+    - maglinis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
+  - questionId: 330
+    difficultyLevel: 0
+    moduleName: Verbs
+    questionType: 0
+    questionText: They clean the classroom. What is 'clean'?
+    instruction: 
+    xpReward: 10
+    choices:
+    - sumayaw
+    - magpahinga
+    - maglinis
+    - magbasa
+    correctChoiceIndex: 2
+    correctAnswer: maglinis
+    acceptableAnswers:
+    - maglinis
+    sentenceTemplate: 
+    blankWord: 
+    isConversational: 0
+    conversationPrompts: []
+    characterResponses: []
+    hints: []
