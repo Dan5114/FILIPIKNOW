@@ -2213,11 +2213,13 @@ public class ModuleGameManager : MonoBehaviour
         // Navigate back to difficulty selection after summary
         if (SceneController.Instance != null)
         {
-            SceneController.Instance.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
+            // SceneController.Instance.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
+            SceneController.Instance.LoadScene("Module 1");
         }
         else
         {
-            SceneManager.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
+            // SceneManager.LoadScene($"{sm2.CurrentTopic}DifficultySelection");
+            SceneManager.LoadScene("Module 1");
         }
     }
     
